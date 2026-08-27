@@ -1,0 +1,25 @@
+{
+  "name": "Grocery I",
+  "cards": [
+    { "id": "g101", "fi": "omena", "en": "apple", "hint": "\"oh my nah\" — oh my, an apple!" },
+    { "id": "g102", "fi": "banaani", "en": "banana", "hint": "banaani looks and sounds just like banana" },
+    { "id": "g103", "fi": "maito", "en": "milk", "hint": "dip \"my toe\" in the milk" },
+    { "id": "g104", "fi": "juusto", "en": "cheese", "hint": "\"you-sto\" — you store the cheese" },
+    { "id": "g105", "fi": "muna", "en": "egg", "hint": "\"moon-a\" — the egg looks like a little moon" },
+    { "id": "g106", "fi": "liha", "en": "meat", "hint": "\"lee-ha\" — ha, that's meat!" },
+    { "id": "g107", "fi": "kala", "en": "fish", "hint": "a fish drinking \"cola\" — kala" },
+    { "id": "g108", "fi": "riisi", "en": "rice", "hint": "\"ree-see\" — greasy rice" },
+    { "id": "g109", "fi": "pasta", "en": "pasta", "hint": "pasta is just... pasta" },
+    { "id": "g110", "fi": "sokeri", "en": "sugar", "hint": "\"soccer-y\" — soccer players crave sugar" },
+    { "id": "g111", "fi": "suola", "en": "salt", "hint": "\"swallow-a\" pinch of salt" },
+    { "id": "g112", "fi": "pippuri", "en": "pepper", "hint": "sounds just like \"peppery\"" },
+    { "id": "g113", "fi": "öljy", "en": "oil", "hint": "\"oil-yu\" — oily" },
+    { "id": "g114", "fi": "voi", "en": "butter", "hint": "\"voy\" the boy spreads butter" },
+    { "id": "g115", "fi": "jogurtti", "en": "yogurt", "hint": "jogurtti sounds just like yogurt" },
+    { "id": "g116", "fi": "peruna", "en": "potato", "hint": "\"Peru-na\" — potatoes came from Peru" },
+    { "id": "g117", "fi": "tomaatti", "en": "tomato", "hint": "tomaatti sounds just like tomato" },
+    { "id": "g118", "fi": "sipuli", "en": "onion", "hint": "\"see-puli\" — onions make your eyes see pools of tears" },
+    { "id": "g119", "fi": "porkkana", "en": "carrot", "hint": "\"pork-kana\" — pork and carrots on the plate" },
+    { "id": "g120", "fi": "kahvi", "en": "coffee", "hint": "\"cough-vee\" — coffee makes you cough" }
+  ]
+}

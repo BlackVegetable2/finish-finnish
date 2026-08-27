@@ -1,0 +1,25 @@
+{
+  "name": "Family Titles",
+  "cards": [
+    { "id": "ft01", "fi": "äiti", "en": "mother", "hint": "mother sips \"eye-tea\" each morning" },
+    { "id": "ft02", "fi": "isä", "en": "father", "hint": "father shouts \"ee-sah!\"" },
+    { "id": "ft03", "fi": "sisko", "en": "sister", "hint": "sister loves \"disco\" — sisko" },
+    { "id": "ft04", "fi": "veli", "en": "brother", "hint": "brother, you're so \"valuable\" — veli" },
+    { "id": "ft05", "fi": "tytär", "en": "daughter", "hint": "daughter hugs you \"tighter\" — tytär" },
+    { "id": "ft06", "fi": "poika", "en": "son", "hint": "\"poika\" — the boy(ka), the son" },
+    { "id": "ft07", "fi": "isoäiti", "en": "grandmother", "hint": "iso (big) + äiti (mother) = big mother" },
+    { "id": "ft08", "fi": "isoisä", "en": "grandfather", "hint": "iso (big) + isä (father) = big father" },
+    { "id": "ft09", "fi": "täti", "en": "aunt", "hint": "auntie's \"tatty\" old sweater — täti" },
+    { "id": "ft10", "fi": "setä", "en": "uncle", "hint": "uncle always \"sets a\" good example" },
+    { "id": "ft11", "fi": "serkku", "en": "cousin", "hint": "cousins are like a \"circus\" — serkku" },
+    { "id": "ft12", "fi": "vaimo", "en": "wife", "hint": "\"why, mo? you're my wife!\" — vaimo" },
+    { "id": "ft13", "fi": "aviomies", "en": "husband", "hint": "avio (marriage) + mies (man) = married man" },
+    { "id": "ft14", "fi": "lapsi", "en": "child", "hint": "\"lap-see\" — see the child on your lap" },
+    { "id": "ft15", "fi": "vanhemmat", "en": "parents", "hint": "\"van, he mat\" — parents drive the van, lay the welcome mat" },
+    { "id": "ft16", "fi": "perhe", "en": "family", "hint": "\"per-hey!\" — hey, that's my family!" },
+    { "id": "ft17", "fi": "lapsenlapsi", "en": "grandchild", "hint": "lapsen (child's) + lapsi (child) = child's child" },
+    { "id": "ft18", "fi": "kaksoset", "en": "twins", "hint": "\"cocks-o-set\" — a matched set of two roosters" },
+    { "id": "ft19", "fi": "appi", "en": "father-in-law", "hint": "\"happy\" father-in-law — appi" },
+    { "id": "ft20", "fi": "anoppi", "en": "mother-in-law", "hint": "\"a nappy\" — mother-in-law folds one for the baby" }
+  ]
+}

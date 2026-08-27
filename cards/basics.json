@@ -1,0 +1,25 @@
+{
+  "name": "Basics",
+  "cards": [
+    { "id": "b001", "fi": "kissa", "en": "cat", "hint": "she gave the cat a kiss, a \"kiss-a\"" },
+    { "id": "b002", "fi": "koira", "en": "dog", "hint": "the dog is a bit \"coy-ra\", shy and coy" },
+    { "id": "b003", "fi": "talo", "en": "house", "hint": "that's a \"tall-oh\" house!" },
+    { "id": "b004", "fi": "vesi", "en": "water", "hint": "pour water in the \"vessy\" (vessel)" },
+    { "id": "b005", "fi": "leipä", "en": "bread", "hint": "\"lay-pa\" the bread dough on the pan" },
+    { "id": "b006", "fi": "kiitos", "en": "thank you", "hint": "\"key toss\" — thanks, catch the key!" },
+    { "id": "b007", "fi": "hyvää päivää", "en": "good day", "hint": "\"hyvaa pie-vaa\" — have a good pie day" },
+    { "id": "b008", "fi": "anteeksi", "en": "sorry / excuse me", "hint": "\"aunty ex-y\" keeps apologizing" },
+    { "id": "b009", "fi": "kyllä", "en": "yes", "hint": "\"key-la\" — yes, here's the key" },
+    { "id": "b010", "fi": "ei", "en": "no", "hint": "\"ay!\" — no way!" },
+    { "id": "b011", "fi": "yksi", "en": "one", "hint": "\"ook-see\" — you see just one" },
+    { "id": "b012", "fi": "kaksi", "en": "two", "hint": "\"cock-see\" — two roosters crowing" },
+    { "id": "b013", "fi": "kolme", "en": "three", "hint": "\"call-may\" — call me, there's three of us" },
+    { "id": "b014", "fi": "punainen", "en": "red", "hint": "\"poo-nine-en\" — nine cans of red paint" },
+    { "id": "b015", "fi": "sininen", "en": "blue", "hint": "\"sin-in-en\" — a blue sin" },
+    { "id": "b016", "fi": "iso", "en": "big", "hint": "\"eee-so\" — eeeh, so big!" },
+    { "id": "b017", "fi": "pieni", "en": "small", "hint": "a tiny \"pea\" on your \"knee\" — pieni" },
+    { "id": "b018", "fi": "hyvä", "en": "good", "hint": "\"who-va\" — who's got good vibes" },
+    { "id": "b019", "fi": "huono", "en": "bad", "hint": "\"hwoh-no\" — whoa, no, that's bad!" },
+    { "id": "b020", "fi": "ystävä", "en": "friend", "hint": "\"you stab a\" — a true friend never would" }
+  ]
+}

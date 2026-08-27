@@ -1,0 +1,25 @@
+{
+  "name": "School Subjects",
+  "cards": [
+    { "id": "ss01", "fi": "matematiikka", "en": "mathematics", "hint": "matematiikka sounds just like mathematics" },
+    { "id": "ss02", "fi": "äidinkieli", "en": "native language", "hint": "äidin (mother's) + kieli (tongue) = mother tongue" },
+    { "id": "ss03", "fi": "englanti", "en": "English", "hint": "englanti = England-y = English" },
+    { "id": "ss04", "fi": "ruotsi", "en": "Swedish", "hint": "\"roo-tsi\" — has its roots in Sweden" },
+    { "id": "ss05", "fi": "historia", "en": "history", "hint": "historia sounds just like history" },
+    { "id": "ss06", "fi": "maantieto", "en": "geography", "hint": "maan (land's) + tieto (knowledge) = knowledge of the land" },
+    { "id": "ss07", "fi": "biologia", "en": "biology", "hint": "biologia sounds just like biology" },
+    { "id": "ss08", "fi": "kemia", "en": "chemistry", "hint": "kemia sounds just like chemistry" },
+    { "id": "ss09", "fi": "fysiikka", "en": "physics", "hint": "fysiikka sounds just like physics" },
+    { "id": "ss10", "fi": "liikunta", "en": "physical education", "hint": "\"lee-koon-ta\" — lee kicks and runs, that's PE" },
+    { "id": "ss11", "fi": "kuvataide", "en": "art", "hint": "kuva (picture) + taide (art) = picture art" },
+    { "id": "ss12", "fi": "musiikki", "en": "music", "hint": "musiikki sounds just like music" },
+    { "id": "ss13", "fi": "uskonto", "en": "religion", "hint": "\"ask-on-to\" — ask on to matters of religion" },
+    { "id": "ss14", "fi": "terveystieto", "en": "health education", "hint": "terveys (health) + tieto (knowledge) = health knowledge" },
+    { "id": "ss15", "fi": "käsityö", "en": "handicrafts", "hint": "käsi (hand) + työ (work) = handwork" },
+    { "id": "ss16", "fi": "tietotekniikka", "en": "information technology", "hint": "tieto (info) + tekniikka (technique) = info technique" },
+    { "id": "ss17", "fi": "yhteiskuntaoppi", "en": "social studies", "hint": "yhteiskunta (community) + oppi (learning) = learning community" },
+    { "id": "ss18", "fi": "filosofia", "en": "philosophy", "hint": "filosofia sounds just like philosophy" },
+    { "id": "ss19", "fi": "psykologia", "en": "psychology", "hint": "psykologia sounds just like psychology" },
+    { "id": "ss20", "fi": "taloustieto", "en": "economics", "hint": "talous (economy) + tieto (knowledge) = knowledge of the economy" }
+  ]
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Finish Finnish</title>
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Finish&nbsp;Finnish<span class="flag">🇫🇮</span></h1>
+    <nav id="view-tabs">
+      <button id="tab-study" class="view-tab active" type="button">Study</button>
+      <button id="tab-dashboard" class="view-tab" type="button">Dashboard</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="study-view">
+      <div id="category-picker">
+        <label for="category-select">Category:</label>
+        <select id="category-select"></select>
+        <label for="mode-select">Direction:</label>
+        <select id="mode-select">
+          <option value="fi-en">Finnish → English</option>
+          <option value="en-fi">English → Finnish</option>
+        </select>
+        <span id="category-stats"></span>
+      </div>
+      <p class="tiers-explainer">
+        <strong>Learned</strong>: 3 correct in a row. <strong>Retained</strong>: correct on spaced
+        check-ins over ~2 weeks after that.
+      </p>
+
+      <div id="empty-state" class="hidden">
+        <p>🎉 You've mastered every card in this category!</p>
+        <button id="review-all-btn">Review anyway</button>
+      </div>
+
+      <div id="round-complete" class="hidden">
+        <p id="round-complete-message">🎉 You've been through every card in this set.</p>
+        <div class="round-complete-actions">
+          <button id="repeat-set-btn">Repeat this set</button>
+          <button id="choose-category-btn">Choose a different category</button>
+        </div>
+      </div>
+
+      <div id="card-area" class="hidden">
+        <span id="review-badge" class="review-badge hidden">🔁 Spaced review check-in</span>
+        <p id="round-progress" class="round-progress"></p>
+        <div id="card" tabindex="0">
+          <div class="card-face card-front">
+            <span id="front-text"></span>
+          </div>
+          <div class="card-face card-back">
+            <span id="back-text"></span>
+          </div>
+        </div>
+        <p id="hint-text" class="hint">Press <kbd>Space</kbd> or click the card to flip</p>
+
+        <button id="word-hint-btn" type="button" class="word-hint-btn">💡 Word trick</button>
+        <p id="word-hint-panel" class="word-hint-panel hidden"></p>
+
+        <div id="answer-buttons" class="hidden">
+          <button id="btn-wrong" class="btn btn-wrong">✗ Missed it</button>
+          <button id="btn-right" class="btn btn-right">✓ Got it</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="dashboard-view" class="hidden">
+      <div id="dashboard-summary"></div>
+      <div id="dashboard-table-wrap">
+        <table id="dashboard-table">
+          <thead>
+            <tr>
+              <th rowspan="2" class="dash-category-col">Category</th>
+              <th rowspan="2">Words</th>
+              <th colspan="2">Finnish → English</th>
+              <th colspan="2">English → Finnish</th>
+            </tr>
+            <tr>
+              <th>Learned</th>
+              <th>Retained</th>
+              <th>Learned</th>
+              <th>Retained</th>
+            </tr>
+          </thead>
+          <tbody id="dashboard-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <div id="toast" role="status" aria-live="polite"></div>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>

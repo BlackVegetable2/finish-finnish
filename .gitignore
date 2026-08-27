@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.DS_Store
+
+# Personal learning progress - not part of the app itself.
+data/progress.json

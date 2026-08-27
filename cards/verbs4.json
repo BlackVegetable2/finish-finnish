@@ -1,0 +1,25 @@
+{
+  "name": "Common Verbs IV",
+  "cards": [
+    { "id": "v401", "fi": "työskennellä", "en": "to work", "hint": "\"too-sken-nella\" works hard like a skeleton crew" },
+    { "id": "v402", "fi": "avata", "en": "to open", "hint": "\"ah, va-ta!\" — open the door!" },
+    { "id": "v403", "fi": "sulkea", "en": "to close", "hint": "\"seal-kay-a\" — seal it shut, close!" },
+    { "id": "v404", "fi": "aloittaa", "en": "to start / begin", "hint": "\"a loyal, tah!\" start — aloittaa" },
+    { "id": "v405", "fi": "lopettaa", "en": "to stop / finish", "hint": "\"low pet, tah!\" — stop that!" },
+    { "id": "v406", "fi": "jatkaa", "en": "to continue", "hint": "the \"yacht\" continues on — jatkaa" },
+    { "id": "v407", "fi": "yrittää", "en": "to try", "hint": "\"you write, tah!\" — keep trying — yrittää" },
+    { "id": "v408", "fi": "onnistua", "en": "to succeed", "hint": "\"I'm on, I stew-a\" — I succeeded!" },
+    { "id": "v409", "fi": "epäonnistua", "en": "to fail", "hint": "epä (un-) + onnistua (succeed) = un-succeed = fail" },
+    { "id": "v410", "fi": "valmistaa", "en": "to prepare / make", "hint": "\"Val, mees-tah!\" prepares it" },
+    { "id": "v411", "fi": "siivota", "en": "to clean", "hint": "\"see, vote-a!\" to clean — siivota" },
+    { "id": "v412", "fi": "korjata", "en": "to fix / repair", "hint": "fix the \"core, ja-tah!\" — korjata" },
+    { "id": "v413", "fi": "rikkoa", "en": "to break", "hint": "\"Rick, oh!\" you broke it — rikkoa" },
+    { "id": "v414", "fi": "rakentaa", "en": "to build", "hint": "\"rake and tah!\" — build it — rakentaa" },
+    { "id": "v415", "fi": "muuttaa", "en": "to move / to change", "hint": "\"moo, tah!\" — the cow moved — muuttaa" },
+    { "id": "v416", "fi": "löytää", "en": "to find", "hint": "tie a \"loy(al)\" knot — I found it — löytää" },
+    { "id": "v417", "fi": "etsiä", "en": "to search for", "hint": "\"et, see-a!\" — search for it — etsiä" },
+    { "id": "v418", "fi": "käyttää", "en": "to use", "hint": "fly the \"kite, tah!\" — use it — käyttää" },
+    { "id": "v419", "fi": "tarvita", "en": "to need", "hint": "\"I need tar, vee-ta!\" — tarvita" },
+    { "id": "v420", "fi": "valita", "en": "to choose", "hint": "\"Val, ita!\" — choose! — valita" }
+  ]
+}

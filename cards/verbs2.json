@@ -1,0 +1,25 @@
+{
+  "name": "Common Verbs II",
+  "cards": [
+    { "id": "v201", "fi": "herätä", "en": "to wake up", "hint": "\"hair's a-\" mess, wake up! — herätä" },
+    { "id": "v202", "fi": "nousta", "en": "to get up / rise", "hint": "\"no stalling\" — get up! — nousta" },
+    { "id": "v203", "fi": "peseytyä", "en": "to wash oneself", "hint": "\"peh-say, oo-tya\" — wash away!" },
+    { "id": "v204", "fi": "pukeutua", "en": "to get dressed", "hint": "not \"puke,\" just \"put on\" clothes — pukeutua" },
+    { "id": "v205", "fi": "lähteä", "en": "to leave / depart", "hint": "\"later, ta!\" — I'm leaving — lähteä" },
+    { "id": "v206", "fi": "saapua", "en": "to arrive", "hint": "\"sah, poo-a!\" — I've arrived — saapua" },
+    { "id": "v207", "fi": "odottaa", "en": "to wait", "hint": "\"oh, dot, dot...\" waiting — odottaa" },
+    { "id": "v208", "fi": "istua", "en": "to sit", "hint": "\"is too a\" chair, sit! — istua" },
+    { "id": "v209", "fi": "seisoa", "en": "to stand", "hint": "\"say so\" — stand up! — seisoa" },
+    { "id": "v210", "fi": "kävellä", "en": "to walk", "hint": "walk, don't take the \"car, Vella!\" — kävellä" },
+    { "id": "v211", "fi": "juosta", "en": "to run", "hint": "\"you gotta, oh-sta!\" — run!" },
+    { "id": "v212", "fi": "ajaa", "en": "to drive", "hint": "\"ah-ha!\" — drive on — ajaa" },
+    { "id": "v213", "fi": "matkustaa", "en": "to travel", "hint": "\"mat, customs\" stamp — matkustaa, to travel" },
+    { "id": "v214", "fi": "ostaa", "en": "to buy", "hint": "\"oh, stah!\" — I'll buy that!" },
+    { "id": "v215", "fi": "myydä", "en": "to sell", "hint": "\"moo-da\" — sell the cow!" },
+    { "id": "v216", "fi": "maksaa", "en": "to pay", "hint": "\"mock\" the price, then \"sah\" — pay up, maksaa" },
+    { "id": "v217", "fi": "tavata", "en": "to meet", "hint": "\"ta-da, va-ta!\" — we meet!" },
+    { "id": "v218", "fi": "auttaa", "en": "to help", "hint": "\"ow, tah!\" — help me!" },
+    { "id": "v219", "fi": "opettaa", "en": "to teach", "hint": "\"oh, pet, tah!\" — let me teach you" },
+    { "id": "v220", "fi": "oppia", "en": "to learn", "hint": "\"oh, a pea-a!\" — I learn something new" }
+  ]
+}

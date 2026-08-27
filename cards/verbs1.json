@@ -1,0 +1,25 @@
+{
+  "name": "Common Verbs I",
+  "cards": [
+    { "id": "v101", "fi": "olla", "en": "to be", "hint": "\"oh la!\" — to be fabulous" },
+    { "id": "v102", "fi": "tehdä", "en": "to do / make", "hint": "\"ta-da!\" — I made it!" },
+    { "id": "v103", "fi": "mennä", "en": "to go", "hint": "\"the men-a\" go — mennä" },
+    { "id": "v104", "fi": "tulla", "en": "to come", "hint": "\"too-la\" — come here, toola!" },
+    { "id": "v105", "fi": "syödä", "en": "to eat", "hint": "\"see-oh-da\" — eat up!" },
+    { "id": "v106", "fi": "juoda", "en": "to drink", "hint": "\"you gotta, oh-da\" — drink up!" },
+    { "id": "v107", "fi": "nukkua", "en": "to sleep", "hint": "curl up in a \"nook\" and sleep — nukkua" },
+    { "id": "v108", "fi": "puhua", "en": "to speak", "hint": "\"pooh\" (Winnie the Pooh) speaks — puhua" },
+    { "id": "v109", "fi": "kuunnella", "en": "to listen", "hint": "the \"raccoon\" listens carefully — kuunnella" },
+    { "id": "v110", "fi": "katsoa", "en": "to look / watch", "hint": "the \"cat so\" watches — katsoa" },
+    { "id": "v111", "fi": "lukea", "en": "to read", "hint": "\"look, hey!\" read that — lukea" },
+    { "id": "v112", "fi": "kirjoittaa", "en": "to write", "hint": "write with \"joy\" — kir-JOY-ttaa" },
+    { "id": "v113", "fi": "ymmärtää", "en": "to understand", "hint": "\"oomer-tie\" — I understand, tie it up!" },
+    { "id": "v114", "fi": "tietää", "en": "to know (a fact)", "hint": "\"tie a tie\" — I know how — tietää" },
+    { "id": "v115", "fi": "osata", "en": "to know how to", "hint": "\"oh, sat there\" — I know how — osata" },
+    { "id": "v116", "fi": "haluta", "en": "to want", "hint": "\"holla-ta!\" — I want that!" },
+    { "id": "v117", "fi": "voida", "en": "to be able to / may", "hint": "\"boy, da\" — I may do it — voida" },
+    { "id": "v118", "fi": "saada", "en": "to get / receive", "hint": "\"I got sah-da (soda)!\" — saada" },
+    { "id": "v119", "fi": "antaa", "en": "to give", "hint": "\"ants are\" giving" },
+    { "id": "v120", "fi": "ottaa", "en": "to take", "hint": "\"ought-ah\" — ought to take it" }
+  ]
+}

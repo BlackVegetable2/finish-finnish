@@ -1,0 +1,25 @@
+{
+  "name": "Grocery II",
+  "cards": [
+    { "id": "g201", "fi": "tee", "en": "tea", "hint": "tee sounds exactly like tea" },
+    { "id": "g202", "fi": "mehu", "en": "juice", "hint": "\"may-hoo\" — may I have juice, who?" },
+    { "id": "g203", "fi": "hedelmä", "en": "fruit", "hint": "\"heddle-ma\" — mama's fruit basket" },
+    { "id": "g204", "fi": "vihannes", "en": "vegetable", "hint": "\"vee-hah-ness\" — vegetables have vast-ness" },
+    { "id": "g205", "fi": "sitruuna", "en": "lemon", "hint": "\"sit-roona\" — sit under the moon-shaped lemon" },
+    { "id": "g206", "fi": "appelsiini", "en": "orange", "hint": "\"apple-seeny\" — an orange that seems like an apple" },
+    { "id": "g207", "fi": "mansikka", "en": "strawberry", "hint": "\"man sicka\" — a man sick from too many strawberries" },
+    { "id": "g208", "fi": "rypäle", "en": "grape", "hint": "\"rip a lay\" — rip a grape off the vine" },
+    { "id": "g209", "fi": "sämpylä", "en": "bread roll", "hint": "\"Sam-pyla\" — Sam piles up bread rolls" },
+    { "id": "g210", "fi": "jauhot", "en": "flour", "hint": "\"yow-hot\" — the flour is yow-hot from the oven" },
+    { "id": "g211", "fi": "kananmuna", "en": "chicken egg", "hint": "\"canna-moona\" — a chicken's moon-shaped egg" },
+    { "id": "g212", "fi": "kinkku", "en": "ham", "hint": "\"kin cook\" a ham for the family — kinkku" },
+    { "id": "g213", "fi": "makkara", "en": "sausage", "hint": "\"mah-kara\" — mama cooks sausage on the grill" },
+    { "id": "g214", "fi": "kana", "en": "chicken (meat)", "hint": "\"khan-a\" — even Khan loved chicken" },
+    { "id": "g215", "fi": "pekoni", "en": "bacon", "hint": "pekoni sounds just like bacon" },
+    { "id": "g216", "fi": "keksi", "en": "cookie", "hint": "\"Kelsey\" baked a cookie — keksi" },
+    { "id": "g217", "fi": "suklaa", "en": "chocolate", "hint": "\"soo-klah\" — sucking on chocolate" },
+    { "id": "g218", "fi": "jäätelö", "en": "ice cream", "hint": "\"yeah, tell oh\" how good this ice cream is" },
+    { "id": "g219", "fi": "hunaja", "en": "honey", "hint": "\"honey, who-na-ya?\" — sweet honey" },
+    { "id": "g220", "fi": "hillo", "en": "jam", "hint": "jam rolling down the \"hill, oh!\"" }
+  ]
+}

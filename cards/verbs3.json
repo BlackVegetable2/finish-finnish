@@ -1,0 +1,25 @@
+{
+  "name": "Common Verbs III",
+  "cards": [
+    { "id": "v301", "fi": "ajatella", "en": "to think", "hint": "\"ah, ja, tell-a\" thought — ajatella" },
+    { "id": "v302", "fi": "muistaa", "en": "to remember", "hint": "\"moo, I stah!\" — I remember!" },
+    { "id": "v303", "fi": "unohtaa", "en": "to forget", "hint": "\"you know, tah\" — oh wait, I forgot!" },
+    { "id": "v304", "fi": "rakastaa", "en": "to love", "hint": "\"rock star, ah!\" — I love you!" },
+    { "id": "v305", "fi": "pitää", "en": "to like", "hint": "I like a \"pea tied\" to a string — pitää" },
+    { "id": "v306", "fi": "vihata", "en": "to hate", "hint": "\"vee-hah-ta!\" — I hate that!" },
+    { "id": "v307", "fi": "pelätä", "en": "to be afraid", "hint": "a \"pellet\" attack — I'm afraid! — pelätä" },
+    { "id": "v308", "fi": "toivoa", "en": "to hope / wish", "hint": "I wish for a \"toy, voh-a!\" — toivoa" },
+    { "id": "v309", "fi": "uskoa", "en": "to believe", "hint": "\"oo, I believe, koh-a!\" — uskoa" },
+    { "id": "v310", "fi": "epäillä", "en": "to doubt", "hint": "\"eh, pie? lah!\" — I doubt it" },
+    { "id": "v311", "fi": "tuntea", "en": "to feel / know a person", "hint": "I feel the \"tune, tay-a\" — tuntea" },
+    { "id": "v312", "fi": "nauraa", "en": "to laugh", "hint": "\"now, rah!\" ha ha — nauraa" },
+    { "id": "v313", "fi": "itkeä", "en": "to cry", "hint": "\"it kay'd (broke) me\" — I cry — itkeä" },
+    { "id": "v314", "fi": "hymyillä", "en": "to smile", "hint": "\"hum, yee-la\" a happy tune and smile" },
+    { "id": "v315", "fi": "huutaa", "en": "to shout", "hint": "\"hoot\" and shout, \"tah!\" — huutaa" },
+    { "id": "v316", "fi": "kysyä", "en": "to ask", "hint": "\"kiss ya?\" No, just asking! — kysyä" },
+    { "id": "v317", "fi": "vastata", "en": "to answer", "hint": "a \"vast\" answer, \"tah!\" — vastata" },
+    { "id": "v318", "fi": "selittää", "en": "to explain", "hint": "\"sell it, tah!\" — let me explain" },
+    { "id": "v319", "fi": "keskustella", "en": "to discuss", "hint": "\"let's discuss, Stella!\" — keskustella" },
+    { "id": "v320", "fi": "päättää", "en": "to decide", "hint": "\"pie or tah?\" — decide! — päättää" }
+  ]
+}
