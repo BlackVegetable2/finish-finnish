@@ -53,3 +53,45 @@ card file changes (only for changes to `server.py` itself).
 
 Progress is stored locally in `data/progress.json` (not committed to this
 repo — it's your personal learning data, not part of the app).
+
+## Using it on your phone
+
+The server binds to all network interfaces (`0.0.0.0`), not just
+`localhost`, so it's reachable from other devices — but nothing is exposed
+to the public internet unless you explicitly port-forward, which this setup
+doesn't need.
+
+1. **Install [Tailscale](https://tailscale.com/)** on this machine and on
+   your phone, signed into the same account. It's a private mesh VPN: your
+   phone and this Mac get a stable address that only reach each other,
+   with no router configuration and no public exposure.
+2. **Find the URL** — either your Mac's Tailscale IP (`tailscale ip -4`) or,
+   better, its stable MagicDNS hostname (`tailscale status --json` →
+   `Self.DNSName`), since the hostname doesn't change even if the
+   underlying IP does.
+3. **Add it to your phone's home screen** — open that URL in your phone's
+   browser, then use "Add to Home Screen" / "Install app" from the browser
+   menu. The app ships a PWA manifest and icon (`public/manifest.json`,
+   `public/icons/`) so this gets a real home-screen icon. Note: a fully
+   standalone (chrome-less) install typically requires HTTPS, which plain
+   `http://<tailscale-ip>` doesn't have — the icon and app still work fine,
+   it may just open inside a normal browser tab rather than a standalone
+   window.
+4. **Keep it running** — see `launchd/` below so you don't have to manually
+   start the server every time.
+
+### Auto-starting the server (`launchd/`)
+
+`launchd/com.devinekins.finish-finnish.plist` is a macOS LaunchAgent that
+starts the server automatically at login and restarts it if it ever
+crashes. To install it on a Mac (adjust the hardcoded paths inside first if
+your username/path differs):
+
+```bash
+cp launchd/com.devinekins.finish-finnish.plist ~/Library/LaunchAgents/
+launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.devinekins.finish-finnish.plist
+```
+
+Logs land in `~/Library/Logs/finish-finnish/`. This starts the server at
+*login*, not at raw power-on before anyone logs in — a true boot-time
+LaunchDaemon needs `sudo` and isn't set up here.

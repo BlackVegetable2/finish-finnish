@@ -202,6 +202,9 @@ class Handler(BaseHTTPRequestHandler):
             ".css": "text/css; charset=utf-8",
             ".js": "application/javascript; charset=utf-8",
             ".json": "application/json; charset=utf-8",
+            ".png": "image/png",
+            ".svg": "image/svg+xml",
+            ".ico": "image/x-icon",
         }
         content_type = content_types.get(ext, "application/octet-stream")
 
@@ -407,10 +410,48 @@ class Handler(BaseHTTPRequestHandler):
         )
 
 
+def tailscale_ip():
+    """Best-effort lookup of this machine's Tailscale address, so we can
+    print a ready-to-use phone URL on startup. Returns None if the
+    tailscale CLI isn't installed or the daemon isn't running.
+
+    Checks common install locations directly rather than relying on PATH,
+    since launchd (used to auto-start this server) runs services with a
+    stripped-down PATH that usually doesn't include /usr/local/bin or
+    /opt/homebrew/bin."""
+    import subprocess
+
+    candidates = [
+        "tailscale",  # rely on PATH, works when run from a normal shell
+        "/usr/local/bin/tailscale",  # Homebrew on Intel Macs
+        "/opt/homebrew/bin/tailscale",  # Homebrew on Apple Silicon
+        "/Applications/Tailscale.app/Contents/MacOS/Tailscale",  # GUI app install
+    ]
+    for candidate in candidates:
+        try:
+            out = subprocess.run(
+                [candidate, "ip", "-4"], capture_output=True, text=True, timeout=2
+            )
+            if out.returncode == 0 and out.stdout.strip():
+                return out.stdout.strip().splitlines()[0]
+        except (FileNotFoundError, OSError):
+            continue
+    return None
+
+
 def main():
     port = int(os.environ.get("PORT", "8420"))
-    server = ThreadingHTTPServer(("127.0.0.1", port), Handler)
-    print(f"Finish Finnish running at http://127.0.0.1:{port}")
+    # Bind to all interfaces, not just localhost, so this is reachable from
+    # other devices on the LAN and (more usefully) over Tailscale - neither
+    # of which requires opening anything to the public internet. See the
+    # project README for why this is safe.
+    server = ThreadingHTTPServer(("0.0.0.0", port), Handler)
+    print(f"Finish Finnish running at http://localhost:{port}")
+    ts_ip = tailscale_ip()
+    if ts_ip:
+        print(f"From your phone (via Tailscale): http://{ts_ip}:{port}")
+    else:
+        print("(Tailscale IP not detected - is `tailscale` installed and running?)")
     try:
         server.serve_forever()
     except KeyboardInterrupt:

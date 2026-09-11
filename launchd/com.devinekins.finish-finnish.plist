@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.devinekins.finish-finnish</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/bin/python3</string>
+        <string>-u</string>
+        <string>/Users/devinekins/Code/finish-finnish/server.py</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/devinekins/Code/finish-finnish</string>
+
+    <!-- Start it as soon as you log in... -->
+    <key>RunAtLoad</key>
+    <true/>
+
+    <!-- ...and restart it automatically if it ever crashes or you kill it. -->
+    <key>KeepAlive</key>
+    <dict>
+        <key>SuccessfulExit</key>
+        <false/>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>/Users/devinekins/Library/Logs/finish-finnish/server.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/devinekins/Library/Logs/finish-finnish/server.err.log</string>
+
+    <key>ProcessType</key>
+    <string>Background</string>
+</dict>
+</plist>

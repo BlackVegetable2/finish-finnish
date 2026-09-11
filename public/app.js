@@ -426,4 +426,12 @@
     console.error(err);
     document.body.innerHTML = `<p style="padding:20px;color:red;">Failed to load: ${err.message}</p>`;
   });
+
+  // Best-effort - browsers only allow service workers on HTTPS or
+  // localhost, so this silently no-ops over plain http://<tailscale-ip>.
+  // The app works fine either way; this just adds installability/offline
+  // resilience where the browser permits it.
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/sw.js").catch(() => {});
+  }
 })();
