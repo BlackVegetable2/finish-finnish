@@ -27,6 +27,7 @@
   const dashboardBody = document.getElementById("dashboard-body");
   const wordHintBtn = document.getElementById("word-hint-btn");
   const wordHintPanel = document.getElementById("word-hint-panel");
+  const streakDots = document.getElementById("streak-dots");
 
   let currentCategoryId = null;
   let currentMode = "fi-en"; // "fi-en" = show Finnish, translate to English
@@ -171,6 +172,7 @@
 
     reviewBadge.classList.toggle("hidden", !currentCard.dueForReview);
     roundProgress.textContent = `Card ${roundSize - roundQueue.length} of ${roundSize}`;
+    updateStreakDots();
 
     const promptText = currentMode === "fi-en" ? currentCard.fi : currentCard.en;
     const answerText = currentMode === "fi-en" ? currentCard.en : currentCard.fi;
@@ -197,6 +199,27 @@
 
     cardEl.focus();
     scrollToBottom();
+  }
+
+  // Quiet per-card progress toward "Learned": one dot per correct answer
+  // already banked in a row on this specific card. Hidden once the card is
+  // mastered (dueForReview cards already show the review badge instead -
+  // showing full dots there too would just be noise).
+  function updateStreakDots() {
+    const threshold = currentCategoryData.masteryStreak;
+    if (!currentCard || currentCard.mastered) {
+      streakDots.classList.add("hidden");
+      return;
+    }
+    const streak = Math.min(currentCard.correctStreak || 0, threshold);
+    streakDots.innerHTML = "";
+    for (let i = 0; i < threshold; i++) {
+      const dot = document.createElement("span");
+      dot.className = "streak-dot" + (i < streak ? " filled" : "");
+      streakDots.appendChild(dot);
+    }
+    streakDots.title = `${streak} of ${threshold} correct in a row toward Learned`;
+    streakDots.classList.remove("hidden");
   }
 
   function finishRound() {

@@ -412,6 +412,28 @@ main {
   text-align: center;
 }
 
+/* Subtle streak-toward-Learned indicator: a few small dots, filled left
+   to right for each correct answer already banked on this card. Deliberately
+   quiet - muted colors, small size - since it's a hint, not a headline. */
+.streak-dots {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.streak-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #d8dde5;
+  transition: background 0.2s ease;
+}
+
+.streak-dot.filled {
+  background: #6f9fe0;
+}
+
 #toast {
   position: fixed;
   left: 50%;
