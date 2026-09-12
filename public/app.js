@@ -28,6 +28,8 @@
   const wordHintBtn = document.getElementById("word-hint-btn");
   const wordHintPanel = document.getElementById("word-hint-panel");
   const streakDots = document.getElementById("streak-dots");
+  const reviewStatus = document.getElementById("review-status");
+  const reviewAllToggle = document.getElementById("review-all-toggle");
 
   let currentCategoryId = null;
   let currentMode = "fi-en"; // "fi-en" = show Finnish, translate to English
@@ -91,8 +93,10 @@
   async function loadCategory(categoryId) {
     currentCategoryId = categoryId;
     forceReviewAll = false;
+    reviewAllToggle.checked = false;
     currentCategoryData = await fetchJSON(`/api/category/${categoryId}?mode=${currentMode}`);
     updateStatsLabel();
+    updateReviewStatus();
     startRound();
   }
 
@@ -110,6 +114,41 @@
         total: cards.length,
       });
     }
+  }
+
+  // Days from today (local midnight) until an ISO "YYYY-MM-DD" date.
+  function daysUntil(isoDateStr) {
+    const target = new Date(isoDateStr + "T00:00:00");
+    const now = new Date();
+    const todayMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    return Math.round((target - todayMidnight) / (1000 * 60 * 60 * 24));
+  }
+
+  // Surfaces what's happening with words that are Learned but not yet
+  // Retained - either "N due right now" or "next check-in in N days" -
+  // since otherwise those words just silently vanish from the round and
+  // it's not obvious they're still being tracked at all.
+  function updateReviewStatus() {
+    const waiting = currentCategoryData.cards.filter((c) => c.mastered && !c.retained);
+    const dueNow = waiting.filter((c) => c.dueForReview).length;
+
+    if (dueNow > 0) {
+      reviewStatus.textContent =
+        `🔁 ${dueNow} word${dueNow === 1 ? "" : "s"} due for a retention check-in right now`;
+      reviewStatus.classList.remove("hidden");
+      return;
+    }
+
+    const upcoming = waiting.filter((c) => c.nextReviewDue).map((c) => c.nextReviewDue).sort();
+    if (upcoming.length === 0) {
+      reviewStatus.classList.add("hidden");
+      return;
+    }
+    const days = Math.max(0, daysUntil(upcoming[0]));
+    reviewStatus.textContent =
+      `🔁 Next retention check-in in ${days} day${days === 1 ? "" : "s"} ` +
+      `(${upcoming.length} word${upcoming.length === 1 ? "" : "s"} scheduled)`;
+    reviewStatus.classList.remove("hidden");
   }
 
   // A card is eligible for the current round if it hasn't reached
@@ -293,6 +332,7 @@
       const localCard = currentCategoryData.cards.find((c) => c.id === cardId);
       if (localCard) Object.assign(localCard, result.progress);
       updateStatsLabel();
+      updateReviewStatus();
 
       if (result.newlyRetained) {
         showToast(`🌟 "${cardFi}" retained — long-term mastery!`);
@@ -443,6 +483,12 @@
 
   reviewAllBtn.addEventListener("click", () => {
     forceReviewAll = true;
+    reviewAllToggle.checked = true;
+    startRound();
+  });
+
+  reviewAllToggle.addEventListener("change", () => {
+    forceReviewAll = reviewAllToggle.checked;
     startRound();
   });
 

@@ -84,6 +84,36 @@ h1 {
   font-weight: 600;
 }
 
+.review-status {
+  margin: 8px auto 0;
+  max-width: 460px;
+  font-size: 0.82rem;
+  color: #8a5a00;
+  font-weight: 600;
+}
+
+.review-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  font-size: 0.85rem;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.review-toggle input {
+  cursor: pointer;
+}
+
+.review-toggle-note {
+  margin: 4px auto 0;
+  max-width: 420px;
+  font-size: 0.72rem;
+  color: var(--gray);
+  line-height: 1.4;
+}
+
 main {
   width: 100%;
   max-width: 760px;
