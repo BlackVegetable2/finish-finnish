@@ -196,6 +196,7 @@
     });
 
     cardEl.focus();
+    scrollToBottom();
   }
 
   function finishRound() {
@@ -219,6 +220,18 @@
     cardEl.classList.toggle("flipped", isFlipped);
     answerButtons.classList.toggle("hidden", !isFlipped);
     updateHint();
+    scrollToBottom();
+  }
+
+  // Keeps whatever's currently at the bottom of the flow (the answer
+  // buttons once flipped, or just below the card otherwise) in view by
+  // default, so on a phone you're not stuck scrolling down after every
+  // flip - scrolling up is what you do to see the header/stats instead.
+  // Runs after layout settles, since toggling .hidden changes page height.
+  function scrollToBottom() {
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });
+    });
   }
 
   // The word-trick mnemonic hint - separate from the flip instructions,
