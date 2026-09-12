@@ -1,0 +1,25 @@
+{
+  "name": "Everyday Phrases",
+  "cards": [
+    { "id": "ep01", "fi": "Tutustus", "en": "getting acquainted", "hint": "\"toot, toot, stuss!\" — you toot your horn twice while getting acquainted" },
+    { "id": "ep02", "fi": "Samoin", "en": "likewise", "hint": "\"sah, moin!\" — likewise, friend!" },
+    { "id": "ep03", "fi": "Öitä", "en": "night! (casual goodnight)", "hint": "\"oy-tah!\" — oy, it's night already, off to bed" },
+    { "id": "ep04", "fi": "Eipä kestä", "en": "you're welcome / don't mention it", "hint": "\"ay, pa, kess-tah!\" — hey pa, no need, you're welcome" },
+    { "id": "ep05", "fi": "Ei se mitään", "en": "it's nothing / no worries", "hint": "\"ay, say it, Ann!\" — it's nothing, no worries" },
+    { "id": "ep06", "fi": "Ihan", "en": "quite / totally", "hint": "\"ee-hahn!\" — totally, I'm a fan!" },
+    { "id": "ep07", "fi": "Se on", "en": "it is / that's...", "hint": "\"say it's on!\" — that's how it is" },
+    { "id": "ep08", "fi": "Mitä kuuluu?", "en": "how are you? / what's up?", "hint": "\"meet a coo-loo (cuckoo)?\" — how are you?" },
+    { "id": "ep09", "fi": "Ihan hyvää", "en": "pretty good (reply to \"how are you\")", "hint": "\"ee-hahn, who-vah!\" — pretty good, whoo!" },
+    { "id": "ep10", "fi": "Ei kiitos", "en": "no thank you", "hint": "\"ay, key toss!\" — no thanks, just toss the key" },
+    { "id": "ep11", "fi": "Kyllä kiitos", "en": "yes please", "hint": "\"cool-a, key toss!\" — yes please, here, catch the key" },
+    { "id": "ep12", "fi": "Oikeasti", "en": "really? / seriously", "hint": "\"oy, key-ah-stee?\" — really? oy!" },
+    { "id": "ep13", "fi": "Tietysti", "en": "of course", "hint": "\"tie a tootsie!\" — of course, tie it up" },
+    { "id": "ep14", "fi": "Ehkä", "en": "maybe", "hint": "\"eh, kah?\" — eh, maybe?" },
+    { "id": "ep15", "fi": "Ei hätää", "en": "no rush / no worries", "hint": "\"ay, hot-ta!\" — no rush, it's not that hot" },
+    { "id": "ep16", "fi": "Hyvää jatkoa", "en": "have a good rest of your day", "hint": "\"who-vah, yacht-koh-ah!\" — have a good day out on the yacht" },
+    { "id": "ep17", "fi": "Nähdään", "en": "see you", "hint": "\"nah, then!\" — see you then!" },
+    { "id": "ep18", "fi": "Terveisiä", "en": "regards / greetings (to someone)", "hint": "\"terve, see ya!\" — send my regards" },
+    { "id": "ep19", "fi": "Onneksi olkoon", "en": "congratulations", "hint": "\"on, eck, oh cone!\" — congrats, here's a cone!" },
+    { "id": "ep20", "fi": "Ole hyvä", "en": "you're welcome / here you go", "hint": "\"oh, leh who-vah!\" — here you go, it's good!" }
+  ]
+}
