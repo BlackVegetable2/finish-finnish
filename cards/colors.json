@@ -1,0 +1,25 @@
+{
+  "name": "Colors",
+  "cards": [
+    { "id": "c01", "fi": "keltainen", "en": "yellow", "hint": "\"kel-tie-nen\" — Kel ties on a yellow ribbon" },
+    { "id": "c02", "fi": "vihreä", "en": "green", "hint": "\"vee-ray-ah\" — green like a vibrant ray of light" },
+    { "id": "c03", "fi": "musta", "en": "black", "hint": "\"moose-tah!\" — a black moose" },
+    { "id": "c04", "fi": "valkoinen", "en": "white", "hint": "\"val-coin-en\" — Val's shiny white coin" },
+    { "id": "c05", "fi": "harmaa", "en": "gray", "hint": "\"har, mah!\" — gray like an old harmonica" },
+    { "id": "c06", "fi": "ruskea", "en": "brown", "hint": "\"roos-kay-ah\" — a brown rusk (biscuit)" },
+    { "id": "c07", "fi": "oranssi", "en": "orange", "hint": "oranssi sounds just like orange" },
+    { "id": "c08", "fi": "violetti", "en": "purple", "hint": "violetti sounds just like violet" },
+    { "id": "c09", "fi": "vaaleanpunainen", "en": "pink", "hint": "vaalea (light) + punainen (red) = light red = pink" },
+    { "id": "c10", "fi": "turkoosi", "en": "turquoise", "hint": "turkoosi sounds just like turquoise" },
+    { "id": "c11", "fi": "kultainen", "en": "golden", "hint": "\"cool tie, nen!\" — a golden, cool tie" },
+    { "id": "c12", "fi": "hopeinen", "en": "silvery", "hint": "\"hope-eh-nen\" — a silvery coin of hope" },
+    { "id": "c13", "fi": "tummansininen", "en": "dark blue", "hint": "tumma (dark) + sininen (blue) = dark blue" },
+    { "id": "c14", "fi": "vaaleansininen", "en": "light blue", "hint": "vaalea (light) + sininen (blue) = light blue" },
+    { "id": "c15", "fi": "vaaleanvihreä", "en": "light green", "hint": "vaalea (light) + vihreä (green) = light green" },
+    { "id": "c16", "fi": "tummanvihreä", "en": "dark green", "hint": "tumma (dark) + vihreä (green) = dark green" },
+    { "id": "c17", "fi": "beige", "en": "beige", "hint": "beige is a borrowed word — sounds just like beige" },
+    { "id": "c18", "fi": "laventeli", "en": "lavender", "hint": "laventeli sounds just like lavender" },
+    { "id": "c19", "fi": "korallinvärinen", "en": "coral-colored", "hint": "koralli (coral) + värinen (-colored) = coral-colored" },
+    { "id": "c20", "fi": "pastellinvärinen", "en": "pastel-colored", "hint": "pastelli (pastel) + värinen (-colored) = pastel-colored" }
+  ]
+}
