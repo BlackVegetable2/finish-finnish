@@ -1,0 +1,25 @@
+{
+  "name": "Math Terms",
+  "cards": [
+    { "id": "mt01", "fi": "yhteenlasku", "en": "addition", "hint": "yhteen (together) + lasku (calculation) = adding together" },
+    { "id": "mt02", "fi": "vähennyslasku", "en": "subtraction", "hint": "vähennys (reduction) + lasku (calculation) = subtraction" },
+    { "id": "mt03", "fi": "kertolasku", "en": "multiplication", "hint": "kerta (times) + lasku (calculation) = multiplication" },
+    { "id": "mt04", "fi": "summa", "en": "sum", "hint": "summa sounds just like sum" },
+    { "id": "mt05", "fi": "erotus", "en": "difference (subtraction result)", "hint": "\"eh, row, toos!\" — the difference between two rows" },
+    { "id": "mt06", "fi": "tulos", "en": "result / answer", "hint": "\"too loss?\" — no, it's the result!" },
+    { "id": "mt07", "fi": "lasku", "en": "calculation / math problem", "hint": "\"lass, koo!\" — the lass works out the calculation" },
+    { "id": "mt08", "fi": "yhtä suuri kuin", "en": "equal to", "hint": "yhtä (as) + suuri (big) + kuin (as) = \"just as big as\" = equal to" },
+    { "id": "mt09", "fi": "suurempi kuin", "en": "greater than", "hint": "suurempi (bigger) + kuin (than) = greater than" },
+    { "id": "mt10", "fi": "pienempi kuin", "en": "less than", "hint": "pienempi (smaller) + kuin (than) = less than" },
+    { "id": "mt11", "fi": "luku", "en": "number (the concept)", "hint": "\"loo-koo!\" — look, a number!" },
+    { "id": "mt12", "fi": "numero", "en": "digit / numeral", "hint": "numero sounds just like number" },
+    { "id": "mt13", "fi": "pariton", "en": "odd", "hint": "pari (pair) + -ton (without) = \"without a pair\" = odd" },
+    { "id": "mt14", "fi": "parillinen", "en": "even", "hint": "pari (pair) + -llinen (having) = \"having a pair\" = even" },
+    { "id": "mt15", "fi": "puolikas", "en": "half", "hint": "\"pole-ee-kas!\" — split the pole in half" },
+    { "id": "mt16", "fi": "kymmenet", "en": "tens (place value)", "hint": "kymmenen (ten) + -et (plural) = the tens place" },
+    { "id": "mt17", "fi": "ykköset", "en": "ones (place value)", "hint": "yksi (one) → ykköset = the ones place" },
+    { "id": "mt18", "fi": "kello", "en": "clock / telling time", "hint": "\"kel-loh!\" — Kel's clock goes tick-tock" },
+    { "id": "mt19", "fi": "euro", "en": "euro", "hint": "euro sounds just like euro" },
+    { "id": "mt20", "fi": "sentti", "en": "cent", "hint": "sentti sounds just like cent" }
+  ]
+}
