@@ -1,0 +1,25 @@
+{
+  "name": "Countries I",
+  "cards": [
+    { "id": "co101", "fi": "Suomi", "en": "Finland", "hint": "\"soo-oh-mee\" — home sweet Suomi" },
+    { "id": "co102", "fi": "Ruotsi", "en": "Sweden", "hint": "\"roo-oh-tsee\" — Sweden, just across the water" },
+    { "id": "co103", "fi": "Norja", "en": "Norway", "hint": "\"nor-yah\" — Norway, up north of Ruotsi" },
+    { "id": "co104", "fi": "Tanska", "en": "Denmark", "hint": "\"tan-skah\" — Denmark, cozy and tan" },
+    { "id": "co105", "fi": "Islanti", "en": "Iceland", "hint": "\"ice-lanti\" — icy Iceland" },
+    { "id": "co106", "fi": "Viro", "en": "Estonia", "hint": "\"vee-roh\" — Estonia, just across the gulf" },
+    { "id": "co107", "fi": "Latvia", "en": "Latvia", "hint": "Latvia sounds just like Latvia" },
+    { "id": "co108", "fi": "Liettua", "en": "Lithuania", "hint": "\"lee-et-too-ah\" — Lithuania, the third Baltic" },
+    { "id": "co109", "fi": "Venäjä", "en": "Russia", "hint": "\"ven-eye-yah\" — Russia, the giant neighbor" },
+    { "id": "co110", "fi": "Iso-Britannia", "en": "United Kingdom", "hint": "iso (big) + Britannia = Great Britain" },
+    { "id": "co111", "fi": "Irlanti", "en": "Ireland", "hint": "\"eer-lanti\" — Ireland" },
+    { "id": "co112", "fi": "Saksa", "en": "Germany", "hint": "\"sock-sah\" — Germany, land of socks and sausages" },
+    { "id": "co113", "fi": "Ranska", "en": "France", "hint": "\"rahn-skah\" — France, land of romance" },
+    { "id": "co114", "fi": "Alankomaat", "en": "Netherlands", "hint": "alanko (lowland) + maat (lands) = the low countries" },
+    { "id": "co115", "fi": "Belgia", "en": "Belgium", "hint": "Belgia sounds just like Belgium" },
+    { "id": "co116", "fi": "Sveitsi", "en": "Switzerland", "hint": "\"svite-see\" — Switzerland, sweet and neutral" },
+    { "id": "co117", "fi": "Itävalta", "en": "Austria", "hint": "itä (east) + valta (realm) = the eastern realm" },
+    { "id": "co118", "fi": "Espanja", "en": "Spain", "hint": "\"es-pahn-yah\" — Spain" },
+    { "id": "co119", "fi": "Portugali", "en": "Portugal", "hint": "Portugali sounds just like Portugal" },
+    { "id": "co120", "fi": "Italia", "en": "Italy", "hint": "Italia sounds just like Italy" }
+  ]
+}

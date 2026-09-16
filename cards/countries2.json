@@ -1,0 +1,25 @@
+{
+  "name": "Countries II",
+  "cards": [
+    { "id": "co201", "fi": "Yhdysvallat", "en": "United States", "hint": "yhdys (united) + vallat (states) = United States" },
+    { "id": "co202", "fi": "Kanada", "en": "Canada", "hint": "Kanada sounds just like Canada" },
+    { "id": "co203", "fi": "Australia", "en": "Australia", "hint": "Australia sounds just like Australia" },
+    { "id": "co204", "fi": "Uusi-Seelanti", "en": "New Zealand", "hint": "uusi (new) + Seelanti (Zealand) = New Zealand" },
+    { "id": "co205", "fi": "Etelä-Afrikka", "en": "South Africa", "hint": "etelä (south) + Afrikka = South Africa" },
+    { "id": "co206", "fi": "Puola", "en": "Poland", "hint": "\"poo-oh-lah\" — Poland" },
+    { "id": "co207", "fi": "Kreikka", "en": "Greece", "hint": "\"kray-kah\" — Greece, cradle of myths" },
+    { "id": "co208", "fi": "Kiina", "en": "China", "hint": "Kiina sounds just like China" },
+    { "id": "co209", "fi": "Japani", "en": "Japan", "hint": "Japani sounds just like Japan" },
+    { "id": "co210", "fi": "Intia", "en": "India", "hint": "Intia sounds just like India" },
+    { "id": "co211", "fi": "Brasilia", "en": "Brazil", "hint": "Brasilia sounds just like Brazil" },
+    { "id": "co212", "fi": "Meksiko", "en": "Mexico", "hint": "Meksiko sounds just like Mexico" },
+    { "id": "co213", "fi": "Turkki", "en": "Turkey", "hint": "Turkki sounds just like Turkey" },
+    { "id": "co214", "fi": "Egypti", "en": "Egypt", "hint": "Egypti sounds just like Egypt" },
+    { "id": "co215", "fi": "Ukraina", "en": "Ukraine", "hint": "Ukraina sounds just like Ukraine" },
+    { "id": "co216", "fi": "Etelä-Korea", "en": "South Korea", "hint": "etelä (south) + Korea = South Korea" },
+    { "id": "co217", "fi": "Argentiina", "en": "Argentina", "hint": "Argentiina sounds just like Argentina" },
+    { "id": "co218", "fi": "Marokko", "en": "Morocco", "hint": "Marokko sounds just like Morocco" },
+    { "id": "co219", "fi": "Kenia", "en": "Kenya", "hint": "Kenia sounds just like Kenya" },
+    { "id": "co220", "fi": "Israel", "en": "Israel", "hint": "Israel sounds just like Israel" }
+  ]
+}

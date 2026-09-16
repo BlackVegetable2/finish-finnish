@@ -1,0 +1,25 @@
+{
+  "name": "Nationality & Origin",
+  "cards": [
+    { "id": "np01", "fi": "Mistä olet kotoisin?", "en": "Where are you from (originally)?", "hint": "mistä (from where) + olet (are) + kotoisin (originally from)" },
+    { "id": "np02", "fi": "Mistä maasta olet?", "en": "What country are you from?", "hint": "mistä (from where) + maasta (from the country) + olet (are)" },
+    { "id": "np03", "fi": "Olen kotoisin Suomesta.", "en": "I'm originally from Finland.", "hint": "olen (I am) + kotoisin (originally from) + Suomesta (from Finland)" },
+    { "id": "np04", "fi": "Olen suomalainen.", "en": "I am Finnish.", "hint": "Suomi (Finland) + -lainen (person from) = a Finn" },
+    { "id": "np05", "fi": "Oletko suomalainen?", "en": "Are you Finnish?", "hint": "oletko (are you) + suomalainen (Finnish)" },
+    { "id": "np06", "fi": "En ole suomalainen.", "en": "I am not Finnish.", "hint": "en ole (I am not) + suomalainen (Finnish)" },
+    { "id": "np07", "fi": "Mikä kansallisuutesi on?", "en": "What is your nationality?", "hint": "kansallisuus (nationality) + -si (your) = your nationality" },
+    { "id": "np08", "fi": "Kansallisuuteni on amerikkalainen.", "en": "My nationality is American.", "hint": "kansallisuuteni (my nationality) + amerikkalainen (American)" },
+    { "id": "np09", "fi": "Hän on ruotsalainen.", "en": "He/she is Swedish.", "hint": "hän (he/she) + on (is) + ruotsalainen (Swedish)" },
+    { "id": "np10", "fi": "He ovat venäläisiä.", "en": "They are Russian.", "hint": "he (they) + ovat (are) + venäläisiä (Russians)" },
+    { "id": "np11", "fi": "Missä maassa asut?", "en": "What country do you live in?", "hint": "missä maassa (in what country) + asut (do you live)" },
+    { "id": "np12", "fi": "Asun Yhdysvalloissa.", "en": "I live in the United States.", "hint": "asun (I live) + Yhdysvalloissa (in the United States)" },
+    { "id": "np13", "fi": "Kotimaani on Suomi.", "en": "My home country is Finland.", "hint": "koti (home) + maani (my country) = my home country" },
+    { "id": "np14", "fi": "Puhutko suomea?", "en": "Do you speak Finnish?", "hint": "puhutko (do you speak) + suomea (Finnish)" },
+    { "id": "np15", "fi": "Puhun vähän suomea.", "en": "I speak a little Finnish.", "hint": "puhun (I speak) + vähän (a little) + suomea (Finnish)" },
+    { "id": "np16", "fi": "Äidinkieleni on englanti.", "en": "My native language is English.", "hint": "äidinkieli (native language) + -ni (my) = my native language" },
+    { "id": "np17", "fi": "Olen kaksikielinen.", "en": "I am bilingual.", "hint": "kaksi (two) + kielinen (-lingual) = bilingual" },
+    { "id": "np18", "fi": "Mitä kieliä puhut?", "en": "What languages do you speak?", "hint": "mitä kieliä (what languages) + puhut (do you speak)" },
+    { "id": "np19", "fi": "Olen ulkomaalainen.", "en": "I am a foreigner.", "hint": "ulko (outside) + maalainen (country-person) = a foreigner" },
+    { "id": "np20", "fi": "Olen Suomen kansalainen.", "en": "I am a Finnish citizen.", "hint": "Suomen (Finland's) + kansalainen (citizen) = a citizen of Finland" }
+  ]
+}

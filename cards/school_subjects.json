@@ -4,7 +4,7 @@
     { "id": "ss01", "fi": "matematiikka", "en": "mathematics", "hint": "matematiikka sounds just like mathematics" },
     { "id": "ss02", "fi": "äidinkieli", "en": "native language", "hint": "äidin (mother's) + kieli (tongue) = mother tongue" },
     { "id": "ss03", "fi": "englanti", "en": "English", "hint": "englanti = England-y = English" },
-    { "id": "ss04", "fi": "ruotsi", "en": "Swedish", "hint": "\"roo-tsi\" — has its roots in Sweden" },
+    { "id": "ss04", "fi": "ruotsin kieli", "en": "Swedish (the language/subject)", "hint": "ruotsin (Sweden's) + kieli (language) = the Swedish language" },
     { "id": "ss05", "fi": "historia", "en": "history", "hint": "historia sounds just like history" },
     { "id": "ss06", "fi": "maantieto", "en": "geography", "hint": "maan (land's) + tieto (knowledge) = knowledge of the land" },
     { "id": "ss07", "fi": "biologia", "en": "biology", "hint": "biologia sounds just like biology" },
