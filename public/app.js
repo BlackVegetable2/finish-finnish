@@ -247,11 +247,31 @@
   // mastered (dueForReview cards already show the review badge instead -
   // showing full dots there too would just be noise).
   function updateStreakDots() {
-    const threshold = currentCategoryData.masteryStreak;
-    if (!currentCard || currentCard.mastered) {
+    if (!currentCard) {
       streakDots.classList.add("hidden");
       return;
     }
+
+    if (currentCard.mastered) {
+      // Learned: dots start fully blue (3/3), then turn green left-to-right
+      // as each spaced retention check-in passes - all green once Retained.
+      const n = currentCategoryData.reviewIntervals.length;
+      const passed = Math.min(currentCard.reviewStage || 0, n);
+      streakDots.innerHTML = "";
+      for (let i = 0; i < n; i++) {
+        const dot = document.createElement("span");
+        dot.className = "streak-dot filled" + (i < passed ? " retained" : "");
+        streakDots.appendChild(dot);
+      }
+      streakDots.title = currentCard.retained
+        ? "Retained — long-term mastery achieved"
+        : `${passed} of ${n} retention check-ins passed`;
+      streakDots.classList.remove("hidden");
+      return;
+    }
+
+    // Not yet Learned: dots fill blue left-to-right toward the streak needed.
+    const threshold = currentCategoryData.masteryStreak;
     const streak = Math.min(currentCard.correctStreak || 0, threshold);
     streakDots.innerHTML = "";
     for (let i = 0; i < threshold; i++) {

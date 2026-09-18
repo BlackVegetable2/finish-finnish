@@ -498,9 +498,11 @@ main {
   text-align: center;
 }
 
-/* Subtle streak-toward-Learned indicator: a few small dots, filled left
-   to right for each correct answer already banked on this card. Deliberately
-   quiet - muted colors, small size - since it's a hint, not a headline. */
+/* Subtle progress dots, reused for two phases: before Learned, they fill
+   blue left-to-right for each correct answer banked in a row; once
+   Learned (all blue), they turn green left-to-right as each spaced
+   retention check-in passes, ending all-green once Retained.
+   Deliberately quiet - muted colors, small size - a hint, not a headline. */
 .streak-dots {
   display: flex;
   justify-content: center;
@@ -518,6 +520,10 @@ main {
 
 .streak-dot.filled {
   background: #6f9fe0;
+}
+
+.streak-dot.filled.retained {
+  background: var(--green);
 }
 
 #toast {
