@@ -30,6 +30,8 @@
   const streakDots = document.getElementById("streak-dots");
   const reviewStatus = document.getElementById("review-status");
   const reviewAllToggle = document.getElementById("review-all-toggle");
+  const dueBadge = document.getElementById("due-badge");
+  const dueSummaryEl = document.getElementById("due-summary");
 
   let currentCategoryId = null;
   let currentMode = "fi-en"; // "fi-en" = show Finnish, translate to English
@@ -333,6 +335,7 @@
       if (localCard) Object.assign(localCard, result.progress);
       updateStatsLabel();
       updateReviewStatus();
+      updateDueBadge();
 
       if (result.newlyRetained) {
         showToast(`🌟 "${cardFi}" retained — long-term mastery!`);
@@ -362,9 +365,10 @@
       </div>`;
   }
 
-  async function loadDashboard() {
-    dashboardBody.innerHTML = `<tr><td colspan="6" style="text-align:center; color:var(--gray); padding:24px;">Loading…</td></tr>`;
-
+  // Fetches every category's stats in both directions and merges them into
+  // one row per category - shared by the dashboard table and the due-review
+  // badge/banner, so both stay consistent with a single source of truth.
+  async function fetchCombinedCategoryStats() {
     const [fiEn, enFi] = await Promise.all([
       fetchJSON("/api/categories?mode=fi-en"),
       fetchJSON("/api/categories?mode=en-fi"),
@@ -377,8 +381,84 @@
       row.enFi = c;
       byId.set(c.id, row);
     }
+    return [...byId.values()];
+  }
 
-    const rows = [...byId.values()];
+  // Keeps the small red badge on the Dashboard tab in sync with how many
+  // words (summed across every category and both directions) are due for
+  // a retention check-in right now - visible without opening Dashboard.
+  async function updateDueBadge() {
+    try {
+      const rows = await fetchCombinedCategoryStats();
+      const total = rows.reduce(
+        (sum, r) => sum + (r.fiEn ? r.fiEn.dueForReview : 0) + (r.enFi ? r.enFi.dueForReview : 0),
+        0
+      );
+      dueBadge.textContent = String(total);
+      dueBadge.classList.toggle("hidden", total === 0);
+    } catch (err) {
+      console.error("Failed to update due badge", err);
+    }
+  }
+
+  function renderDueSummary(rows) {
+    const items = [];
+    for (const r of rows) {
+      if (r.fiEn && r.fiEn.dueForReview > 0) {
+        items.push({ id: r.id, name: r.name, mode: "fi-en", label: "FI→EN", count: r.fiEn.dueForReview });
+      }
+      if (r.enFi && r.enFi.dueForReview > 0) {
+        items.push({ id: r.id, name: r.name, mode: "en-fi", label: "EN→FI", count: r.enFi.dueForReview });
+      }
+    }
+
+    if (items.length === 0) {
+      dueSummaryEl.innerHTML =
+        '<div class="due-summary-banner all-clear">✅ Nothing due for a retention check-in right now.</div>';
+      return;
+    }
+
+    const totalDue = items.reduce((sum, i) => sum + i.count, 0);
+    const listHtml = items
+      .map(
+        (i) => `
+        <li>
+          <button class="due-jump-btn" data-cat="${i.id}" data-mode="${i.mode}">
+            ${i.name} (${i.label}): ${i.count} due
+          </button>
+        </li>`
+      )
+      .join("");
+
+    dueSummaryEl.innerHTML = `
+      <div class="due-summary-banner">
+        🔁 <strong>${totalDue} word${totalDue === 1 ? "" : "s"}</strong> due for a retention
+        check-in right now, across ${items.length} set${items.length === 1 ? "" : "s"}:
+        <ul class="due-summary-list">${listHtml}</ul>
+      </div>`;
+
+    dueSummaryEl.querySelectorAll(".due-jump-btn").forEach((btn) => {
+      btn.addEventListener("click", () => jumpToReview(btn.dataset.cat, btn.dataset.mode));
+    });
+  }
+
+  // Jumps straight from a due-review banner item into that exact
+  // category+direction in Study mode, instead of making you go find it
+  // yourself in the pickers.
+  async function jumpToReview(categoryId, mode) {
+    currentMode = mode;
+    modeSelect.value = mode;
+    categorySelect.value = categoryId;
+    showView("study");
+    await loadCategories();
+  }
+
+  async function loadDashboard() {
+    dashboardBody.innerHTML = `<tr><td colspan="6" style="text-align:center; color:var(--gray); padding:24px;">Loading…</td></tr>`;
+    dueSummaryEl.innerHTML = "";
+
+    const rows = await fetchCombinedCategoryStats();
+    renderDueSummary(rows);
 
     // Summary cards, totaled across every category.
     const totalWords = rows.reduce((sum, r) => sum + (r.total || 0), 0);
@@ -508,6 +588,10 @@
     console.error(err);
     document.body.innerHTML = `<p style="padding:20px;color:red;">Failed to load: ${err.message}</p>`;
   });
+
+  // So the Dashboard tab's due-review count is visible right away, even
+  // before ever opening the Dashboard.
+  updateDueBadge();
 
   // Best-effort - browsers only allow service workers on HTTPS or
   // localhost, so this silently no-ops over plain http://<tailscale-ip>.

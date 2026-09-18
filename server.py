@@ -255,12 +255,15 @@ class Handler(BaseHTTPRequestHandler):
             total = len(cards)
             mastered = 0
             retained = 0
+            due_now = 0
             for card in cards:
                 entry = card_progress_entry(progress, cid, direction, card["id"])
                 if entry.get("mastered"):
                     mastered += 1
                 if entry.get("retention", {}).get("retained"):
                     retained += 1
+                if is_due_for_review(entry):
+                    due_now += 1
             result.append(
                 {
                     "id": cid,
@@ -268,6 +271,7 @@ class Handler(BaseHTTPRequestHandler):
                     "total": total,
                     "mastered": mastered,
                     "retained": retained,
+                    "dueForReview": due_now,
                 }
             )
         self._send_json({"categories": result, "direction": direction})

@@ -19,7 +19,10 @@
     <h1>Finish&nbsp;Finnish<span class="flag">🇫🇮</span></h1>
     <nav id="view-tabs">
       <button id="tab-study" class="view-tab active" type="button">Study</button>
-      <button id="tab-dashboard" class="view-tab" type="button">Dashboard</button>
+      <button id="tab-dashboard" class="view-tab" type="button">
+        Dashboard
+        <span id="due-badge" class="due-badge hidden">0</span>
+      </button>
     </nav>
   </header>
 
@@ -88,6 +91,7 @@
     </section>
 
     <section id="dashboard-view" class="hidden">
+      <div id="due-summary"></div>
       <div id="dashboard-summary"></div>
       <div id="dashboard-table-wrap">
         <table id="dashboard-table">

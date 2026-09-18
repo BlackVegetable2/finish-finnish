@@ -158,10 +158,66 @@ main {
   color: var(--white);
 }
 
+.due-badge {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: #d64545;
+  color: var(--white);
+  font-size: 0.72rem;
+  font-weight: 700;
+  vertical-align: 1px;
+}
+
 /* --- Dashboard --- */
 
 #dashboard-view {
   width: 100%;
+}
+
+#due-summary {
+  margin-bottom: 18px;
+}
+
+.due-summary-banner {
+  background: #fff3d6;
+  border: 1px solid #d8a900;
+  border-radius: 12px;
+  padding: 12px 16px;
+  color: #6b4a00;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.due-summary-banner.all-clear {
+  background: #eaf6ee;
+  border-color: var(--green);
+  color: #1e6b3e;
+}
+
+.due-summary-banner strong {
+  font-weight: 700;
+}
+
+.due-summary-list {
+  margin: 6px 0 0;
+  padding-left: 18px;
+}
+
+.due-jump-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #6b4a00;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.due-jump-btn:hover {
+  color: var(--blue);
 }
 
 #dashboard-summary {
