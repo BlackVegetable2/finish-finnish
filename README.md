@@ -31,7 +31,16 @@ Then open <http://localhost:8420>.
 - **Word-trick hints** — every card has an optional mnemonic connecting the
   sound of the Finnish word to its English meaning (e.g. *antaa* ("to give")
   ↔ "ants are giving").
-- **Dashboard** — per-category and per-direction progress at a glance.
+- **Dashboard** — per-category and per-direction progress at a glance, plus a
+  badge/banner showing which sets currently owe a retention check-in.
+- **Mastery Quiz** — once at least 40 distinct words are Learned or Retained,
+  a **Quiz** tab appears. It deals 40 random such words (each in a direction
+  you've already learned it), self-graded like the flashcards, and ends with a
+  % score. It is deliberately isolated from progress: answers stay in the
+  browser and only the finished score is saved, so a miss never costs
+  anything. The Dashboard tracks your last 5 scores and the days since your
+  last *completed* quiz. Words are shown without their set name, and leaving
+  the Quiz tab partway abandons the quiz without recording anything.
 
 ## Adding your own word sets
 
@@ -47,12 +56,44 @@ Drop a new JSON file in `cards/`, e.g. `cards/animals.json`:
 ```
 
 It shows up in the category picker automatically — no restart required for
-card file changes (only for changes to `server.py` itself).
+card file changes (only for changes to `server.py` itself). `hint` is optional;
+a card without one just doesn't show the Word trick button.
+
+Two optional top-level fields control how a set is treated:
+
+- `"group": "Conjugations"` — sets are grouped under this heading in the
+  category picker and on the Dashboard (each group gets its own totals and
+  table). Sets without a `group` are listed as "Vocabulary".
+- `"quiz": false` — keeps the set out of the Mastery Quiz's word pool.
+
+### Conjugation sets
+
+`cards/conjugations_i1.json` … `iv4` drill the present tense of the 80 verbs
+in Common Verbs I–IV, 8 forms each (minä, sinä, hän, me formal/written, me
+spoken, te/y'all, he formal/written, ne spoken) — 5 verbs / 40 cards per set,
+four sets per book (`I-1` … `IV-4`), ordered within each book from the most
+regular verbs to the trickiest (consonant changes last). The Finnish side
+includes the pronoun (`me mennään`, `ne menee`), so each card is unambiguous.
+They're in the `Conjugations` group, excluded from the quiz, and have no
+hints. Both "we" and "they" have a spoken alternative alongside the
+formal/written one — spoken "we" is the passive (`mennään`), and spoken
+"they" is `ne` + the same singular form as `hän` (`ne menee`, not `ne
+menevät`). The forms were written by hand and checked for internal
+consistency, not against an authoritative source, so check a set against a
+textbook or dictionary before drilling it.
 
 ## Data
 
-Progress is stored locally in `data/progress.json` (not committed to this
-repo — it's your personal learning data, not part of the app).
+Progress is stored locally in `data/progress.json`, and completed quiz scores
+in `data/quiz_history.json` (neither is committed to this repo — it's your
+personal learning data, not part of the app).
+
+To try things out without touching your real data, run a scratch copy on
+another port against a throwaway data folder:
+
+```bash
+FINNISH_DATA_DIR=/path/to/scratch PORT=8421 python3 server.py
+```
 
 ## Using it on your phone
 

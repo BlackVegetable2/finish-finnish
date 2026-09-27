@@ -1,0 +1,25 @@
+{
+  "name": "Conjunctions",
+  "cards": [
+    { "id": "cnj01", "fi": "ja", "en": "and", "hint": "\"yah\" — \"yeah, AND another thing!\" (careful: German ja = yes)" },
+    { "id": "cnj02", "fi": "sekä", "en": "as well as / and", "hint": "\"sek-ah\" ≈ \"sack-a\" — a sack as well as a bag" },
+    { "id": "cnj03", "fi": "tai", "en": "or", "hint": "\"tie\" — a tie OR a bow tie?" },
+    { "id": "cnj04", "fi": "vai", "en": "or (in a question)", "hint": "\"vye\" ≈ \"vie\" — two things vying: this one, or that one?" },
+    { "id": "cnj05", "fi": "eli", "en": "or / in other words", "hint": "\"Eli\" like the name — \"Eli, or rather, Elijah\"" },
+    { "id": "cnj06", "fi": "mutta", "en": "but", "hint": "\"moot-tah\" ≈ \"mutter\" — you mutter \"but...\"" },
+    { "id": "cnj07", "fi": "vaan", "en": "but (rather)", "hint": "\"vahn\" ≈ \"van\" — not a car, but rather a van" },
+    { "id": "cnj08", "fi": "sillä", "en": "because / for", "hint": "\"sil-lah\" ≈ \"silly\" — you're silly, because..." },
+    { "id": "cnj09", "fi": "joten", "en": "so / therefore", "hint": "\"yo-ten\" — \"yo, that's ten — so let's go!\"" },
+    { "id": "cnj10", "fi": "että", "en": "that", "hint": "\"et-tah\" — \"eh, that...\" (it opens a that-clause)" },
+    { "id": "cnj11", "fi": "jos", "en": "if", "hint": "\"yohs\" — \"yes... if\"" },
+    { "id": "cnj12", "fi": "koska", "en": "because / since", "hint": "\"kos-kah\" ≈ \"'cause\" — because!" },
+    { "id": "cnj13", "fi": "kun", "en": "when", "hint": "\"koon\" ≈ \"coon\" — the raccoon appears when it gets dark" },
+    { "id": "cnj14", "fi": "vaikka", "en": "although / even though", "hint": "\"vye-kah\" ≈ \"bike-a\" — although it's raining, I'll ride my bike" },
+    { "id": "cnj15", "fi": "jotta", "en": "so that", "hint": "\"yot-tah\" ≈ \"gotta\" — you gotta hurry so that you're not late" },
+    { "id": "cnj16", "fi": "kunnes", "en": "until", "hint": "kun (when) + -nes — wait \"when-ness\" arrives... until" },
+    { "id": "cnj17", "fi": "kuin", "en": "than / as / like", "hint": "\"kwin\" ≈ \"queen\" — more graceful than a queen" },
+    { "id": "cnj18", "fi": "kuten", "en": "as / such as", "hint": "\"koo-ten\" ≈ \"cute\" — cute animals, such as kittens" },
+    { "id": "cnj19", "fi": "mikäli", "en": "if / in case (formal)", "hint": "\"mick-ah-lee\" ≈ \"Mickey\" — in case Mickey shows up" },
+    { "id": "cnj20", "fi": "kunhan", "en": "as long as / provided that", "hint": "kun (when) + han — fine, as long as Han brings snacks" }
+  ]
+}
