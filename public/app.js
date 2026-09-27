@@ -23,8 +23,7 @@
   const tabDashboard = document.getElementById("tab-dashboard");
   const studyView = document.getElementById("study-view");
   const dashboardView = document.getElementById("dashboard-view");
-  const dashboardSummary = document.getElementById("dashboard-summary");
-  const dashboardBody = document.getElementById("dashboard-body");
+  const dashboardGroups = document.getElementById("dashboard-groups");
   const wordHintBtn = document.getElementById("word-hint-btn");
   const wordHintPanel = document.getElementById("word-hint-panel");
   const streakDots = document.getElementById("streak-dots");
@@ -32,6 +31,30 @@
   const reviewAllToggle = document.getElementById("review-all-toggle");
   const dueBadge = document.getElementById("due-badge");
   const dueSummaryEl = document.getElementById("due-summary");
+
+  // Mastery Quiz
+  const tabQuiz = document.getElementById("tab-quiz");
+  const quizView = document.getElementById("quiz-view");
+  const quizIntro = document.getElementById("quiz-intro");
+  const quizLastLine = document.getElementById("quiz-last-line");
+  const quizStartBtn = document.getElementById("quiz-start-btn");
+  const quizCardArea = document.getElementById("quiz-card-area");
+  const quizProgress = document.getElementById("quiz-progress");
+  const quizDirectionLabel = document.getElementById("quiz-direction-label");
+  const quizCardEl = document.getElementById("quiz-card");
+  const quizFrontText = document.getElementById("quiz-front-text");
+  const quizBackText = document.getElementById("quiz-back-text");
+  const quizHintText = document.getElementById("quiz-hint-text");
+  const quizAnswerButtons = document.getElementById("quiz-answer-buttons");
+  const quizBtnRight = document.getElementById("quiz-btn-right");
+  const quizBtnWrong = document.getElementById("quiz-btn-wrong");
+  const quizResult = document.getElementById("quiz-result");
+  const quizResultPercent = document.getElementById("quiz-result-percent");
+  const quizResultDetail = document.getElementById("quiz-result-detail");
+  const quizSavedNote = document.getElementById("quiz-saved-note");
+  const quizAgainBtn = document.getElementById("quiz-again-btn");
+  const quizToDashboardBtn = document.getElementById("quiz-to-dashboard-btn");
+  const quizTrackerEl = document.getElementById("quiz-tracker");
 
   let currentCategoryId = null;
   let currentMode = "fi-en"; // "fi-en" = show Finnish, translate to English
@@ -42,6 +65,14 @@
   let isFlipped = false;
   let forceReviewAll = false;
   let toastTimer = null;
+
+  // Mastery Quiz state. quizDeck is non-empty only while a quiz is in
+  // progress; quizStatus is the latest /api/quiz/status (null if unavailable).
+  let quizStatus = null;
+  let quizDeck = [];
+  let quizIndex = 0;
+  let quizCorrect = 0;
+  let quizFlipped = false;
 
   async function fetchJSON(url, options) {
     const res = await fetch(url, options);
@@ -68,15 +99,34 @@
     toastTimer = setTimeout(() => toastEl.classList.remove("show"), 2600);
   }
 
+  // Sets belong to a group (from the optional "group" in their JSON file):
+  // plain vocabulary by default, or e.g. "Conjugations". Groups are listed
+  // with the default one first, then the rest in the order they first appear.
+  const DEFAULT_GROUP = "Vocabulary";
+
+  function orderedGroups(items) {
+    const seen = [];
+    for (const item of items) {
+      const group = item.group || DEFAULT_GROUP;
+      if (!seen.includes(group)) seen.push(group);
+    }
+    return seen.sort((a, b) => (a === DEFAULT_GROUP ? -1 : b === DEFAULT_GROUP ? 1 : 0));
+  }
+
   async function loadCategories() {
     const data = await fetchJSON(`/api/categories?mode=${currentMode}`);
     const prevSelection = categorySelect.value;
     categorySelect.innerHTML = "";
-    for (const cat of data.categories) {
-      const opt = document.createElement("option");
-      opt.value = cat.id;
-      opt.textContent = categoryOptionLabel(cat);
-      categorySelect.appendChild(opt);
+    for (const group of orderedGroups(data.categories)) {
+      const optgroup = document.createElement("optgroup");
+      optgroup.label = group;
+      for (const cat of data.categories.filter((c) => (c.group || DEFAULT_GROUP) === group)) {
+        const opt = document.createElement("option");
+        opt.value = cat.id;
+        opt.textContent = categoryOptionLabel(cat);
+        optgroup.appendChild(opt);
+      }
+      categorySelect.appendChild(optgroup);
     }
     if (data.categories.length === 0) return;
 
@@ -356,6 +406,9 @@
       updateStatsLabel();
       updateReviewStatus();
       updateDueBadge();
+      // A newly Learned word (or a miss that un-Learns one) can cross the
+      // 40-word line that unlocks/locks the quiz.
+      refreshQuizStatus();
 
       if (result.newlyRetained) {
         showToast(`🌟 "${cardFi}" retained — long-term mastery!`);
@@ -395,9 +448,11 @@
     ]);
 
     const byId = new Map();
-    for (const c of fiEn.categories) byId.set(c.id, { id: c.id, name: c.name, total: c.total, fiEn: c });
+    for (const c of fiEn.categories) {
+      byId.set(c.id, { id: c.id, name: c.name, group: c.group, total: c.total, fiEn: c });
+    }
     for (const c of enFi.categories) {
-      const row = byId.get(c.id) || { id: c.id, name: c.name, total: c.total };
+      const row = byId.get(c.id) || { id: c.id, name: c.name, group: c.group, total: c.total };
       row.enFi = c;
       byId.set(c.id, row);
     }
@@ -473,26 +528,20 @@
     await loadCategories();
   }
 
-  async function loadDashboard() {
-    dashboardBody.innerHTML = `<tr><td colspan="6" style="text-align:center; color:var(--gray); padding:24px;">Loading…</td></tr>`;
-    dueSummaryEl.innerHTML = "";
+  // One dashboard section per group (Vocabulary, Conjugations, ...), each
+  // with its own totals and table - so easy pattern drills never dilute the
+  // vocabulary numbers, and vice versa.
+  function renderDashboardGroup(group, rows) {
+    const sum = (pick) => rows.reduce((total, r) => total + pick(r), 0);
+    const totalCards = sum((r) => r.total || 0);
+    const noun = group === DEFAULT_GROUP ? "words" : "cards";
 
-    const rows = await fetchCombinedCategoryStats();
-    renderDueSummary(rows);
-
-    // Summary cards, totaled across every category.
-    const totalWords = rows.reduce((sum, r) => sum + (r.total || 0), 0);
-    const totalLearnedFiEn = rows.reduce((sum, r) => sum + (r.fiEn ? r.fiEn.mastered : 0), 0);
-    const totalRetainedFiEn = rows.reduce((sum, r) => sum + (r.fiEn ? r.fiEn.retained : 0), 0);
-    const totalLearnedEnFi = rows.reduce((sum, r) => sum + (r.enFi ? r.enFi.mastered : 0), 0);
-    const totalRetainedEnFi = rows.reduce((sum, r) => sum + (r.enFi ? r.enFi.retained : 0), 0);
-
-    dashboardSummary.innerHTML = [
-      { value: totalWords, label: "Total words" },
-      { value: `${totalLearnedFiEn}/${totalWords}`, label: "Learned · FI→EN" },
-      { value: `${totalRetainedFiEn}/${totalWords}`, label: "Retained · FI→EN" },
-      { value: `${totalLearnedEnFi}/${totalWords}`, label: "Learned · EN→FI" },
-      { value: `${totalRetainedEnFi}/${totalWords}`, label: "Retained · EN→FI" },
+    const cards = [
+      { value: totalCards, label: `Total ${noun}` },
+      { value: `${sum((r) => (r.fiEn ? r.fiEn.mastered : 0))}/${totalCards}`, label: "Learned · FI→EN" },
+      { value: `${sum((r) => (r.fiEn ? r.fiEn.retained : 0))}/${totalCards}`, label: "Retained · FI→EN" },
+      { value: `${sum((r) => (r.enFi ? r.enFi.mastered : 0))}/${totalCards}`, label: "Learned · EN→FI" },
+      { value: `${sum((r) => (r.enFi ? r.enFi.retained : 0))}/${totalCards}`, label: "Retained · EN→FI" },
     ]
       .map(
         (c) => `
@@ -503,37 +552,292 @@
       )
       .join("");
 
-    dashboardBody.innerHTML = rows
+    const body = rows
       .map((r) => {
         const total = r.total || 0;
-        const fiEnLearned = r.fiEn ? r.fiEn.mastered : 0;
-        const fiEnRetained = r.fiEn ? r.fiEn.retained : 0;
-        const enFiLearned = r.enFi ? r.enFi.mastered : 0;
-        const enFiRetained = r.enFi ? r.enFi.retained : 0;
         return `
         <tr>
           <td>${r.name}</td>
           <td>${total}</td>
-          <td>${barCell(fiEnLearned, total, "learned")}</td>
-          <td>${barCell(fiEnRetained, total, "retained")}</td>
-          <td>${barCell(enFiLearned, total, "learned")}</td>
-          <td>${barCell(enFiRetained, total, "retained")}</td>
+          <td>${barCell(r.fiEn ? r.fiEn.mastered : 0, total, "learned")}</td>
+          <td>${barCell(r.fiEn ? r.fiEn.retained : 0, total, "retained")}</td>
+          <td>${barCell(r.enFi ? r.enFi.mastered : 0, total, "learned")}</td>
+          <td>${barCell(r.enFi ? r.enFi.retained : 0, total, "retained")}</td>
         </tr>`;
       })
       .join("");
+
+    return `
+      <section class="dashboard-group">
+        <h3 class="dashboard-group-title">${group}</h3>
+        <div class="dashboard-summary">${cards}</div>
+        <div class="dashboard-table-wrap">
+          <table class="dashboard-table">
+            <thead>
+              <tr>
+                <th rowspan="2" class="dash-category-col">Category</th>
+                <th rowspan="2">${group === DEFAULT_GROUP ? "Words" : "Cards"}</th>
+                <th colspan="2">Finnish → English</th>
+                <th colspan="2">English → Finnish</th>
+              </tr>
+              <tr>
+                <th>Learned</th>
+                <th>Retained</th>
+                <th>Learned</th>
+                <th>Retained</th>
+              </tr>
+            </thead>
+            <tbody>${body}</tbody>
+          </table>
+        </div>
+      </section>`;
+  }
+
+  async function loadDashboard() {
+    dashboardGroups.innerHTML = '<p class="dash-loading">Loading…</p>';
+    dueSummaryEl.innerHTML = "";
+
+    const rows = await fetchCombinedCategoryStats();
+    renderDueSummary(rows);
+
+    dashboardGroups.innerHTML = orderedGroups(rows)
+      .map((group) =>
+        renderDashboardGroup(group, rows.filter((r) => (r.group || DEFAULT_GROUP) === group))
+      )
+      .join("");
+  }
+
+  // --- Mastery Quiz ---
+  //
+  // A check-up over a random deck of Learned/Retained words. Nothing here
+  // ever calls /api/answer: individual quiz answers live only in this
+  // page's memory, and only the finished score is sent to the server, so a
+  // quiz can't change any word's progress in either direction.
+
+  const DIRECTION_LABELS = { "fi-en": "Finnish → English", "en-fi": "English → Finnish" };
+
+  function quizInProgress() {
+    return quizDeck.length > 0;
+  }
+
+  function formatShortDate(isoDate) {
+    return new Date(isoDate + "T00:00:00").toLocaleDateString(undefined, {
+      month: "short",
+      day: "numeric",
+    });
+  }
+
+  // The Quiz tab and the dashboard tracker only exist once enough words are
+  // Learned/Retained; anything that goes wrong fetching status (e.g. an
+  // older server without the endpoint) just means the quiz isn't offered.
+  async function refreshQuizStatus() {
+    try {
+      quizStatus = await fetchJSON("/api/quiz/status");
+    } catch (err) {
+      quizStatus = null;
+    }
+    const eligible = !!(quizStatus && quizStatus.eligible);
+    tabQuiz.classList.toggle("hidden", !eligible);
+    if (!eligible && !quizView.classList.contains("hidden")) {
+      quizDeck = [];
+      showView("study");
+    }
+    renderQuizTracker();
+    updateQuizLastLine();
+  }
+
+  function updateQuizLastLine() {
+    if (!quizStatus || !quizStatus.eligible) return;
+    const last = quizStatus.recent[0];
+    if (!last) {
+      quizLastLine.textContent = "You haven't taken a quiz yet.";
+      return;
+    }
+    const since = quizStatus.daysSinceLast;
+    const when = since === 0 ? "today" : `${since} day${since === 1 ? "" : "s"} ago`;
+    quizLastLine.textContent = `Last quiz: ${last.percent}% (${when}).`;
+  }
+
+  function renderQuizTracker() {
+    if (!quizStatus || !quizStatus.eligible) {
+      quizTrackerEl.innerHTML = "";
+      return;
+    }
+    const since = quizStatus.daysSinceLast;
+    const sinceHtml =
+      since === null
+        ? "No quiz completed yet"
+        : `Days since last quiz: <strong>${since}</strong>`;
+    const scoresHtml = quizStatus.recent.length
+      ? `<ul class="quiz-tracker-scores">${quizStatus.recent
+          .map(
+            (r) => `
+            <li>
+              <span class="qt-date">${formatShortDate(r.date)}</span>
+              <span class="qt-track"><span class="qt-fill" style="width:${r.percent}%"></span></span>
+              <span class="qt-score">${r.percent}% · ${r.correct}/${r.total}</span>
+            </li>`
+          )
+          .join("")}</ul>`
+      : '<p class="quiz-tracker-empty">Your last 5 quiz scores will show up here.</p>';
+
+    quizTrackerEl.innerHTML = `
+      <div class="quiz-tracker-card">
+        <div class="quiz-tracker-head">
+          <span class="quiz-tracker-title">Mastery Quiz</span>
+          <span class="quiz-tracker-since">${sinceHtml}</span>
+        </div>
+        ${scoresHtml}
+        <button class="quiz-tracker-btn" type="button">Take the quiz</button>
+      </div>`;
+    quizTrackerEl.querySelector(".quiz-tracker-btn").addEventListener("click", () => showView("quiz"));
+  }
+
+  // Always opens on the intro: leaving the Quiz tab abandons a quiz that's
+  // partway through (see showView), so there's never a half-finished one to
+  // resume and no separate "quit" control to tap by accident.
+  function openQuizView() {
+    refreshQuizStatus();
+    quizResult.classList.add("hidden");
+    quizIntro.classList.remove("hidden");
+    quizCardArea.classList.add("hidden");
+  }
+
+  async function startQuiz() {
+    quizStartBtn.disabled = true;
+    quizAgainBtn.disabled = true;
+    try {
+      const data = await fetchJSON("/api/quiz/start", { method: "POST" });
+      quizDeck = data.deck;
+      quizIndex = 0;
+      quizCorrect = 0;
+      quizIntro.classList.add("hidden");
+      quizResult.classList.add("hidden");
+      quizCardArea.classList.remove("hidden");
+      showQuizQuestion();
+    } catch (err) {
+      alert("Couldn't start the quiz: " + err.message);
+      refreshQuizStatus();
+    } finally {
+      quizStartBtn.disabled = false;
+      quizAgainBtn.disabled = false;
+    }
+  }
+
+  function updateQuizHint() {
+    quizHintText.innerHTML = quizFlipped
+      ? 'Press <kbd>Space</kbd> = Got it &nbsp;·&nbsp; <kbd>Shift</kbd> = Missed it'
+      : 'Press <kbd>Space</kbd> or click the card to flip';
+  }
+
+  function showQuizQuestion() {
+    const q = quizDeck[quizIndex];
+    quizFlipped = false;
+    quizProgress.textContent = `Question ${quizIndex + 1} of ${quizDeck.length}`;
+    // Deliberately just the direction: which set a word came from would be a
+    // giveaway, and the quiz is meant to test recall without that context.
+    quizDirectionLabel.textContent = DIRECTION_LABELS[q.direction];
+
+    // Same instant reset as study mode: a new question isn't a "flip back".
+    quizCardEl.classList.add("no-transition");
+    quizCardEl.classList.remove("flipped");
+    quizFrontText.textContent = q.direction === "fi-en" ? q.fi : q.en;
+    quizBackText.textContent = q.direction === "fi-en" ? q.en : q.fi;
+    quizAnswerButtons.classList.add("hidden");
+    updateQuizHint();
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => quizCardEl.classList.remove("no-transition"));
+    });
+    quizCardEl.focus();
+    scrollToBottom();
+  }
+
+  function flipQuizCard() {
+    if (!quizInProgress()) return;
+    quizFlipped = !quizFlipped;
+    quizCardEl.classList.toggle("flipped", quizFlipped);
+    quizAnswerButtons.classList.toggle("hidden", !quizFlipped);
+    updateQuizHint();
+    scrollToBottom();
+  }
+
+  function answerQuiz(correct) {
+    if (!quizInProgress() || !quizFlipped) return;
+    if (correct) quizCorrect += 1;
+    quizIndex += 1;
+    if (quizIndex >= quizDeck.length) {
+      finishQuiz();
+    } else {
+      showQuizQuestion();
+    }
+  }
+
+  async function finishQuiz() {
+    const total = quizDeck.length;
+    const correct = quizCorrect;
+    quizDeck = []; // no longer in progress; also blocks any stray extra answers
+
+    quizCardArea.classList.add("hidden");
+    quizResultPercent.textContent = `${Math.round((100 * correct) / total)}%`;
+    quizResultDetail.textContent = `${correct} of ${total} correct`;
+    quizSavedNote.textContent = "Saving your score…";
+    quizResult.classList.remove("hidden");
+    window.scrollTo({ top: 0 });
+
+    try {
+      await fetchJSON("/api/quiz/complete", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ correct, total }),
+      });
+      quizSavedNote.textContent =
+        "Saved to your quiz history. No word's progress was changed.";
+    } catch (err) {
+      console.error(err);
+      quizSavedNote.textContent =
+        `Couldn't save this score (${err.message}). No word's progress was changed.`;
+    }
+    refreshQuizStatus();
+  }
+
+  function handleQuizKey(e) {
+    if (quizCardArea.classList.contains("hidden") || !quizInProgress()) return;
+    if (e.code === "Space") {
+      if (e.repeat) return;
+      e.preventDefault();
+      if (!quizFlipped) {
+        flipQuizCard();
+      } else {
+        answerQuiz(true);
+      }
+    } else if (e.key === "Shift") {
+      if (e.repeat || !quizFlipped) return;
+      e.preventDefault();
+      answerQuiz(false);
+    }
   }
 
   function showView(view) {
-    const isStudy = view === "study";
-    studyView.classList.toggle("hidden", !isStudy);
-    dashboardView.classList.toggle("hidden", isStudy);
-    tabStudy.classList.toggle("active", isStudy);
-    tabDashboard.classList.toggle("active", !isStudy);
-    if (!isStudy) {
+    // Navigating away from the Quiz tab is how you abandon a quiz: nothing
+    // gets recorded, and coming back starts from the intro.
+    if (view !== "quiz") quizDeck = [];
+
+    studyView.classList.toggle("hidden", view !== "study");
+    dashboardView.classList.toggle("hidden", view !== "dashboard");
+    quizView.classList.toggle("hidden", view !== "quiz");
+    tabStudy.classList.toggle("active", view === "study");
+    tabDashboard.classList.toggle("active", view === "dashboard");
+    tabQuiz.classList.toggle("active", view === "quiz");
+
+    if (view === "dashboard") {
+      refreshQuizStatus();
       loadDashboard().catch((err) => {
         console.error(err);
-        dashboardBody.innerHTML = `<tr><td colspan="6" style="color:red; text-align:center; padding:20px;">Failed to load: ${err.message}</td></tr>`;
+        dashboardGroups.innerHTML = `<p class="dash-loading" style="color:red;">Failed to load: ${err.message}</p>`;
       });
+    } else if (view === "quiz" && !quizInProgress()) {
+      // (Re-tapping the Quiz tab mid-quiz is a no-op rather than a reset.)
+      openQuizView();
     }
   }
 
@@ -541,6 +845,14 @@
 
   tabStudy.addEventListener("click", () => showView("study"));
   tabDashboard.addEventListener("click", () => showView("dashboard"));
+  tabQuiz.addEventListener("click", () => showView("quiz"));
+
+  quizStartBtn.addEventListener("click", startQuiz);
+  quizAgainBtn.addEventListener("click", startQuiz);
+  quizToDashboardBtn.addEventListener("click", () => showView("dashboard"));
+  quizCardEl.addEventListener("click", flipQuizCard);
+  quizBtnRight.addEventListener("click", () => answerQuiz(true));
+  quizBtnWrong.addEventListener("click", () => answerQuiz(false));
 
   categorySelect.addEventListener("change", () => {
     loadCategory(categorySelect.value);
@@ -556,12 +868,21 @@
   wordHintBtn.addEventListener("click", toggleWordHint);
 
   document.addEventListener("keydown", (e) => {
-    if (cardArea.classList.contains("hidden") || !currentCard) return;
     // Let native controls (dropdowns, buttons) handle their own key
     // interaction; otherwise Space on a focused button would both
     // trigger our handler AND the button's own native activation.
     const activeTag = document.activeElement && document.activeElement.tagName;
     if (activeTag === "SELECT" || activeTag === "BUTTON" || activeTag === "INPUT") return;
+
+    // Shortcuts only ever act on the view you're actually looking at.
+    // (Without this, Space on the Dashboard or Quiz would flip - and
+    // answer - the hidden study card.)
+    if (!quizView.classList.contains("hidden")) {
+      handleQuizKey(e);
+      return;
+    }
+    if (studyView.classList.contains("hidden")) return;
+    if (cardArea.classList.contains("hidden") || !currentCard) return;
 
     if (e.code === "Space") {
       if (e.repeat) return;
@@ -612,6 +933,8 @@
   // So the Dashboard tab's due-review count is visible right away, even
   // before ever opening the Dashboard.
   updateDueBadge();
+  // ...and so the Quiz tab appears right away once it's unlocked.
+  refreshQuizStatus();
 
   // Best-effort - browsers only allow service workers on HTTPS or
   // localhost, so this silently no-ops over plain http://<tailscale-ip>.

@@ -220,7 +220,7 @@ main {
   color: var(--blue);
 }
 
-#dashboard-summary {
+.dashboard-summary {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 12px;
@@ -247,7 +247,7 @@ main {
   margin-top: 2px;
 }
 
-#dashboard-table-wrap {
+.dashboard-table-wrap {
   width: 100%;
   overflow-x: auto;
   background: var(--white);
@@ -255,24 +255,24 @@ main {
   box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 
-#dashboard-table {
+.dashboard-table {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.88rem;
 }
 
-#dashboard-table th,
-#dashboard-table td {
+.dashboard-table th,
+.dashboard-table td {
   padding: 10px 12px;
   text-align: center;
   white-space: nowrap;
 }
 
-#dashboard-table thead tr:first-child th {
+.dashboard-table thead tr:first-child th {
   border-bottom: 1px solid #eee;
 }
 
-#dashboard-table thead tr:last-child th {
+.dashboard-table thead tr:last-child th {
   border-bottom: 2px solid #ddd;
   font-weight: 600;
   color: var(--gray);
@@ -283,16 +283,16 @@ main {
   text-align: left !important;
 }
 
-#dashboard-table tbody td:first-child {
+.dashboard-table tbody td:first-child {
   text-align: left;
   font-weight: 600;
 }
 
-#dashboard-table tbody tr:not(:last-child) td {
+.dashboard-table tbody tr:not(:last-child) td {
   border-bottom: 1px solid #f0f0f0;
 }
 
-#dashboard-table tbody tr:hover {
+.dashboard-table tbody tr:hover {
   background: #fafbfd;
 }
 
@@ -339,7 +339,7 @@ main {
   width: 100%;
 }
 
-#card {
+.flip-card {
   width: 100%;
   max-width: 420px;
   height: 260px;
@@ -379,18 +379,18 @@ main {
   transform: rotateY(-180deg);
 }
 
-#card.flipped .card-front {
+.flip-card.flipped .card-front {
   transform: rotateY(180deg);
 }
 
-#card.flipped .card-back {
+.flip-card.flipped .card-back {
   transform: rotateY(0deg);
 }
 
 /* Used briefly when swapping in a new card, so resetting to the front
    face doesn't play the flip animation (which would visibly show the
    old card's English side rotating away first). */
-#card.no-transition .card-face {
+.flip-card.no-transition .card-face {
   transition: none !important;
 }
 
@@ -553,4 +553,191 @@ kbd {
   border-radius: 4px;
   padding: 1px 6px;
   font-family: inherit;
+}
+
+/* --- Mastery Quiz --- */
+
+#quiz-view {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#quiz-intro,
+#quiz-result {
+  max-width: 460px;
+  text-align: center;
+  margin-top: 20px;
+  line-height: 1.5;
+}
+
+#quiz-intro h2 {
+  margin: 0 0 8px;
+  color: var(--blue);
+}
+
+.quiz-note {
+  font-size: 0.8rem;
+  color: var(--gray);
+}
+
+.quiz-last-line {
+  font-size: 0.85rem;
+  color: #8a5a00;
+  font-weight: 600;
+  min-height: 1.2em;
+}
+
+.btn-quiz {
+  background: var(--blue);
+  margin-top: 8px;
+}
+
+#quiz-card-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.quiz-direction-label {
+  margin: 0 0 10px;
+  font-size: 0.78rem;
+  color: var(--gray);
+}
+
+#quiz-answer-buttons {
+  display: flex;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.quiz-result-label {
+  margin: 0;
+  color: var(--gray);
+  font-size: 0.9rem;
+}
+
+.quiz-result-percent {
+  margin: 4px 0;
+  font-size: 3.4rem;
+  font-weight: 800;
+  color: var(--blue);
+}
+
+.quiz-result-detail {
+  margin: 0 0 12px;
+  font-size: 1rem;
+}
+
+#quiz-again-btn {
+  background: var(--blue);
+  color: var(--white);
+}
+
+/* Dashboard tracker */
+
+#quiz-tracker {
+  margin-bottom: 24px;
+}
+
+.quiz-tracker-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 14px 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.quiz-tracker-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.quiz-tracker-title {
+  font-weight: 700;
+  color: var(--blue);
+}
+
+.quiz-tracker-since {
+  font-size: 0.85rem;
+  color: #8a5a00;
+  font-weight: 600;
+}
+
+.quiz-tracker-scores {
+  list-style: none;
+  margin: 10px 0 12px;
+  padding: 0;
+}
+
+.quiz-tracker-scores li {
+  display: grid;
+  grid-template-columns: 78px 1fr 92px;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 0;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.quiz-tracker-scores .qt-date {
+  color: var(--gray);
+}
+
+.quiz-tracker-scores .qt-track {
+  height: 8px;
+  border-radius: 4px;
+  background: #eee;
+  overflow: hidden;
+}
+
+.quiz-tracker-scores .qt-fill {
+  display: block;
+  height: 100%;
+  background: #6f9fe0;
+  border-radius: 4px;
+}
+
+.quiz-tracker-scores .qt-score {
+  text-align: right;
+  font-weight: 600;
+}
+
+.quiz-tracker-empty {
+  margin: 10px 0 12px;
+  font-size: 0.85rem;
+  color: var(--gray);
+}
+
+.quiz-tracker-btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--blue);
+  background: var(--blue);
+  color: var(--white);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Dashboard groups (Vocabulary, Conjugations, ...) */
+
+.dashboard-group {
+  margin-bottom: 34px;
+}
+
+.dashboard-group-title {
+  margin: 0 0 12px;
+  font-size: 1.05rem;
+  color: var(--blue);
+}
+
+.dash-loading {
+  text-align: center;
+  color: var(--gray);
+  padding: 24px;
 }

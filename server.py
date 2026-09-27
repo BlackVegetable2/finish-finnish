@@ -18,19 +18,37 @@ Progress is tracked per (category, direction, card) with two tiers:
     "counts" if it happens on or after its due date; getting it right
     advances to the next interval, getting it wrong resets the schedule.
     A card becomes "retained" once it's passed every scheduled review.
+
+There is also a separate, purely informational "Mastery Quiz": a random
+deck of QUIZ_SIZE words drawn from everything that's currently Learned or
+Retained. Quiz answers are never sent to the server one at a time - only a
+finished quiz's score is recorded (in its own file, quiz_history.json) - so
+a quiz can never change any card's progress, for better or worse.
 """
 import json
 import os
+import random
 import re
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlparse, parse_qs
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 CARDS_DIR = os.path.join(ROOT, "cards")
-DATA_DIR = os.path.join(ROOT, "data")
+# FINNISH_DATA_DIR lets a scratch copy of the server run against throwaway
+# data (handy for testing without touching real progress).
+DATA_DIR = os.environ.get("FINNISH_DATA_DIR") or os.path.join(ROOT, "data")
 PUBLIC_DIR = os.path.join(ROOT, "public")
 PROGRESS_FILE = os.path.join(DATA_DIR, "progress.json")
+QUIZ_FILE = os.path.join(DATA_DIR, "quiz_history.json")
+
+# How many words a Mastery Quiz deck holds. The quiz is only available once
+# at least this many distinct words are Learned (or Retained).
+QUIZ_SIZE = 40
+
+# Sets are grouped in the category picker and on the dashboard by an optional
+# "group" field in their JSON file; sets without one are plain vocabulary.
+DEFAULT_GROUP = "Vocabulary"
 
 # A card counts as "mastered" (Learned) once it's been answered correctly
 # this many times in a row. Getting it wrong resets the streak to 0.
@@ -166,6 +184,89 @@ def is_due_for_review(entry):
     return bool(due) and due <= today_str()
 
 
+# --- Mastery Quiz -----------------------------------------------------------
+
+
+def load_quiz_history():
+    """Completed quizzes, oldest first. Missing/corrupt file -> empty."""
+    if not os.path.exists(QUIZ_FILE):
+        return []
+    try:
+        with open(QUIZ_FILE, "r", encoding="utf-8") as f:
+            history = json.load(f)
+        return history if isinstance(history, list) else []
+    except (json.JSONDecodeError, OSError):
+        return []
+
+
+def save_quiz_history(history):
+    tmp_path = QUIZ_FILE + ".tmp"
+    with open(tmp_path, "w", encoding="utf-8") as f:
+        json.dump(history, f, indent=2, ensure_ascii=False)
+    os.replace(tmp_path, QUIZ_FILE)
+
+
+def learned_pool(progress):
+    """Every distinct word that's Learned (or Retained) in at least one
+    direction, as (category_id, category_name, card, [directions]).
+    Retained words are always Learned too, so 'mastered' covers both."""
+    pool = []
+    for cid in list_category_ids():
+        cat = load_category(cid)
+        if not cat:
+            continue
+        if cat.get("quiz") is False:
+            # e.g. the conjugation sets: lots of easy, pattern-based cards
+            # that would crowd out real vocabulary and inflate scores.
+            continue
+        for card in cat.get("cards", []):
+            directions = [
+                d
+                for d in DIRECTIONS
+                if card_progress_entry(progress, cid, d, card["id"]).get("mastered")
+            ]
+            if directions:
+                pool.append((cid, cat.get("name", cid), card, directions))
+    return pool
+
+
+def build_quiz_deck(progress):
+    """QUIZ_SIZE distinct random words, each quizzed in a direction it's
+    already Learned in. None if there aren't enough Learned words yet."""
+    pool = learned_pool(progress)
+    if len(pool) < QUIZ_SIZE:
+        return None
+    deck = []
+    for cid, cat_name, card, directions in random.sample(pool, QUIZ_SIZE):
+        deck.append(
+            {
+                "category": cid,
+                "categoryName": cat_name,
+                "id": card["id"],
+                "fi": card["fi"],
+                "en": card["en"],
+                "direction": random.choice(directions),
+            }
+        )
+    return deck
+
+
+def quiz_status():
+    history = load_quiz_history()
+    learned_words = len(learned_pool(load_progress()))
+    days_since_last = None
+    if history:
+        last_date = date.fromisoformat(history[-1]["date"])
+        days_since_last = (date.today() - last_date).days
+    return {
+        "required": QUIZ_SIZE,
+        "learnedWords": learned_words,
+        "eligible": learned_words >= QUIZ_SIZE,
+        "recent": list(reversed(history[-5:])),  # newest first
+        "daysSinceLast": days_since_last,
+    }
+
+
 class Handler(BaseHTTPRequestHandler):
     server_version = "FinishFinnish/0.2"
 
@@ -224,6 +325,9 @@ class Handler(BaseHTTPRequestHandler):
         if path == "/api/categories":
             return self.handle_get_categories(query)
 
+        if path == "/api/quiz/status":
+            return self._send_json(quiz_status())
+
         m = re.match(r"^/api/category/([a-zA-Z0-9_-]+)$", path)
         if m:
             return self.handle_get_category(m.group(1), query)
@@ -237,7 +341,58 @@ class Handler(BaseHTTPRequestHandler):
         if path == "/api/answer":
             return self.handle_post_answer()
 
+        if path == "/api/quiz/start":
+            return self.handle_post_quiz_start()
+
+        if path == "/api/quiz/complete":
+            return self.handle_post_quiz_complete()
+
         self._send_error_json("Not found", status=404)
+
+    def handle_post_quiz_start(self):
+        deck = build_quiz_deck(load_progress())
+        if deck is None:
+            return self._send_error_json(
+                f"The quiz unlocks once at least {QUIZ_SIZE} words are Learned.",
+                status=409,
+            )
+        self._send_json({"size": QUIZ_SIZE, "deck": deck})
+
+    def handle_post_quiz_complete(self):
+        length = int(self.headers.get("Content-Length", 0) or 0)
+        raw = self.rfile.read(length) if length else b""
+        try:
+            payload = json.loads(raw or b"{}")
+        except json.JSONDecodeError:
+            return self._send_error_json("Invalid JSON body")
+
+        correct = payload.get("correct")
+        total = payload.get("total")
+        valid = (
+            isinstance(correct, int)
+            and isinstance(total, int)
+            and not isinstance(correct, bool)
+            and not isinstance(total, bool)
+            and total == QUIZ_SIZE
+            and 0 <= correct <= total
+        )
+        if not valid:
+            return self._send_error_json(
+                f"Body must include correct (int) and total (int, must be {QUIZ_SIZE})"
+            )
+
+        history = load_quiz_history()
+        history.append(
+            {
+                "completedAt": datetime.now().isoformat(timespec="seconds"),
+                "date": today_str(),
+                "correct": correct,
+                "total": total,
+                "percent": round(100 * correct / total),
+            }
+        )
+        save_quiz_history(history)
+        self._send_json({"ok": True, **quiz_status()})
 
     def _direction_from_query(self, query):
         direction = (query.get("mode") or [DEFAULT_DIRECTION])[0]
@@ -268,6 +423,7 @@ class Handler(BaseHTTPRequestHandler):
                 {
                     "id": cid,
                     "name": cat.get("name", cid),
+                    "group": cat.get("group", DEFAULT_GROUP),
                     "total": total,
                     "mastered": mastered,
                     "retained": retained,
@@ -306,6 +462,7 @@ class Handler(BaseHTTPRequestHandler):
             {
                 "id": category_id,
                 "name": cat.get("name", category_id),
+                "group": cat.get("group", DEFAULT_GROUP),
                 "direction": direction,
                 "masteryStreak": MASTERY_STREAK,
                 "reviewIntervals": REVIEW_INTERVALS,
