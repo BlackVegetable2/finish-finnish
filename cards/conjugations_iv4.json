@@ -1,0 +1,207 @@
+{
+  "name": "Conjugations IV-4",
+  "group": "Conjugations",
+  "quiz": false,
+  "cards": [
+    {
+      "id": "cjIV4_01",
+      "fi": "minä aloitan",
+      "en": "I start/begin"
+    },
+    {
+      "id": "cjIV4_02",
+      "fi": "sinä aloitat",
+      "en": "you start/begin"
+    },
+    {
+      "id": "cjIV4_03",
+      "fi": "hän aloittaa",
+      "en": "he/she starts/begins"
+    },
+    {
+      "id": "cjIV4_04",
+      "fi": "me aloitamme",
+      "en": "we start/begin (formal/written)"
+    },
+    {
+      "id": "cjIV4_05",
+      "fi": "me aloitetaan",
+      "en": "we start/begin (spoken)"
+    },
+    {
+      "id": "cjIV4_06",
+      "fi": "te aloitatte",
+      "en": "y'all start/begin"
+    },
+    {
+      "id": "cjIV4_07",
+      "fi": "he aloittavat",
+      "en": "they start/begin (formal/written)"
+    },
+    {
+      "id": "cjIV4_07n",
+      "fi": "ne aloittaa",
+      "en": "they start/begin (spoken)"
+    },
+    {
+      "id": "cjIV4_08",
+      "fi": "minä lopetan",
+      "en": "I stop/finish"
+    },
+    {
+      "id": "cjIV4_09",
+      "fi": "sinä lopetat",
+      "en": "you stop/finish"
+    },
+    {
+      "id": "cjIV4_10",
+      "fi": "hän lopettaa",
+      "en": "he/she stops/finishes"
+    },
+    {
+      "id": "cjIV4_11",
+      "fi": "me lopetamme",
+      "en": "we stop/finish (formal/written)"
+    },
+    {
+      "id": "cjIV4_12",
+      "fi": "me lopetetaan",
+      "en": "we stop/finish (spoken)"
+    },
+    {
+      "id": "cjIV4_13",
+      "fi": "te lopetatte",
+      "en": "y'all stop/finish"
+    },
+    {
+      "id": "cjIV4_14",
+      "fi": "he lopettavat",
+      "en": "they stop/finish (formal/written)"
+    },
+    {
+      "id": "cjIV4_14n",
+      "fi": "ne lopettaa",
+      "en": "they stop/finish (spoken)"
+    },
+    {
+      "id": "cjIV4_15",
+      "fi": "minä yritän",
+      "en": "I try"
+    },
+    {
+      "id": "cjIV4_16",
+      "fi": "sinä yrität",
+      "en": "you try"
+    },
+    {
+      "id": "cjIV4_17",
+      "fi": "hän yrittää",
+      "en": "he/she tries"
+    },
+    {
+      "id": "cjIV4_18",
+      "fi": "me yritämme",
+      "en": "we try (formal/written)"
+    },
+    {
+      "id": "cjIV4_19",
+      "fi": "me yritetään",
+      "en": "we try (spoken)"
+    },
+    {
+      "id": "cjIV4_20",
+      "fi": "te yritätte",
+      "en": "y'all try"
+    },
+    {
+      "id": "cjIV4_21",
+      "fi": "he yrittävät",
+      "en": "they try (formal/written)"
+    },
+    {
+      "id": "cjIV4_21n",
+      "fi": "ne yrittää",
+      "en": "they try (spoken)"
+    },
+    {
+      "id": "cjIV4_22",
+      "fi": "minä käytän",
+      "en": "I use"
+    },
+    {
+      "id": "cjIV4_23",
+      "fi": "sinä käytät",
+      "en": "you use"
+    },
+    {
+      "id": "cjIV4_24",
+      "fi": "hän käyttää",
+      "en": "he/she uses"
+    },
+    {
+      "id": "cjIV4_25",
+      "fi": "me käytämme",
+      "en": "we use (formal/written)"
+    },
+    {
+      "id": "cjIV4_26",
+      "fi": "me käytetään",
+      "en": "we use (spoken)"
+    },
+    {
+      "id": "cjIV4_27",
+      "fi": "te käytätte",
+      "en": "y'all use"
+    },
+    {
+      "id": "cjIV4_28",
+      "fi": "he käyttävät",
+      "en": "they use (formal/written)"
+    },
+    {
+      "id": "cjIV4_28n",
+      "fi": "ne käyttää",
+      "en": "they use (spoken)"
+    },
+    {
+      "id": "cjIV4_29",
+      "fi": "minä muutan",
+      "en": "I move/change"
+    },
+    {
+      "id": "cjIV4_30",
+      "fi": "sinä muutat",
+      "en": "you move/change"
+    },
+    {
+      "id": "cjIV4_31",
+      "fi": "hän muuttaa",
+      "en": "he/she moves/changes"
+    },
+    {
+      "id": "cjIV4_32",
+      "fi": "me muutamme",
+      "en": "we move/change (formal/written)"
+    },
+    {
+      "id": "cjIV4_33",
+      "fi": "me muutetaan",
+      "en": "we move/change (spoken)"
+    },
+    {
+      "id": "cjIV4_34",
+      "fi": "te muutatte",
+      "en": "y'all move/change"
+    },
+    {
+      "id": "cjIV4_35",
+      "fi": "he muuttavat",
+      "en": "they move/change (formal/written)"
+    },
+    {
+      "id": "cjIV4_35n",
+      "fi": "ne muuttaa",
+      "en": "they move/change (spoken)"
+    }
+  ]
+}

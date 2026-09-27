@@ -1,0 +1,207 @@
+{
+  "name": "Conjugations I-1",
+  "group": "Conjugations",
+  "quiz": false,
+  "cards": [
+    {
+      "id": "cj101",
+      "fi": "minä menen",
+      "en": "I go"
+    },
+    {
+      "id": "cj102",
+      "fi": "sinä menet",
+      "en": "you go"
+    },
+    {
+      "id": "cj103",
+      "fi": "hän menee",
+      "en": "he/she goes"
+    },
+    {
+      "id": "cj104",
+      "fi": "me menemme",
+      "en": "we go (formal/written)"
+    },
+    {
+      "id": "cj105",
+      "fi": "me mennään",
+      "en": "we go (spoken)"
+    },
+    {
+      "id": "cj106",
+      "fi": "te menette",
+      "en": "y'all go"
+    },
+    {
+      "id": "cj107",
+      "fi": "he menevät",
+      "en": "they go (formal/written)"
+    },
+    {
+      "id": "cj107n",
+      "fi": "ne menee",
+      "en": "they go (spoken)"
+    },
+    {
+      "id": "cj108",
+      "fi": "minä tulen",
+      "en": "I come"
+    },
+    {
+      "id": "cj109",
+      "fi": "sinä tulet",
+      "en": "you come"
+    },
+    {
+      "id": "cj110",
+      "fi": "hän tulee",
+      "en": "he/she comes"
+    },
+    {
+      "id": "cj111",
+      "fi": "me tulemme",
+      "en": "we come (formal/written)"
+    },
+    {
+      "id": "cj112",
+      "fi": "me tullaan",
+      "en": "we come (spoken)"
+    },
+    {
+      "id": "cj113",
+      "fi": "te tulette",
+      "en": "y'all come"
+    },
+    {
+      "id": "cj114",
+      "fi": "he tulevat",
+      "en": "they come (formal/written)"
+    },
+    {
+      "id": "cj114n",
+      "fi": "ne tulee",
+      "en": "they come (spoken)"
+    },
+    {
+      "id": "cj115",
+      "fi": "minä kuuntelen",
+      "en": "I listen"
+    },
+    {
+      "id": "cj116",
+      "fi": "sinä kuuntelet",
+      "en": "you listen"
+    },
+    {
+      "id": "cj117",
+      "fi": "hän kuuntelee",
+      "en": "he/she listens"
+    },
+    {
+      "id": "cj118",
+      "fi": "me kuuntelemme",
+      "en": "we listen (formal/written)"
+    },
+    {
+      "id": "cj119",
+      "fi": "me kuunnellaan",
+      "en": "we listen (spoken)"
+    },
+    {
+      "id": "cj120",
+      "fi": "te kuuntelette",
+      "en": "y'all listen"
+    },
+    {
+      "id": "cj121",
+      "fi": "he kuuntelevat",
+      "en": "they listen (formal/written)"
+    },
+    {
+      "id": "cj121n",
+      "fi": "ne kuuntelee",
+      "en": "they listen (spoken)"
+    },
+    {
+      "id": "cj122",
+      "fi": "minä haluan",
+      "en": "I want"
+    },
+    {
+      "id": "cj123",
+      "fi": "sinä haluat",
+      "en": "you want"
+    },
+    {
+      "id": "cj124",
+      "fi": "hän haluaa",
+      "en": "he/she wants"
+    },
+    {
+      "id": "cj125",
+      "fi": "me haluamme",
+      "en": "we want (formal/written)"
+    },
+    {
+      "id": "cj126",
+      "fi": "me halutaan",
+      "en": "we want (spoken)"
+    },
+    {
+      "id": "cj127",
+      "fi": "te haluatte",
+      "en": "y'all want"
+    },
+    {
+      "id": "cj128",
+      "fi": "he haluavat",
+      "en": "they want (formal/written)"
+    },
+    {
+      "id": "cj128n",
+      "fi": "ne haluaa",
+      "en": "they want (spoken)"
+    },
+    {
+      "id": "cj129",
+      "fi": "minä osaan",
+      "en": "I know how to"
+    },
+    {
+      "id": "cj130",
+      "fi": "sinä osaat",
+      "en": "you know how to"
+    },
+    {
+      "id": "cj131",
+      "fi": "hän osaa",
+      "en": "he/she knows how to"
+    },
+    {
+      "id": "cj132",
+      "fi": "me osaamme",
+      "en": "we know how to (formal/written)"
+    },
+    {
+      "id": "cj133",
+      "fi": "me osataan",
+      "en": "we know how to (spoken)"
+    },
+    {
+      "id": "cj134",
+      "fi": "te osaatte",
+      "en": "y'all know how to"
+    },
+    {
+      "id": "cj135",
+      "fi": "he osaavat",
+      "en": "they know how to (formal/written)"
+    },
+    {
+      "id": "cj135n",
+      "fi": "ne osaa",
+      "en": "they know how to (spoken)"
+    }
+  ]
+}

@@ -1,0 +1,207 @@
+{
+  "name": "Conjugations II-4",
+  "group": "Conjugations",
+  "quiz": false,
+  "cards": [
+    {
+      "id": "cjII4_01",
+      "fi": "minä odotan",
+      "en": "I wait"
+    },
+    {
+      "id": "cjII4_02",
+      "fi": "sinä odotat",
+      "en": "you wait"
+    },
+    {
+      "id": "cjII4_03",
+      "fi": "hän odottaa",
+      "en": "he/she waits"
+    },
+    {
+      "id": "cjII4_04",
+      "fi": "me odotamme",
+      "en": "we wait (formal/written)"
+    },
+    {
+      "id": "cjII4_05",
+      "fi": "me odotetaan",
+      "en": "we wait (spoken)"
+    },
+    {
+      "id": "cjII4_06",
+      "fi": "te odotatte",
+      "en": "y'all wait"
+    },
+    {
+      "id": "cjII4_07",
+      "fi": "he odottavat",
+      "en": "they wait (formal/written)"
+    },
+    {
+      "id": "cjII4_07n",
+      "fi": "ne odottaa",
+      "en": "they wait (spoken)"
+    },
+    {
+      "id": "cjII4_08",
+      "fi": "minä autan",
+      "en": "I help"
+    },
+    {
+      "id": "cjII4_09",
+      "fi": "sinä autat",
+      "en": "you help"
+    },
+    {
+      "id": "cjII4_10",
+      "fi": "hän auttaa",
+      "en": "he/she helps"
+    },
+    {
+      "id": "cjII4_11",
+      "fi": "me autamme",
+      "en": "we help (formal/written)"
+    },
+    {
+      "id": "cjII4_12",
+      "fi": "me autetaan",
+      "en": "we help (spoken)"
+    },
+    {
+      "id": "cjII4_13",
+      "fi": "te autatte",
+      "en": "y'all help"
+    },
+    {
+      "id": "cjII4_14",
+      "fi": "he auttavat",
+      "en": "they help (formal/written)"
+    },
+    {
+      "id": "cjII4_14n",
+      "fi": "ne auttaa",
+      "en": "they help (spoken)"
+    },
+    {
+      "id": "cjII4_15",
+      "fi": "minä opetan",
+      "en": "I teach"
+    },
+    {
+      "id": "cjII4_16",
+      "fi": "sinä opetat",
+      "en": "you teach"
+    },
+    {
+      "id": "cjII4_17",
+      "fi": "hän opettaa",
+      "en": "he/she teaches"
+    },
+    {
+      "id": "cjII4_18",
+      "fi": "me opetamme",
+      "en": "we teach (formal/written)"
+    },
+    {
+      "id": "cjII4_19",
+      "fi": "me opetetaan",
+      "en": "we teach (spoken)"
+    },
+    {
+      "id": "cjII4_20",
+      "fi": "te opetatte",
+      "en": "y'all teach"
+    },
+    {
+      "id": "cjII4_21",
+      "fi": "he opettavat",
+      "en": "they teach (formal/written)"
+    },
+    {
+      "id": "cjII4_21n",
+      "fi": "ne opettaa",
+      "en": "they teach (spoken)"
+    },
+    {
+      "id": "cjII4_22",
+      "fi": "minä peseydyn",
+      "en": "I wash up"
+    },
+    {
+      "id": "cjII4_23",
+      "fi": "sinä peseydyt",
+      "en": "you wash up"
+    },
+    {
+      "id": "cjII4_24",
+      "fi": "hän peseytyy",
+      "en": "he/she washes up"
+    },
+    {
+      "id": "cjII4_25",
+      "fi": "me peseydymme",
+      "en": "we wash up (formal/written)"
+    },
+    {
+      "id": "cjII4_26",
+      "fi": "me peseydytään",
+      "en": "we wash up (spoken)"
+    },
+    {
+      "id": "cjII4_27",
+      "fi": "te peseydytte",
+      "en": "y'all wash up"
+    },
+    {
+      "id": "cjII4_28",
+      "fi": "he peseytyvät",
+      "en": "they wash up (formal/written)"
+    },
+    {
+      "id": "cjII4_28n",
+      "fi": "ne peseytyy",
+      "en": "they wash up (spoken)"
+    },
+    {
+      "id": "cjII4_29",
+      "fi": "minä pukeudun",
+      "en": "I get dressed"
+    },
+    {
+      "id": "cjII4_30",
+      "fi": "sinä pukeudut",
+      "en": "you get dressed"
+    },
+    {
+      "id": "cjII4_31",
+      "fi": "hän pukeutuu",
+      "en": "he/she gets dressed"
+    },
+    {
+      "id": "cjII4_32",
+      "fi": "me pukeudumme",
+      "en": "we get dressed (formal/written)"
+    },
+    {
+      "id": "cjII4_33",
+      "fi": "me pukeudutaan",
+      "en": "we get dressed (spoken)"
+    },
+    {
+      "id": "cjII4_34",
+      "fi": "te pukeudutte",
+      "en": "y'all get dressed"
+    },
+    {
+      "id": "cjII4_35",
+      "fi": "he pukeutuvat",
+      "en": "they get dressed (formal/written)"
+    },
+    {
+      "id": "cjII4_35n",
+      "fi": "ne pukeutuu",
+      "en": "they get dressed (spoken)"
+    }
+  ]
+}

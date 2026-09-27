@@ -1,0 +1,207 @@
+{
+  "name": "Conjugations IV-3",
+  "group": "Conjugations",
+  "quiz": false,
+  "cards": [
+    {
+      "id": "cjIV3_01",
+      "fi": "minä valitsen",
+      "en": "I choose"
+    },
+    {
+      "id": "cjIV3_02",
+      "fi": "sinä valitset",
+      "en": "you choose"
+    },
+    {
+      "id": "cjIV3_03",
+      "fi": "hän valitsee",
+      "en": "he/she chooses"
+    },
+    {
+      "id": "cjIV3_04",
+      "fi": "me valitsemme",
+      "en": "we choose (formal/written)"
+    },
+    {
+      "id": "cjIV3_05",
+      "fi": "me valitaan",
+      "en": "we choose (spoken)"
+    },
+    {
+      "id": "cjIV3_06",
+      "fi": "te valitsette",
+      "en": "y'all choose"
+    },
+    {
+      "id": "cjIV3_07",
+      "fi": "he valitsevat",
+      "en": "they choose (formal/written)"
+    },
+    {
+      "id": "cjIV3_07n",
+      "fi": "ne valitsee",
+      "en": "they choose (spoken)"
+    },
+    {
+      "id": "cjIV3_08",
+      "fi": "minä suljen",
+      "en": "I close"
+    },
+    {
+      "id": "cjIV3_09",
+      "fi": "sinä suljet",
+      "en": "you close"
+    },
+    {
+      "id": "cjIV3_10",
+      "fi": "hän sulkee",
+      "en": "he/she closes"
+    },
+    {
+      "id": "cjIV3_11",
+      "fi": "me suljemme",
+      "en": "we close (formal/written)"
+    },
+    {
+      "id": "cjIV3_12",
+      "fi": "me suljetaan",
+      "en": "we close (spoken)"
+    },
+    {
+      "id": "cjIV3_13",
+      "fi": "te suljette",
+      "en": "y'all close"
+    },
+    {
+      "id": "cjIV3_14",
+      "fi": "he sulkevat",
+      "en": "they close (formal/written)"
+    },
+    {
+      "id": "cjIV3_14n",
+      "fi": "ne sulkee",
+      "en": "they close (spoken)"
+    },
+    {
+      "id": "cjIV3_15",
+      "fi": "minä rikon",
+      "en": "I break"
+    },
+    {
+      "id": "cjIV3_16",
+      "fi": "sinä rikot",
+      "en": "you break"
+    },
+    {
+      "id": "cjIV3_17",
+      "fi": "hän rikkoo",
+      "en": "he/she breaks"
+    },
+    {
+      "id": "cjIV3_18",
+      "fi": "me rikomme",
+      "en": "we break (formal/written)"
+    },
+    {
+      "id": "cjIV3_19",
+      "fi": "me rikotaan",
+      "en": "we break (spoken)"
+    },
+    {
+      "id": "cjIV3_20",
+      "fi": "te rikotte",
+      "en": "y'all break"
+    },
+    {
+      "id": "cjIV3_21",
+      "fi": "he rikkovat",
+      "en": "they break (formal/written)"
+    },
+    {
+      "id": "cjIV3_21n",
+      "fi": "ne rikkoo",
+      "en": "they break (spoken)"
+    },
+    {
+      "id": "cjIV3_22",
+      "fi": "minä löydän",
+      "en": "I find"
+    },
+    {
+      "id": "cjIV3_23",
+      "fi": "sinä löydät",
+      "en": "you find"
+    },
+    {
+      "id": "cjIV3_24",
+      "fi": "hän löytää",
+      "en": "he/she finds"
+    },
+    {
+      "id": "cjIV3_25",
+      "fi": "me löydämme",
+      "en": "we find (formal/written)"
+    },
+    {
+      "id": "cjIV3_26",
+      "fi": "me löydetään",
+      "en": "we find (spoken)"
+    },
+    {
+      "id": "cjIV3_27",
+      "fi": "te löydätte",
+      "en": "y'all find"
+    },
+    {
+      "id": "cjIV3_28",
+      "fi": "he löytävät",
+      "en": "they find (formal/written)"
+    },
+    {
+      "id": "cjIV3_28n",
+      "fi": "ne löytää",
+      "en": "they find (spoken)"
+    },
+    {
+      "id": "cjIV3_29",
+      "fi": "minä rakennan",
+      "en": "I build"
+    },
+    {
+      "id": "cjIV3_30",
+      "fi": "sinä rakennat",
+      "en": "you build"
+    },
+    {
+      "id": "cjIV3_31",
+      "fi": "hän rakentaa",
+      "en": "he/she builds"
+    },
+    {
+      "id": "cjIV3_32",
+      "fi": "me rakennamme",
+      "en": "we build (formal/written)"
+    },
+    {
+      "id": "cjIV3_33",
+      "fi": "me rakennetaan",
+      "en": "we build (spoken)"
+    },
+    {
+      "id": "cjIV3_34",
+      "fi": "te rakennatte",
+      "en": "y'all build"
+    },
+    {
+      "id": "cjIV3_35",
+      "fi": "he rakentavat",
+      "en": "they build (formal/written)"
+    },
+    {
+      "id": "cjIV3_35n",
+      "fi": "ne rakentaa",
+      "en": "they build (spoken)"
+    }
+  ]
+}

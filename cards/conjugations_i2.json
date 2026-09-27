@@ -1,0 +1,207 @@
+{
+  "name": "Conjugations I-2",
+  "group": "Conjugations",
+  "quiz": false,
+  "cards": [
+    {
+      "id": "cj201",
+      "fi": "minä syön",
+      "en": "I eat"
+    },
+    {
+      "id": "cj202",
+      "fi": "sinä syöt",
+      "en": "you eat"
+    },
+    {
+      "id": "cj203",
+      "fi": "hän syö",
+      "en": "he/she eats"
+    },
+    {
+      "id": "cj204",
+      "fi": "me syömme",
+      "en": "we eat (formal/written)"
+    },
+    {
+      "id": "cj205",
+      "fi": "me syödään",
+      "en": "we eat (spoken)"
+    },
+    {
+      "id": "cj206",
+      "fi": "te syötte",
+      "en": "y'all eat"
+    },
+    {
+      "id": "cj207",
+      "fi": "he syövät",
+      "en": "they eat (formal/written)"
+    },
+    {
+      "id": "cj207n",
+      "fi": "ne syö",
+      "en": "they eat (spoken)"
+    },
+    {
+      "id": "cj208",
+      "fi": "minä juon",
+      "en": "I drink"
+    },
+    {
+      "id": "cj209",
+      "fi": "sinä juot",
+      "en": "you drink"
+    },
+    {
+      "id": "cj210",
+      "fi": "hän juo",
+      "en": "he/she drinks"
+    },
+    {
+      "id": "cj211",
+      "fi": "me juomme",
+      "en": "we drink (formal/written)"
+    },
+    {
+      "id": "cj212",
+      "fi": "me juodaan",
+      "en": "we drink (spoken)"
+    },
+    {
+      "id": "cj213",
+      "fi": "te juotte",
+      "en": "y'all drink"
+    },
+    {
+      "id": "cj214",
+      "fi": "he juovat",
+      "en": "they drink (formal/written)"
+    },
+    {
+      "id": "cj214n",
+      "fi": "ne juo",
+      "en": "they drink (spoken)"
+    },
+    {
+      "id": "cj215",
+      "fi": "minä voin",
+      "en": "I can"
+    },
+    {
+      "id": "cj216",
+      "fi": "sinä voit",
+      "en": "you can"
+    },
+    {
+      "id": "cj217",
+      "fi": "hän voi",
+      "en": "he/she can"
+    },
+    {
+      "id": "cj218",
+      "fi": "me voimme",
+      "en": "we can (formal/written)"
+    },
+    {
+      "id": "cj219",
+      "fi": "me voidaan",
+      "en": "we can (spoken)"
+    },
+    {
+      "id": "cj220",
+      "fi": "te voitte",
+      "en": "y'all can"
+    },
+    {
+      "id": "cj221",
+      "fi": "he voivat",
+      "en": "they can (formal/written)"
+    },
+    {
+      "id": "cj221n",
+      "fi": "ne voi",
+      "en": "they can (spoken)"
+    },
+    {
+      "id": "cj222",
+      "fi": "minä saan",
+      "en": "I get/receive"
+    },
+    {
+      "id": "cj223",
+      "fi": "sinä saat",
+      "en": "you get/receive"
+    },
+    {
+      "id": "cj224",
+      "fi": "hän saa",
+      "en": "he/she gets/receives"
+    },
+    {
+      "id": "cj225",
+      "fi": "me saamme",
+      "en": "we get/receive (formal/written)"
+    },
+    {
+      "id": "cj226",
+      "fi": "me saadaan",
+      "en": "we get/receive (spoken)"
+    },
+    {
+      "id": "cj227",
+      "fi": "te saatte",
+      "en": "y'all get/receive"
+    },
+    {
+      "id": "cj228",
+      "fi": "he saavat",
+      "en": "they get/receive (formal/written)"
+    },
+    {
+      "id": "cj228n",
+      "fi": "ne saa",
+      "en": "they get/receive (spoken)"
+    },
+    {
+      "id": "cj229",
+      "fi": "minä teen",
+      "en": "I do/make"
+    },
+    {
+      "id": "cj230",
+      "fi": "sinä teet",
+      "en": "you do/make"
+    },
+    {
+      "id": "cj231",
+      "fi": "hän tekee",
+      "en": "he/she does/makes"
+    },
+    {
+      "id": "cj232",
+      "fi": "me teemme",
+      "en": "we do/make (formal/written)"
+    },
+    {
+      "id": "cj233",
+      "fi": "me tehdään",
+      "en": "we do/make (spoken)"
+    },
+    {
+      "id": "cj234",
+      "fi": "te teette",
+      "en": "y'all do/make"
+    },
+    {
+      "id": "cj235",
+      "fi": "he tekevät",
+      "en": "they do/make (formal/written)"
+    },
+    {
+      "id": "cj235n",
+      "fi": "ne tekee",
+      "en": "they do/make (spoken)"
+    }
+  ]
+}

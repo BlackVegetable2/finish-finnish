@@ -1,0 +1,207 @@
+{
+  "name": "Conjugations IV-2",
+  "group": "Conjugations",
+  "quiz": false,
+  "cards": [
+    {
+      "id": "cjIV2_01",
+      "fi": "minä onnistun",
+      "en": "I succeed"
+    },
+    {
+      "id": "cjIV2_02",
+      "fi": "sinä onnistut",
+      "en": "you succeed"
+    },
+    {
+      "id": "cjIV2_03",
+      "fi": "hän onnistuu",
+      "en": "he/she succeeds"
+    },
+    {
+      "id": "cjIV2_04",
+      "fi": "me onnistumme",
+      "en": "we succeed (formal/written)"
+    },
+    {
+      "id": "cjIV2_05",
+      "fi": "me onnistutaan",
+      "en": "we succeed (spoken)"
+    },
+    {
+      "id": "cjIV2_06",
+      "fi": "te onnistutte",
+      "en": "y'all succeed"
+    },
+    {
+      "id": "cjIV2_07",
+      "fi": "he onnistuvat",
+      "en": "they succeed (formal/written)"
+    },
+    {
+      "id": "cjIV2_07n",
+      "fi": "ne onnistuu",
+      "en": "they succeed (spoken)"
+    },
+    {
+      "id": "cjIV2_08",
+      "fi": "minä epäonnistun",
+      "en": "I fail"
+    },
+    {
+      "id": "cjIV2_09",
+      "fi": "sinä epäonnistut",
+      "en": "you fail"
+    },
+    {
+      "id": "cjIV2_10",
+      "fi": "hän epäonnistuu",
+      "en": "he/she fails"
+    },
+    {
+      "id": "cjIV2_11",
+      "fi": "me epäonnistumme",
+      "en": "we fail (formal/written)"
+    },
+    {
+      "id": "cjIV2_12",
+      "fi": "me epäonnistutaan",
+      "en": "we fail (spoken)"
+    },
+    {
+      "id": "cjIV2_13",
+      "fi": "te epäonnistutte",
+      "en": "y'all fail"
+    },
+    {
+      "id": "cjIV2_14",
+      "fi": "he epäonnistuvat",
+      "en": "they fail (formal/written)"
+    },
+    {
+      "id": "cjIV2_14n",
+      "fi": "ne epäonnistuu",
+      "en": "they fail (spoken)"
+    },
+    {
+      "id": "cjIV2_15",
+      "fi": "minä valmistan",
+      "en": "I prepare/make"
+    },
+    {
+      "id": "cjIV2_16",
+      "fi": "sinä valmistat",
+      "en": "you prepare/make"
+    },
+    {
+      "id": "cjIV2_17",
+      "fi": "hän valmistaa",
+      "en": "he/she prepares/makes"
+    },
+    {
+      "id": "cjIV2_18",
+      "fi": "me valmistamme",
+      "en": "we prepare/make (formal/written)"
+    },
+    {
+      "id": "cjIV2_19",
+      "fi": "me valmistetaan",
+      "en": "we prepare/make (spoken)"
+    },
+    {
+      "id": "cjIV2_20",
+      "fi": "te valmistatte",
+      "en": "y'all prepare/make"
+    },
+    {
+      "id": "cjIV2_21",
+      "fi": "he valmistavat",
+      "en": "they prepare/make (formal/written)"
+    },
+    {
+      "id": "cjIV2_21n",
+      "fi": "ne valmistaa",
+      "en": "they prepare/make (spoken)"
+    },
+    {
+      "id": "cjIV2_22",
+      "fi": "minä etsin",
+      "en": "I search for"
+    },
+    {
+      "id": "cjIV2_23",
+      "fi": "sinä etsit",
+      "en": "you search for"
+    },
+    {
+      "id": "cjIV2_24",
+      "fi": "hän etsii",
+      "en": "he/she searches for"
+    },
+    {
+      "id": "cjIV2_25",
+      "fi": "me etsimme",
+      "en": "we search for (formal/written)"
+    },
+    {
+      "id": "cjIV2_26",
+      "fi": "me etsitään",
+      "en": "we search for (spoken)"
+    },
+    {
+      "id": "cjIV2_27",
+      "fi": "te etsitte",
+      "en": "y'all search for"
+    },
+    {
+      "id": "cjIV2_28",
+      "fi": "he etsivät",
+      "en": "they search for (formal/written)"
+    },
+    {
+      "id": "cjIV2_28n",
+      "fi": "ne etsii",
+      "en": "they search for (spoken)"
+    },
+    {
+      "id": "cjIV2_29",
+      "fi": "minä tarvitsen",
+      "en": "I need"
+    },
+    {
+      "id": "cjIV2_30",
+      "fi": "sinä tarvitset",
+      "en": "you need"
+    },
+    {
+      "id": "cjIV2_31",
+      "fi": "hän tarvitsee",
+      "en": "he/she needs"
+    },
+    {
+      "id": "cjIV2_32",
+      "fi": "me tarvitsemme",
+      "en": "we need (formal/written)"
+    },
+    {
+      "id": "cjIV2_33",
+      "fi": "me tarvitaan",
+      "en": "we need (spoken)"
+    },
+    {
+      "id": "cjIV2_34",
+      "fi": "te tarvitsette",
+      "en": "y'all need"
+    },
+    {
+      "id": "cjIV2_35",
+      "fi": "he tarvitsevat",
+      "en": "they need (formal/written)"
+    },
+    {
+      "id": "cjIV2_35n",
+      "fi": "ne tarvitsee",
+      "en": "they need (spoken)"
+    }
+  ]
+}

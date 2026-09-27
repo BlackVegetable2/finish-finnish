@@ -1,0 +1,207 @@
+{
+  "name": "Conjugations III-4",
+  "group": "Conjugations",
+  "quiz": false,
+  "cards": [
+    {
+      "id": "cjIII4_01",
+      "fi": "minä unohdan",
+      "en": "I forget"
+    },
+    {
+      "id": "cjIII4_02",
+      "fi": "sinä unohdat",
+      "en": "you forget"
+    },
+    {
+      "id": "cjIII4_03",
+      "fi": "hän unohtaa",
+      "en": "he/she forgets"
+    },
+    {
+      "id": "cjIII4_04",
+      "fi": "me unohdamme",
+      "en": "we forget (formal/written)"
+    },
+    {
+      "id": "cjIII4_05",
+      "fi": "me unohdetaan",
+      "en": "we forget (spoken)"
+    },
+    {
+      "id": "cjIII4_06",
+      "fi": "te unohdatte",
+      "en": "y'all forget"
+    },
+    {
+      "id": "cjIII4_07",
+      "fi": "he unohtavat",
+      "en": "they forget (formal/written)"
+    },
+    {
+      "id": "cjIII4_07n",
+      "fi": "ne unohtaa",
+      "en": "they forget (spoken)"
+    },
+    {
+      "id": "cjIII4_08",
+      "fi": "minä tunnen",
+      "en": "I know/feel"
+    },
+    {
+      "id": "cjIII4_09",
+      "fi": "sinä tunnet",
+      "en": "you know/feel"
+    },
+    {
+      "id": "cjIII4_10",
+      "fi": "hän tuntee",
+      "en": "he/she knows/feels"
+    },
+    {
+      "id": "cjIII4_11",
+      "fi": "me tunnemme",
+      "en": "we know/feel (formal/written)"
+    },
+    {
+      "id": "cjIII4_12",
+      "fi": "me tunnetaan",
+      "en": "we know/feel (spoken)"
+    },
+    {
+      "id": "cjIII4_13",
+      "fi": "te tunnette",
+      "en": "y'all know/feel"
+    },
+    {
+      "id": "cjIII4_14",
+      "fi": "he tuntevat",
+      "en": "they know/feel (formal/written)"
+    },
+    {
+      "id": "cjIII4_14n",
+      "fi": "ne tuntee",
+      "en": "they know/feel (spoken)"
+    },
+    {
+      "id": "cjIII4_15",
+      "fi": "minä huudan",
+      "en": "I shout"
+    },
+    {
+      "id": "cjIII4_16",
+      "fi": "sinä huudat",
+      "en": "you shout"
+    },
+    {
+      "id": "cjIII4_17",
+      "fi": "hän huutaa",
+      "en": "he/she shouts"
+    },
+    {
+      "id": "cjIII4_18",
+      "fi": "me huudamme",
+      "en": "we shout (formal/written)"
+    },
+    {
+      "id": "cjIII4_19",
+      "fi": "me huudetaan",
+      "en": "we shout (spoken)"
+    },
+    {
+      "id": "cjIII4_20",
+      "fi": "te huudatte",
+      "en": "y'all shout"
+    },
+    {
+      "id": "cjIII4_21",
+      "fi": "he huutavat",
+      "en": "they shout (formal/written)"
+    },
+    {
+      "id": "cjIII4_21n",
+      "fi": "ne huutaa",
+      "en": "they shout (spoken)"
+    },
+    {
+      "id": "cjIII4_22",
+      "fi": "minä selitän",
+      "en": "I explain"
+    },
+    {
+      "id": "cjIII4_23",
+      "fi": "sinä selität",
+      "en": "you explain"
+    },
+    {
+      "id": "cjIII4_24",
+      "fi": "hän selittää",
+      "en": "he/she explains"
+    },
+    {
+      "id": "cjIII4_25",
+      "fi": "me selitämme",
+      "en": "we explain (formal/written)"
+    },
+    {
+      "id": "cjIII4_26",
+      "fi": "me selitetään",
+      "en": "we explain (spoken)"
+    },
+    {
+      "id": "cjIII4_27",
+      "fi": "te selitätte",
+      "en": "y'all explain"
+    },
+    {
+      "id": "cjIII4_28",
+      "fi": "he selittävät",
+      "en": "they explain (formal/written)"
+    },
+    {
+      "id": "cjIII4_28n",
+      "fi": "ne selittää",
+      "en": "they explain (spoken)"
+    },
+    {
+      "id": "cjIII4_29",
+      "fi": "minä päätän",
+      "en": "I decide"
+    },
+    {
+      "id": "cjIII4_30",
+      "fi": "sinä päätät",
+      "en": "you decide"
+    },
+    {
+      "id": "cjIII4_31",
+      "fi": "hän päättää",
+      "en": "he/she decides"
+    },
+    {
+      "id": "cjIII4_32",
+      "fi": "me päätämme",
+      "en": "we decide (formal/written)"
+    },
+    {
+      "id": "cjIII4_33",
+      "fi": "me päätetään",
+      "en": "we decide (spoken)"
+    },
+    {
+      "id": "cjIII4_34",
+      "fi": "te päätätte",
+      "en": "y'all decide"
+    },
+    {
+      "id": "cjIII4_35",
+      "fi": "he päättävät",
+      "en": "they decide (formal/written)"
+    },
+    {
+      "id": "cjIII4_35n",
+      "fi": "ne päättää",
+      "en": "they decide (spoken)"
+    }
+  ]
+}

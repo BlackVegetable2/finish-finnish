@@ -1,0 +1,207 @@
+{
+  "name": "Conjugations II-1",
+  "group": "Conjugations",
+  "quiz": false,
+  "cards": [
+    {
+      "id": "cjII1_01",
+      "fi": "minä nousen",
+      "en": "I get up"
+    },
+    {
+      "id": "cjII1_02",
+      "fi": "sinä nouset",
+      "en": "you get up"
+    },
+    {
+      "id": "cjII1_03",
+      "fi": "hän nousee",
+      "en": "he/she gets up"
+    },
+    {
+      "id": "cjII1_04",
+      "fi": "me nousemme",
+      "en": "we get up (formal/written)"
+    },
+    {
+      "id": "cjII1_05",
+      "fi": "me noustaan",
+      "en": "we get up (spoken)"
+    },
+    {
+      "id": "cjII1_06",
+      "fi": "te nousette",
+      "en": "y'all get up"
+    },
+    {
+      "id": "cjII1_07",
+      "fi": "he nousevat",
+      "en": "they get up (formal/written)"
+    },
+    {
+      "id": "cjII1_07n",
+      "fi": "ne nousee",
+      "en": "they get up (spoken)"
+    },
+    {
+      "id": "cjII1_08",
+      "fi": "minä kävelen",
+      "en": "I walk"
+    },
+    {
+      "id": "cjII1_09",
+      "fi": "sinä kävelet",
+      "en": "you walk"
+    },
+    {
+      "id": "cjII1_10",
+      "fi": "hän kävelee",
+      "en": "he/she walks"
+    },
+    {
+      "id": "cjII1_11",
+      "fi": "me kävelemme",
+      "en": "we walk (formal/written)"
+    },
+    {
+      "id": "cjII1_12",
+      "fi": "me kävellään",
+      "en": "we walk (spoken)"
+    },
+    {
+      "id": "cjII1_13",
+      "fi": "te kävelette",
+      "en": "y'all walk"
+    },
+    {
+      "id": "cjII1_14",
+      "fi": "he kävelevät",
+      "en": "they walk (formal/written)"
+    },
+    {
+      "id": "cjII1_14n",
+      "fi": "ne kävelee",
+      "en": "they walk (spoken)"
+    },
+    {
+      "id": "cjII1_15",
+      "fi": "minä juoksen",
+      "en": "I run"
+    },
+    {
+      "id": "cjII1_16",
+      "fi": "sinä juokset",
+      "en": "you run"
+    },
+    {
+      "id": "cjII1_17",
+      "fi": "hän juoksee",
+      "en": "he/she runs"
+    },
+    {
+      "id": "cjII1_18",
+      "fi": "me juoksemme",
+      "en": "we run (formal/written)"
+    },
+    {
+      "id": "cjII1_19",
+      "fi": "me juostaan",
+      "en": "we run (spoken)"
+    },
+    {
+      "id": "cjII1_20",
+      "fi": "te juoksette",
+      "en": "y'all run"
+    },
+    {
+      "id": "cjII1_21",
+      "fi": "he juoksevat",
+      "en": "they run (formal/written)"
+    },
+    {
+      "id": "cjII1_21n",
+      "fi": "ne juoksee",
+      "en": "they run (spoken)"
+    },
+    {
+      "id": "cjII1_22",
+      "fi": "minä myyn",
+      "en": "I sell"
+    },
+    {
+      "id": "cjII1_23",
+      "fi": "sinä myyt",
+      "en": "you sell"
+    },
+    {
+      "id": "cjII1_24",
+      "fi": "hän myy",
+      "en": "he/she sells"
+    },
+    {
+      "id": "cjII1_25",
+      "fi": "me myymme",
+      "en": "we sell (formal/written)"
+    },
+    {
+      "id": "cjII1_26",
+      "fi": "me myydään",
+      "en": "we sell (spoken)"
+    },
+    {
+      "id": "cjII1_27",
+      "fi": "te myytte",
+      "en": "y'all sell"
+    },
+    {
+      "id": "cjII1_28",
+      "fi": "he myyvät",
+      "en": "they sell (formal/written)"
+    },
+    {
+      "id": "cjII1_28n",
+      "fi": "ne myy",
+      "en": "they sell (spoken)"
+    },
+    {
+      "id": "cjII1_29",
+      "fi": "minä maksan",
+      "en": "I pay"
+    },
+    {
+      "id": "cjII1_30",
+      "fi": "sinä maksat",
+      "en": "you pay"
+    },
+    {
+      "id": "cjII1_31",
+      "fi": "hän maksaa",
+      "en": "he/she pays"
+    },
+    {
+      "id": "cjII1_32",
+      "fi": "me maksamme",
+      "en": "we pay (formal/written)"
+    },
+    {
+      "id": "cjII1_33",
+      "fi": "me maksetaan",
+      "en": "we pay (spoken)"
+    },
+    {
+      "id": "cjII1_34",
+      "fi": "te maksatte",
+      "en": "y'all pay"
+    },
+    {
+      "id": "cjII1_35",
+      "fi": "he maksavat",
+      "en": "they pay (formal/written)"
+    },
+    {
+      "id": "cjII1_35n",
+      "fi": "ne maksaa",
+      "en": "they pay (spoken)"
+    }
+  ]
+}

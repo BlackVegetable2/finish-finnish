@@ -1,0 +1,207 @@
+{
+  "name": "Conjugations II-2",
+  "group": "Conjugations",
+  "quiz": false,
+  "cards": [
+    {
+      "id": "cjII2_01",
+      "fi": "minä istun",
+      "en": "I sit"
+    },
+    {
+      "id": "cjII2_02",
+      "fi": "sinä istut",
+      "en": "you sit"
+    },
+    {
+      "id": "cjII2_03",
+      "fi": "hän istuu",
+      "en": "he/she sits"
+    },
+    {
+      "id": "cjII2_04",
+      "fi": "me istumme",
+      "en": "we sit (formal/written)"
+    },
+    {
+      "id": "cjII2_05",
+      "fi": "me istutaan",
+      "en": "we sit (spoken)"
+    },
+    {
+      "id": "cjII2_06",
+      "fi": "te istutte",
+      "en": "y'all sit"
+    },
+    {
+      "id": "cjII2_07",
+      "fi": "he istuvat",
+      "en": "they sit (formal/written)"
+    },
+    {
+      "id": "cjII2_07n",
+      "fi": "ne istuu",
+      "en": "they sit (spoken)"
+    },
+    {
+      "id": "cjII2_08",
+      "fi": "minä seison",
+      "en": "I stand"
+    },
+    {
+      "id": "cjII2_09",
+      "fi": "sinä seisot",
+      "en": "you stand"
+    },
+    {
+      "id": "cjII2_10",
+      "fi": "hän seisoo",
+      "en": "he/she stands"
+    },
+    {
+      "id": "cjII2_11",
+      "fi": "me seisomme",
+      "en": "we stand (formal/written)"
+    },
+    {
+      "id": "cjII2_12",
+      "fi": "me seistään",
+      "en": "we stand (spoken)"
+    },
+    {
+      "id": "cjII2_13",
+      "fi": "te seisotte",
+      "en": "y'all stand"
+    },
+    {
+      "id": "cjII2_14",
+      "fi": "he seisovat",
+      "en": "they stand (formal/written)"
+    },
+    {
+      "id": "cjII2_14n",
+      "fi": "ne seisoo",
+      "en": "they stand (spoken)"
+    },
+    {
+      "id": "cjII2_15",
+      "fi": "minä ajan",
+      "en": "I drive"
+    },
+    {
+      "id": "cjII2_16",
+      "fi": "sinä ajat",
+      "en": "you drive"
+    },
+    {
+      "id": "cjII2_17",
+      "fi": "hän ajaa",
+      "en": "he/she drives"
+    },
+    {
+      "id": "cjII2_18",
+      "fi": "me ajamme",
+      "en": "we drive (formal/written)"
+    },
+    {
+      "id": "cjII2_19",
+      "fi": "me ajetaan",
+      "en": "we drive (spoken)"
+    },
+    {
+      "id": "cjII2_20",
+      "fi": "te ajatte",
+      "en": "y'all drive"
+    },
+    {
+      "id": "cjII2_21",
+      "fi": "he ajavat",
+      "en": "they drive (formal/written)"
+    },
+    {
+      "id": "cjII2_21n",
+      "fi": "ne ajaa",
+      "en": "they drive (spoken)"
+    },
+    {
+      "id": "cjII2_22",
+      "fi": "minä ostan",
+      "en": "I buy"
+    },
+    {
+      "id": "cjII2_23",
+      "fi": "sinä ostat",
+      "en": "you buy"
+    },
+    {
+      "id": "cjII2_24",
+      "fi": "hän ostaa",
+      "en": "he/she buys"
+    },
+    {
+      "id": "cjII2_25",
+      "fi": "me ostamme",
+      "en": "we buy (formal/written)"
+    },
+    {
+      "id": "cjII2_26",
+      "fi": "me ostetaan",
+      "en": "we buy (spoken)"
+    },
+    {
+      "id": "cjII2_27",
+      "fi": "te ostatte",
+      "en": "y'all buy"
+    },
+    {
+      "id": "cjII2_28",
+      "fi": "he ostavat",
+      "en": "they buy (formal/written)"
+    },
+    {
+      "id": "cjII2_28n",
+      "fi": "ne ostaa",
+      "en": "they buy (spoken)"
+    },
+    {
+      "id": "cjII2_29",
+      "fi": "minä matkustan",
+      "en": "I travel"
+    },
+    {
+      "id": "cjII2_30",
+      "fi": "sinä matkustat",
+      "en": "you travel"
+    },
+    {
+      "id": "cjII2_31",
+      "fi": "hän matkustaa",
+      "en": "he/she travels"
+    },
+    {
+      "id": "cjII2_32",
+      "fi": "me matkustamme",
+      "en": "we travel (formal/written)"
+    },
+    {
+      "id": "cjII2_33",
+      "fi": "me matkustetaan",
+      "en": "we travel (spoken)"
+    },
+    {
+      "id": "cjII2_34",
+      "fi": "te matkustatte",
+      "en": "y'all travel"
+    },
+    {
+      "id": "cjII2_35",
+      "fi": "he matkustavat",
+      "en": "they travel (formal/written)"
+    },
+    {
+      "id": "cjII2_35n",
+      "fi": "ne matkustaa",
+      "en": "they travel (spoken)"
+    }
+  ]
+}

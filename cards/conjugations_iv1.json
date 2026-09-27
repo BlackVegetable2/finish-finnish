@@ -1,0 +1,207 @@
+{
+  "name": "Conjugations IV-1",
+  "group": "Conjugations",
+  "quiz": false,
+  "cards": [
+    {
+      "id": "cjIV1_01",
+      "fi": "minä työskentelen",
+      "en": "I work"
+    },
+    {
+      "id": "cjIV1_02",
+      "fi": "sinä työskentelet",
+      "en": "you work"
+    },
+    {
+      "id": "cjIV1_03",
+      "fi": "hän työskentelee",
+      "en": "he/she works"
+    },
+    {
+      "id": "cjIV1_04",
+      "fi": "me työskentelemme",
+      "en": "we work (formal/written)"
+    },
+    {
+      "id": "cjIV1_05",
+      "fi": "me työskennellään",
+      "en": "we work (spoken)"
+    },
+    {
+      "id": "cjIV1_06",
+      "fi": "te työskentelette",
+      "en": "y'all work"
+    },
+    {
+      "id": "cjIV1_07",
+      "fi": "he työskentelevät",
+      "en": "they work (formal/written)"
+    },
+    {
+      "id": "cjIV1_07n",
+      "fi": "ne työskentelee",
+      "en": "they work (spoken)"
+    },
+    {
+      "id": "cjIV1_08",
+      "fi": "minä avaan",
+      "en": "I open"
+    },
+    {
+      "id": "cjIV1_09",
+      "fi": "sinä avaat",
+      "en": "you open"
+    },
+    {
+      "id": "cjIV1_10",
+      "fi": "hän avaa",
+      "en": "he/she opens"
+    },
+    {
+      "id": "cjIV1_11",
+      "fi": "me avaamme",
+      "en": "we open (formal/written)"
+    },
+    {
+      "id": "cjIV1_12",
+      "fi": "me avataan",
+      "en": "we open (spoken)"
+    },
+    {
+      "id": "cjIV1_13",
+      "fi": "te avaatte",
+      "en": "y'all open"
+    },
+    {
+      "id": "cjIV1_14",
+      "fi": "he avaavat",
+      "en": "they open (formal/written)"
+    },
+    {
+      "id": "cjIV1_14n",
+      "fi": "ne avaa",
+      "en": "they open (spoken)"
+    },
+    {
+      "id": "cjIV1_15",
+      "fi": "minä siivoan",
+      "en": "I clean"
+    },
+    {
+      "id": "cjIV1_16",
+      "fi": "sinä siivoat",
+      "en": "you clean"
+    },
+    {
+      "id": "cjIV1_17",
+      "fi": "hän siivoaa",
+      "en": "he/she cleans"
+    },
+    {
+      "id": "cjIV1_18",
+      "fi": "me siivoamme",
+      "en": "we clean (formal/written)"
+    },
+    {
+      "id": "cjIV1_19",
+      "fi": "me siivotaan",
+      "en": "we clean (spoken)"
+    },
+    {
+      "id": "cjIV1_20",
+      "fi": "te siivoatte",
+      "en": "y'all clean"
+    },
+    {
+      "id": "cjIV1_21",
+      "fi": "he siivoavat",
+      "en": "they clean (formal/written)"
+    },
+    {
+      "id": "cjIV1_21n",
+      "fi": "ne siivoaa",
+      "en": "they clean (spoken)"
+    },
+    {
+      "id": "cjIV1_22",
+      "fi": "minä korjaan",
+      "en": "I fix/repair"
+    },
+    {
+      "id": "cjIV1_23",
+      "fi": "sinä korjaat",
+      "en": "you fix/repair"
+    },
+    {
+      "id": "cjIV1_24",
+      "fi": "hän korjaa",
+      "en": "he/she fixes/repairs"
+    },
+    {
+      "id": "cjIV1_25",
+      "fi": "me korjaamme",
+      "en": "we fix/repair (formal/written)"
+    },
+    {
+      "id": "cjIV1_26",
+      "fi": "me korjataan",
+      "en": "we fix/repair (spoken)"
+    },
+    {
+      "id": "cjIV1_27",
+      "fi": "te korjaatte",
+      "en": "y'all fix/repair"
+    },
+    {
+      "id": "cjIV1_28",
+      "fi": "he korjaavat",
+      "en": "they fix/repair (formal/written)"
+    },
+    {
+      "id": "cjIV1_28n",
+      "fi": "ne korjaa",
+      "en": "they fix/repair (spoken)"
+    },
+    {
+      "id": "cjIV1_29",
+      "fi": "minä jatkan",
+      "en": "I continue"
+    },
+    {
+      "id": "cjIV1_30",
+      "fi": "sinä jatkat",
+      "en": "you continue"
+    },
+    {
+      "id": "cjIV1_31",
+      "fi": "hän jatkaa",
+      "en": "he/she continues"
+    },
+    {
+      "id": "cjIV1_32",
+      "fi": "me jatkamme",
+      "en": "we continue (formal/written)"
+    },
+    {
+      "id": "cjIV1_33",
+      "fi": "me jatketaan",
+      "en": "we continue (spoken)"
+    },
+    {
+      "id": "cjIV1_34",
+      "fi": "te jatkatte",
+      "en": "y'all continue"
+    },
+    {
+      "id": "cjIV1_35",
+      "fi": "he jatkavat",
+      "en": "they continue (formal/written)"
+    },
+    {
+      "id": "cjIV1_35n",
+      "fi": "ne jatkaa",
+      "en": "they continue (spoken)"
+    }
+  ]
+}

@@ -1,0 +1,207 @@
+{
+  "name": "Conjugations III-2",
+  "group": "Conjugations",
+  "quiz": false,
+  "cards": [
+    {
+      "id": "cjIII2_01",
+      "fi": "minä muistan",
+      "en": "I remember"
+    },
+    {
+      "id": "cjIII2_02",
+      "fi": "sinä muistat",
+      "en": "you remember"
+    },
+    {
+      "id": "cjIII2_03",
+      "fi": "hän muistaa",
+      "en": "he/she remembers"
+    },
+    {
+      "id": "cjIII2_04",
+      "fi": "me muistamme",
+      "en": "we remember (formal/written)"
+    },
+    {
+      "id": "cjIII2_05",
+      "fi": "me muistetaan",
+      "en": "we remember (spoken)"
+    },
+    {
+      "id": "cjIII2_06",
+      "fi": "te muistatte",
+      "en": "y'all remember"
+    },
+    {
+      "id": "cjIII2_07",
+      "fi": "he muistavat",
+      "en": "they remember (formal/written)"
+    },
+    {
+      "id": "cjIII2_07n",
+      "fi": "ne muistaa",
+      "en": "they remember (spoken)"
+    },
+    {
+      "id": "cjIII2_08",
+      "fi": "minä rakastan",
+      "en": "I love"
+    },
+    {
+      "id": "cjIII2_09",
+      "fi": "sinä rakastat",
+      "en": "you love"
+    },
+    {
+      "id": "cjIII2_10",
+      "fi": "hän rakastaa",
+      "en": "he/she loves"
+    },
+    {
+      "id": "cjIII2_11",
+      "fi": "me rakastamme",
+      "en": "we love (formal/written)"
+    },
+    {
+      "id": "cjIII2_12",
+      "fi": "me rakastetaan",
+      "en": "we love (spoken)"
+    },
+    {
+      "id": "cjIII2_13",
+      "fi": "te rakastatte",
+      "en": "y'all love"
+    },
+    {
+      "id": "cjIII2_14",
+      "fi": "he rakastavat",
+      "en": "they love (formal/written)"
+    },
+    {
+      "id": "cjIII2_14n",
+      "fi": "ne rakastaa",
+      "en": "they love (spoken)"
+    },
+    {
+      "id": "cjIII2_15",
+      "fi": "minä toivon",
+      "en": "I hope/wish"
+    },
+    {
+      "id": "cjIII2_16",
+      "fi": "sinä toivot",
+      "en": "you hope/wish"
+    },
+    {
+      "id": "cjIII2_17",
+      "fi": "hän toivoo",
+      "en": "he/she hopes/wishes"
+    },
+    {
+      "id": "cjIII2_18",
+      "fi": "me toivomme",
+      "en": "we hope/wish (formal/written)"
+    },
+    {
+      "id": "cjIII2_19",
+      "fi": "me toivotaan",
+      "en": "we hope/wish (spoken)"
+    },
+    {
+      "id": "cjIII2_20",
+      "fi": "te toivotte",
+      "en": "y'all hope/wish"
+    },
+    {
+      "id": "cjIII2_21",
+      "fi": "he toivovat",
+      "en": "they hope/wish (formal/written)"
+    },
+    {
+      "id": "cjIII2_21n",
+      "fi": "ne toivoo",
+      "en": "they hope/wish (spoken)"
+    },
+    {
+      "id": "cjIII2_22",
+      "fi": "minä uskon",
+      "en": "I believe"
+    },
+    {
+      "id": "cjIII2_23",
+      "fi": "sinä uskot",
+      "en": "you believe"
+    },
+    {
+      "id": "cjIII2_24",
+      "fi": "hän uskoo",
+      "en": "he/she believes"
+    },
+    {
+      "id": "cjIII2_25",
+      "fi": "me uskomme",
+      "en": "we believe (formal/written)"
+    },
+    {
+      "id": "cjIII2_26",
+      "fi": "me uskotaan",
+      "en": "we believe (spoken)"
+    },
+    {
+      "id": "cjIII2_27",
+      "fi": "te uskotte",
+      "en": "y'all believe"
+    },
+    {
+      "id": "cjIII2_28",
+      "fi": "he uskovat",
+      "en": "they believe (formal/written)"
+    },
+    {
+      "id": "cjIII2_28n",
+      "fi": "ne uskoo",
+      "en": "they believe (spoken)"
+    },
+    {
+      "id": "cjIII2_29",
+      "fi": "minä kysyn",
+      "en": "I ask"
+    },
+    {
+      "id": "cjIII2_30",
+      "fi": "sinä kysyt",
+      "en": "you ask"
+    },
+    {
+      "id": "cjIII2_31",
+      "fi": "hän kysyy",
+      "en": "he/she asks"
+    },
+    {
+      "id": "cjIII2_32",
+      "fi": "me kysymme",
+      "en": "we ask (formal/written)"
+    },
+    {
+      "id": "cjIII2_33",
+      "fi": "me kysytään",
+      "en": "we ask (spoken)"
+    },
+    {
+      "id": "cjIII2_34",
+      "fi": "te kysytte",
+      "en": "y'all ask"
+    },
+    {
+      "id": "cjIII2_35",
+      "fi": "he kysyvät",
+      "en": "they ask (formal/written)"
+    },
+    {
+      "id": "cjIII2_35n",
+      "fi": "ne kysyy",
+      "en": "they ask (spoken)"
+    }
+  ]
+}

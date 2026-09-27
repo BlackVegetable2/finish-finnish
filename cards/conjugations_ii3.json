@@ -1,0 +1,207 @@
+{
+  "name": "Conjugations II-3",
+  "group": "Conjugations",
+  "quiz": false,
+  "cards": [
+    {
+      "id": "cjII3_01",
+      "fi": "minä herään",
+      "en": "I wake up"
+    },
+    {
+      "id": "cjII3_02",
+      "fi": "sinä heräät",
+      "en": "you wake up"
+    },
+    {
+      "id": "cjII3_03",
+      "fi": "hän herää",
+      "en": "he/she wakes up"
+    },
+    {
+      "id": "cjII3_04",
+      "fi": "me heräämme",
+      "en": "we wake up (formal/written)"
+    },
+    {
+      "id": "cjII3_05",
+      "fi": "me herätään",
+      "en": "we wake up (spoken)"
+    },
+    {
+      "id": "cjII3_06",
+      "fi": "te heräätte",
+      "en": "y'all wake up"
+    },
+    {
+      "id": "cjII3_07",
+      "fi": "he heräävät",
+      "en": "they wake up (formal/written)"
+    },
+    {
+      "id": "cjII3_07n",
+      "fi": "ne herää",
+      "en": "they wake up (spoken)"
+    },
+    {
+      "id": "cjII3_08",
+      "fi": "minä tapaan",
+      "en": "I meet"
+    },
+    {
+      "id": "cjII3_09",
+      "fi": "sinä tapaat",
+      "en": "you meet"
+    },
+    {
+      "id": "cjII3_10",
+      "fi": "hän tapaa",
+      "en": "he/she meets"
+    },
+    {
+      "id": "cjII3_11",
+      "fi": "me tapaamme",
+      "en": "we meet (formal/written)"
+    },
+    {
+      "id": "cjII3_12",
+      "fi": "me tavataan",
+      "en": "we meet (spoken)"
+    },
+    {
+      "id": "cjII3_13",
+      "fi": "te tapaatte",
+      "en": "y'all meet"
+    },
+    {
+      "id": "cjII3_14",
+      "fi": "he tapaavat",
+      "en": "they meet (formal/written)"
+    },
+    {
+      "id": "cjII3_14n",
+      "fi": "ne tapaa",
+      "en": "they meet (spoken)"
+    },
+    {
+      "id": "cjII3_15",
+      "fi": "minä opin",
+      "en": "I learn"
+    },
+    {
+      "id": "cjII3_16",
+      "fi": "sinä opit",
+      "en": "you learn"
+    },
+    {
+      "id": "cjII3_17",
+      "fi": "hän oppii",
+      "en": "he/she learns"
+    },
+    {
+      "id": "cjII3_18",
+      "fi": "me opimme",
+      "en": "we learn (formal/written)"
+    },
+    {
+      "id": "cjII3_19",
+      "fi": "me opitaan",
+      "en": "we learn (spoken)"
+    },
+    {
+      "id": "cjII3_20",
+      "fi": "te opitte",
+      "en": "y'all learn"
+    },
+    {
+      "id": "cjII3_21",
+      "fi": "he oppivat",
+      "en": "they learn (formal/written)"
+    },
+    {
+      "id": "cjII3_21n",
+      "fi": "ne oppii",
+      "en": "they learn (spoken)"
+    },
+    {
+      "id": "cjII3_22",
+      "fi": "minä saavun",
+      "en": "I arrive"
+    },
+    {
+      "id": "cjII3_23",
+      "fi": "sinä saavut",
+      "en": "you arrive"
+    },
+    {
+      "id": "cjII3_24",
+      "fi": "hän saapuu",
+      "en": "he/she arrives"
+    },
+    {
+      "id": "cjII3_25",
+      "fi": "me saavumme",
+      "en": "we arrive (formal/written)"
+    },
+    {
+      "id": "cjII3_26",
+      "fi": "me saavutaan",
+      "en": "we arrive (spoken)"
+    },
+    {
+      "id": "cjII3_27",
+      "fi": "te saavutte",
+      "en": "y'all arrive"
+    },
+    {
+      "id": "cjII3_28",
+      "fi": "he saapuvat",
+      "en": "they arrive (formal/written)"
+    },
+    {
+      "id": "cjII3_28n",
+      "fi": "ne saapuu",
+      "en": "they arrive (spoken)"
+    },
+    {
+      "id": "cjII3_29",
+      "fi": "minä lähden",
+      "en": "I leave"
+    },
+    {
+      "id": "cjII3_30",
+      "fi": "sinä lähdet",
+      "en": "you leave"
+    },
+    {
+      "id": "cjII3_31",
+      "fi": "hän lähtee",
+      "en": "he/she leaves"
+    },
+    {
+      "id": "cjII3_32",
+      "fi": "me lähdemme",
+      "en": "we leave (formal/written)"
+    },
+    {
+      "id": "cjII3_33",
+      "fi": "me lähdetään",
+      "en": "we leave (spoken)"
+    },
+    {
+      "id": "cjII3_34",
+      "fi": "te lähdette",
+      "en": "y'all leave"
+    },
+    {
+      "id": "cjII3_35",
+      "fi": "he lähtevät",
+      "en": "they leave (formal/written)"
+    },
+    {
+      "id": "cjII3_35n",
+      "fi": "ne lähtee",
+      "en": "they leave (spoken)"
+    }
+  ]
+}

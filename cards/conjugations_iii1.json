@@ -1,0 +1,207 @@
+{
+  "name": "Conjugations III-1",
+  "group": "Conjugations",
+  "quiz": false,
+  "cards": [
+    {
+      "id": "cjIII1_01",
+      "fi": "minä epäilen",
+      "en": "I doubt"
+    },
+    {
+      "id": "cjIII1_02",
+      "fi": "sinä epäilet",
+      "en": "you doubt"
+    },
+    {
+      "id": "cjIII1_03",
+      "fi": "hän epäilee",
+      "en": "he/she doubts"
+    },
+    {
+      "id": "cjIII1_04",
+      "fi": "me epäilemme",
+      "en": "we doubt (formal/written)"
+    },
+    {
+      "id": "cjIII1_05",
+      "fi": "me epäillään",
+      "en": "we doubt (spoken)"
+    },
+    {
+      "id": "cjIII1_06",
+      "fi": "te epäilette",
+      "en": "y'all doubt"
+    },
+    {
+      "id": "cjIII1_07",
+      "fi": "he epäilevät",
+      "en": "they doubt (formal/written)"
+    },
+    {
+      "id": "cjIII1_07n",
+      "fi": "ne epäilee",
+      "en": "they doubt (spoken)"
+    },
+    {
+      "id": "cjIII1_08",
+      "fi": "minä hymyilen",
+      "en": "I smile"
+    },
+    {
+      "id": "cjIII1_09",
+      "fi": "sinä hymyilet",
+      "en": "you smile"
+    },
+    {
+      "id": "cjIII1_10",
+      "fi": "hän hymyilee",
+      "en": "he/she smiles"
+    },
+    {
+      "id": "cjIII1_11",
+      "fi": "me hymyilemme",
+      "en": "we smile (formal/written)"
+    },
+    {
+      "id": "cjIII1_12",
+      "fi": "me hymyillään",
+      "en": "we smile (spoken)"
+    },
+    {
+      "id": "cjIII1_13",
+      "fi": "te hymyilette",
+      "en": "y'all smile"
+    },
+    {
+      "id": "cjIII1_14",
+      "fi": "he hymyilevät",
+      "en": "they smile (formal/written)"
+    },
+    {
+      "id": "cjIII1_14n",
+      "fi": "ne hymyilee",
+      "en": "they smile (spoken)"
+    },
+    {
+      "id": "cjIII1_15",
+      "fi": "minä keskustelen",
+      "en": "I discuss"
+    },
+    {
+      "id": "cjIII1_16",
+      "fi": "sinä keskustelet",
+      "en": "you discuss"
+    },
+    {
+      "id": "cjIII1_17",
+      "fi": "hän keskustelee",
+      "en": "he/she discusses"
+    },
+    {
+      "id": "cjIII1_18",
+      "fi": "me keskustelemme",
+      "en": "we discuss (formal/written)"
+    },
+    {
+      "id": "cjIII1_19",
+      "fi": "me keskustellaan",
+      "en": "we discuss (spoken)"
+    },
+    {
+      "id": "cjIII1_20",
+      "fi": "te keskustelette",
+      "en": "y'all discuss"
+    },
+    {
+      "id": "cjIII1_21",
+      "fi": "he keskustelevat",
+      "en": "they discuss (formal/written)"
+    },
+    {
+      "id": "cjIII1_21n",
+      "fi": "ne keskustelee",
+      "en": "they discuss (spoken)"
+    },
+    {
+      "id": "cjIII1_22",
+      "fi": "minä vihaan",
+      "en": "I hate"
+    },
+    {
+      "id": "cjIII1_23",
+      "fi": "sinä vihaat",
+      "en": "you hate"
+    },
+    {
+      "id": "cjIII1_24",
+      "fi": "hän vihaa",
+      "en": "he/she hates"
+    },
+    {
+      "id": "cjIII1_25",
+      "fi": "me vihaamme",
+      "en": "we hate (formal/written)"
+    },
+    {
+      "id": "cjIII1_26",
+      "fi": "me vihataan",
+      "en": "we hate (spoken)"
+    },
+    {
+      "id": "cjIII1_27",
+      "fi": "te vihaatte",
+      "en": "y'all hate"
+    },
+    {
+      "id": "cjIII1_28",
+      "fi": "he vihaavat",
+      "en": "they hate (formal/written)"
+    },
+    {
+      "id": "cjIII1_28n",
+      "fi": "ne vihaa",
+      "en": "they hate (spoken)"
+    },
+    {
+      "id": "cjIII1_29",
+      "fi": "minä vastaan",
+      "en": "I answer"
+    },
+    {
+      "id": "cjIII1_30",
+      "fi": "sinä vastaat",
+      "en": "you answer"
+    },
+    {
+      "id": "cjIII1_31",
+      "fi": "hän vastaa",
+      "en": "he/she answers"
+    },
+    {
+      "id": "cjIII1_32",
+      "fi": "me vastaamme",
+      "en": "we answer (formal/written)"
+    },
+    {
+      "id": "cjIII1_33",
+      "fi": "me vastataan",
+      "en": "we answer (spoken)"
+    },
+    {
+      "id": "cjIII1_34",
+      "fi": "te vastaatte",
+      "en": "y'all answer"
+    },
+    {
+      "id": "cjIII1_35",
+      "fi": "he vastaavat",
+      "en": "they answer (formal/written)"
+    },
+    {
+      "id": "cjIII1_35n",
+      "fi": "ne vastaa",
+      "en": "they answer (spoken)"
+    }
+  ]
+}

@@ -1,0 +1,207 @@
+{
+  "name": "Conjugations I-4",
+  "group": "Conjugations",
+  "quiz": false,
+  "cards": [
+    {
+      "id": "cj401",
+      "fi": "minä kirjoitan",
+      "en": "I write"
+    },
+    {
+      "id": "cj402",
+      "fi": "sinä kirjoitat",
+      "en": "you write"
+    },
+    {
+      "id": "cj403",
+      "fi": "hän kirjoittaa",
+      "en": "he/she writes"
+    },
+    {
+      "id": "cj404",
+      "fi": "me kirjoitamme",
+      "en": "we write (formal/written)"
+    },
+    {
+      "id": "cj405",
+      "fi": "me kirjoitetaan",
+      "en": "we write (spoken)"
+    },
+    {
+      "id": "cj406",
+      "fi": "te kirjoitatte",
+      "en": "y'all write"
+    },
+    {
+      "id": "cj407",
+      "fi": "he kirjoittavat",
+      "en": "they write (formal/written)"
+    },
+    {
+      "id": "cj407n",
+      "fi": "ne kirjoittaa",
+      "en": "they write (spoken)"
+    },
+    {
+      "id": "cj408",
+      "fi": "minä annan",
+      "en": "I give"
+    },
+    {
+      "id": "cj409",
+      "fi": "sinä annat",
+      "en": "you give"
+    },
+    {
+      "id": "cj410",
+      "fi": "hän antaa",
+      "en": "he/she gives"
+    },
+    {
+      "id": "cj411",
+      "fi": "me annamme",
+      "en": "we give (formal/written)"
+    },
+    {
+      "id": "cj412",
+      "fi": "me annetaan",
+      "en": "we give (spoken)"
+    },
+    {
+      "id": "cj413",
+      "fi": "te annatte",
+      "en": "y'all give"
+    },
+    {
+      "id": "cj414",
+      "fi": "he antavat",
+      "en": "they give (formal/written)"
+    },
+    {
+      "id": "cj414n",
+      "fi": "ne antaa",
+      "en": "they give (spoken)"
+    },
+    {
+      "id": "cj415",
+      "fi": "minä otan",
+      "en": "I take"
+    },
+    {
+      "id": "cj416",
+      "fi": "sinä otat",
+      "en": "you take"
+    },
+    {
+      "id": "cj417",
+      "fi": "hän ottaa",
+      "en": "he/she takes"
+    },
+    {
+      "id": "cj418",
+      "fi": "me otamme",
+      "en": "we take (formal/written)"
+    },
+    {
+      "id": "cj419",
+      "fi": "me otetaan",
+      "en": "we take (spoken)"
+    },
+    {
+      "id": "cj420",
+      "fi": "te otatte",
+      "en": "y'all take"
+    },
+    {
+      "id": "cj421",
+      "fi": "he ottavat",
+      "en": "they take (formal/written)"
+    },
+    {
+      "id": "cj421n",
+      "fi": "ne ottaa",
+      "en": "they take (spoken)"
+    },
+    {
+      "id": "cj422",
+      "fi": "minä ymmärrän",
+      "en": "I understand"
+    },
+    {
+      "id": "cj423",
+      "fi": "sinä ymmärrät",
+      "en": "you understand"
+    },
+    {
+      "id": "cj424",
+      "fi": "hän ymmärtää",
+      "en": "he/she understands"
+    },
+    {
+      "id": "cj425",
+      "fi": "me ymmärrämme",
+      "en": "we understand (formal/written)"
+    },
+    {
+      "id": "cj426",
+      "fi": "me ymmärretään",
+      "en": "we understand (spoken)"
+    },
+    {
+      "id": "cj427",
+      "fi": "te ymmärrätte",
+      "en": "y'all understand"
+    },
+    {
+      "id": "cj428",
+      "fi": "he ymmärtävät",
+      "en": "they understand (formal/written)"
+    },
+    {
+      "id": "cj428n",
+      "fi": "ne ymmärtää",
+      "en": "they understand (spoken)"
+    },
+    {
+      "id": "cj429",
+      "fi": "minä tiedän",
+      "en": "I know"
+    },
+    {
+      "id": "cj430",
+      "fi": "sinä tiedät",
+      "en": "you know"
+    },
+    {
+      "id": "cj431",
+      "fi": "hän tietää",
+      "en": "he/she knows"
+    },
+    {
+      "id": "cj432",
+      "fi": "me tiedämme",
+      "en": "we know (formal/written)"
+    },
+    {
+      "id": "cj433",
+      "fi": "me tiedetään",
+      "en": "we know (spoken)"
+    },
+    {
+      "id": "cj434",
+      "fi": "te tiedätte",
+      "en": "y'all know"
+    },
+    {
+      "id": "cj435",
+      "fi": "he tietävät",
+      "en": "they know (formal/written)"
+    },
+    {
+      "id": "cj435n",
+      "fi": "ne tietää",
+      "en": "they know (spoken)"
+    }
+  ]
+}

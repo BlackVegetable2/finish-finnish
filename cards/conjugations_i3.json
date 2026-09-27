@@ -1,0 +1,207 @@
+{
+  "name": "Conjugations I-3",
+  "group": "Conjugations",
+  "quiz": false,
+  "cards": [
+    {
+      "id": "cj301",
+      "fi": "minä olen",
+      "en": "I am"
+    },
+    {
+      "id": "cj302",
+      "fi": "sinä olet",
+      "en": "you are"
+    },
+    {
+      "id": "cj303",
+      "fi": "hän on",
+      "en": "he/she is"
+    },
+    {
+      "id": "cj304",
+      "fi": "me olemme",
+      "en": "we are (formal/written)"
+    },
+    {
+      "id": "cj305",
+      "fi": "me ollaan",
+      "en": "we are (spoken)"
+    },
+    {
+      "id": "cj306",
+      "fi": "te olette",
+      "en": "y'all are"
+    },
+    {
+      "id": "cj307",
+      "fi": "he ovat",
+      "en": "they are (formal/written)"
+    },
+    {
+      "id": "cj307n",
+      "fi": "ne on",
+      "en": "they are (spoken)"
+    },
+    {
+      "id": "cj308",
+      "fi": "minä puhun",
+      "en": "I speak"
+    },
+    {
+      "id": "cj309",
+      "fi": "sinä puhut",
+      "en": "you speak"
+    },
+    {
+      "id": "cj310",
+      "fi": "hän puhuu",
+      "en": "he/she speaks"
+    },
+    {
+      "id": "cj311",
+      "fi": "me puhumme",
+      "en": "we speak (formal/written)"
+    },
+    {
+      "id": "cj312",
+      "fi": "me puhutaan",
+      "en": "we speak (spoken)"
+    },
+    {
+      "id": "cj313",
+      "fi": "te puhutte",
+      "en": "y'all speak"
+    },
+    {
+      "id": "cj314",
+      "fi": "he puhuvat",
+      "en": "they speak (formal/written)"
+    },
+    {
+      "id": "cj314n",
+      "fi": "ne puhuu",
+      "en": "they speak (spoken)"
+    },
+    {
+      "id": "cj315",
+      "fi": "minä katson",
+      "en": "I watch/look"
+    },
+    {
+      "id": "cj316",
+      "fi": "sinä katsot",
+      "en": "you watch/look"
+    },
+    {
+      "id": "cj317",
+      "fi": "hän katsoo",
+      "en": "he/she watches/looks"
+    },
+    {
+      "id": "cj318",
+      "fi": "me katsomme",
+      "en": "we watch/look (formal/written)"
+    },
+    {
+      "id": "cj319",
+      "fi": "me katsotaan",
+      "en": "we watch/look (spoken)"
+    },
+    {
+      "id": "cj320",
+      "fi": "te katsotte",
+      "en": "y'all watch/look"
+    },
+    {
+      "id": "cj321",
+      "fi": "he katsovat",
+      "en": "they watch/look (formal/written)"
+    },
+    {
+      "id": "cj321n",
+      "fi": "ne katsoo",
+      "en": "they watch/look (spoken)"
+    },
+    {
+      "id": "cj322",
+      "fi": "minä nukun",
+      "en": "I sleep"
+    },
+    {
+      "id": "cj323",
+      "fi": "sinä nukut",
+      "en": "you sleep"
+    },
+    {
+      "id": "cj324",
+      "fi": "hän nukkuu",
+      "en": "he/she sleeps"
+    },
+    {
+      "id": "cj325",
+      "fi": "me nukumme",
+      "en": "we sleep (formal/written)"
+    },
+    {
+      "id": "cj326",
+      "fi": "me nukutaan",
+      "en": "we sleep (spoken)"
+    },
+    {
+      "id": "cj327",
+      "fi": "te nukutte",
+      "en": "y'all sleep"
+    },
+    {
+      "id": "cj328",
+      "fi": "he nukkuvat",
+      "en": "they sleep (formal/written)"
+    },
+    {
+      "id": "cj328n",
+      "fi": "ne nukkuu",
+      "en": "they sleep (spoken)"
+    },
+    {
+      "id": "cj329",
+      "fi": "minä luen",
+      "en": "I read"
+    },
+    {
+      "id": "cj330",
+      "fi": "sinä luet",
+      "en": "you read"
+    },
+    {
+      "id": "cj331",
+      "fi": "hän lukee",
+      "en": "he/she reads"
+    },
+    {
+      "id": "cj332",
+      "fi": "me luemme",
+      "en": "we read (formal/written)"
+    },
+    {
+      "id": "cj333",
+      "fi": "me luetaan",
+      "en": "we read (spoken)"
+    },
+    {
+      "id": "cj334",
+      "fi": "te luette",
+      "en": "y'all read"
+    },
+    {
+      "id": "cj335",
+      "fi": "he lukevat",
+      "en": "they read (formal/written)"
+    },
+    {
+      "id": "cj335n",
+      "fi": "ne lukee",
+      "en": "they read (spoken)"
+    }
+  ]
+}

@@ -1,0 +1,207 @@
+{
+  "name": "Conjugations III-3",
+  "group": "Conjugations",
+  "quiz": false,
+  "cards": [
+    {
+      "id": "cjIII3_01",
+      "fi": "minä itken",
+      "en": "I cry"
+    },
+    {
+      "id": "cjIII3_02",
+      "fi": "sinä itket",
+      "en": "you cry"
+    },
+    {
+      "id": "cjIII3_03",
+      "fi": "hän itkee",
+      "en": "he/she cries"
+    },
+    {
+      "id": "cjIII3_04",
+      "fi": "me itkemme",
+      "en": "we cry (formal/written)"
+    },
+    {
+      "id": "cjIII3_05",
+      "fi": "me itketään",
+      "en": "we cry (spoken)"
+    },
+    {
+      "id": "cjIII3_06",
+      "fi": "te itkette",
+      "en": "y'all cry"
+    },
+    {
+      "id": "cjIII3_07",
+      "fi": "he itkevät",
+      "en": "they cry (formal/written)"
+    },
+    {
+      "id": "cjIII3_07n",
+      "fi": "ne itkee",
+      "en": "they cry (spoken)"
+    },
+    {
+      "id": "cjIII3_08",
+      "fi": "minä nauran",
+      "en": "I laugh"
+    },
+    {
+      "id": "cjIII3_09",
+      "fi": "sinä naurat",
+      "en": "you laugh"
+    },
+    {
+      "id": "cjIII3_10",
+      "fi": "hän nauraa",
+      "en": "he/she laughs"
+    },
+    {
+      "id": "cjIII3_11",
+      "fi": "me nauramme",
+      "en": "we laugh (formal/written)"
+    },
+    {
+      "id": "cjIII3_12",
+      "fi": "me nauretaan",
+      "en": "we laugh (spoken)"
+    },
+    {
+      "id": "cjIII3_13",
+      "fi": "te nauratte",
+      "en": "y'all laugh"
+    },
+    {
+      "id": "cjIII3_14",
+      "fi": "he nauravat",
+      "en": "they laugh (formal/written)"
+    },
+    {
+      "id": "cjIII3_14n",
+      "fi": "ne nauraa",
+      "en": "they laugh (spoken)"
+    },
+    {
+      "id": "cjIII3_15",
+      "fi": "minä ajattelen",
+      "en": "I think"
+    },
+    {
+      "id": "cjIII3_16",
+      "fi": "sinä ajattelet",
+      "en": "you think"
+    },
+    {
+      "id": "cjIII3_17",
+      "fi": "hän ajattelee",
+      "en": "he/she thinks"
+    },
+    {
+      "id": "cjIII3_18",
+      "fi": "me ajattelemme",
+      "en": "we think (formal/written)"
+    },
+    {
+      "id": "cjIII3_19",
+      "fi": "me ajatellaan",
+      "en": "we think (spoken)"
+    },
+    {
+      "id": "cjIII3_20",
+      "fi": "te ajattelette",
+      "en": "y'all think"
+    },
+    {
+      "id": "cjIII3_21",
+      "fi": "he ajattelevat",
+      "en": "they think (formal/written)"
+    },
+    {
+      "id": "cjIII3_21n",
+      "fi": "ne ajattelee",
+      "en": "they think (spoken)"
+    },
+    {
+      "id": "cjIII3_22",
+      "fi": "minä pelkään",
+      "en": "I am afraid"
+    },
+    {
+      "id": "cjIII3_23",
+      "fi": "sinä pelkäät",
+      "en": "you are afraid"
+    },
+    {
+      "id": "cjIII3_24",
+      "fi": "hän pelkää",
+      "en": "he/she is afraid"
+    },
+    {
+      "id": "cjIII3_25",
+      "fi": "me pelkäämme",
+      "en": "we are afraid (formal/written)"
+    },
+    {
+      "id": "cjIII3_26",
+      "fi": "me pelätään",
+      "en": "we are afraid (spoken)"
+    },
+    {
+      "id": "cjIII3_27",
+      "fi": "te pelkäätte",
+      "en": "y'all are afraid"
+    },
+    {
+      "id": "cjIII3_28",
+      "fi": "he pelkäävät",
+      "en": "they are afraid (formal/written)"
+    },
+    {
+      "id": "cjIII3_28n",
+      "fi": "ne pelkää",
+      "en": "they are afraid (spoken)"
+    },
+    {
+      "id": "cjIII3_29",
+      "fi": "minä pidän",
+      "en": "I like"
+    },
+    {
+      "id": "cjIII3_30",
+      "fi": "sinä pidät",
+      "en": "you like"
+    },
+    {
+      "id": "cjIII3_31",
+      "fi": "hän pitää",
+      "en": "he/she likes"
+    },
+    {
+      "id": "cjIII3_32",
+      "fi": "me pidämme",
+      "en": "we like (formal/written)"
+    },
+    {
+      "id": "cjIII3_33",
+      "fi": "me pidetään",
+      "en": "we like (spoken)"
+    },
+    {
+      "id": "cjIII3_34",
+      "fi": "te pidätte",
+      "en": "y'all like"
+    },
+    {
+      "id": "cjIII3_35",
+      "fi": "he pitävät",
+      "en": "they like (formal/written)"
+    },
+    {
+      "id": "cjIII3_35n",
+      "fi": "ne pitää",
+      "en": "they like (spoken)"
+    }
+  ]
+}
