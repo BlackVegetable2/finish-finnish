@@ -1,0 +1,25 @@
+{
+  "name": "Common Verbs V",
+  "cards": [
+    {"id": "v501", "fi": "viedä", "en": "take / bring (something somewhere)", "hint": "\"vee-eh-dah\" — Vida takes the package where it needs to go"},
+    {"id": "v502", "fi": "juhlia", "en": "celebrate / party", "hint": "\"yoo-lee-ah\" — \"Julia's throwing a party!\""},
+    {"id": "v503", "fi": "pestä", "en": "wash", "hint": "\"pes-tah\" — even a pest needs a wash sometimes"},
+    {"id": "v504", "fi": "käydä", "en": "visit / go (briefly)", "hint": "\"kuy-dah\" — quick, let's go visit!"},
+    {"id": "v505", "fi": "sanoa", "en": "say", "hint": "\"sah-no-ah\" — \"so, now, say it!\""},
+    {"id": "v506", "fi": "huomata", "en": "notice", "hint": "\"hwo-mah-tah\" — \"whoa, matter!\" — I noticed something"},
+    {"id": "v507", "fi": "tupakoida", "en": "smoke", "hint": "\"too-pah-koy-dah\" — like a \"two-pack-a-day\" smoker"},
+    {"id": "v508", "fi": "nähdä", "en": "see", "hint": "\"nah-dah\" — \"nah, da — I see you!\""},
+    {"id": "v509", "fi": "kuulla", "en": "hear", "hint": "\"kool-lah\" — \"cool, la! I heard that\""},
+    {"id": "v510", "fi": "soittaa", "en": "call (phone) / play (an instrument)", "hint": "\"soy-tah\" — the phone rings: pick up and call"},
+    {"id": "v511", "fi": "laittaa", "en": "put / cook", "hint": "\"lite-tah\" — light the stove to cook"},
+    {"id": "v512", "fi": "lähettää", "en": "send", "hint": "\"lah-het-tah\" — let it go, send it off"},
+    {"id": "v513", "fi": "pyytää", "en": "ask for / request", "hint": "\"pooh-tah\" — Winnie the Pooh asks for honey"},
+    {"id": "v514", "fi": "opiskella", "en": "study", "hint": "\"oh-pis-kel-lah\" — oh, this kelp I study hard"},
+    {"id": "v515", "fi": "leikkiä", "en": "play (games, children)", "hint": "\"lake-ee-ah\" — kids play by the lake"},
+    {"id": "v516", "fi": "tanssia", "en": "dance", "hint": "\"tahn-see-ah\" — \"dance, Tansy!\""},
+    {"id": "v517", "fi": "laulaa", "en": "sing", "hint": "\"lau-lah\" — belt out a lullaby and sing along"},
+    {"id": "v518", "fi": "uida", "en": "swim", "hint": "\"oo-ee-dah\" — \"ooh, ee-dah!\" — jump in and swim"},
+    {"id": "v519", "fi": "asua", "en": "live / reside", "hint": "\"ah-soo-ah\" — where do you reside?"},
+    {"id": "v520", "fi": "näyttää", "en": "show / look / seem", "hint": "\"nigh-tah\" — it already looks like night out"}
+  ]
+}
