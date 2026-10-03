@@ -391,7 +391,24 @@
     }
   }
 
+  // True from the moment an answer is submitted until its save finishes and
+  // the next card is showing. A second tap or keypress in that window would
+  // otherwise submit the SAME card again - double-counting it (e.g. pushing
+  // a card's streak toward Learned twice off one real answer) - and the two
+  // requests would hit the server at once. Extra input is simply ignored.
+  let answerInFlight = false;
+
   async function answer(correct) {
+    if (!currentCard || answerInFlight) return;
+    answerInFlight = true;
+    try {
+      await submitAnswer(correct);
+    } finally {
+      answerInFlight = false;
+    }
+  }
+
+  async function submitAnswer(correct) {
     if (!currentCard) return;
     const cardId = currentCard.id;
     const cardFi = currentCard.fi;

@@ -29,6 +29,8 @@ import json
 import os
 import random
 import re
+import threading
+import uuid
 from datetime import date, datetime, timedelta
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlparse, parse_qs
@@ -107,6 +109,35 @@ def normalize_entry(entry):
     return out
 
 
+# The server handles each request on its own thread, and every answer is a
+# read-modify-write of one shared JSON file. Without serialising those, two
+# answers arriving together (e.g. a double-tap) each read the same snapshot,
+# so one answer is silently lost - and, because they used to share one temp
+# file, they could also trample each other's write and corrupt the file.
+# Hold this around any load -> change -> save sequence. (Plain reads don't
+# need it: writes are atomic renames, so a reader sees the old or new file.)
+_DATA_LOCK = threading.RLock()
+
+
+def _write_json_atomic(path, obj):
+    """Write JSON so readers never see a partial file: dump to a temp file
+    with a name unique to this write, flush it to disk, then rename over the
+    target (an atomic swap)."""
+    tmp_path = f"{path}.{uuid.uuid4().hex}.tmp"
+    try:
+        with open(tmp_path, "w", encoding="utf-8") as f:
+            json.dump(obj, f, indent=2, ensure_ascii=False)
+            f.flush()
+            os.fsync(f.fileno())
+        os.replace(tmp_path, path)
+    except BaseException:
+        try:
+            os.remove(tmp_path)
+        except OSError:
+            pass
+        raise
+
+
 def load_progress():
     if os.path.exists(PROGRESS_FILE):
         try:
@@ -145,10 +176,7 @@ def migrate_progress(raw):
 
 
 def save_progress(progress):
-    tmp_path = PROGRESS_FILE + ".tmp"
-    with open(tmp_path, "w", encoding="utf-8") as f:
-        json.dump(progress, f, indent=2, ensure_ascii=False)
-    os.replace(tmp_path, PROGRESS_FILE)
+    _write_json_atomic(PROGRESS_FILE, progress)
 
 
 def list_category_ids():
@@ -200,10 +228,7 @@ def load_quiz_history():
 
 
 def save_quiz_history(history):
-    tmp_path = QUIZ_FILE + ".tmp"
-    with open(tmp_path, "w", encoding="utf-8") as f:
-        json.dump(history, f, indent=2, ensure_ascii=False)
-    os.replace(tmp_path, QUIZ_FILE)
+    _write_json_atomic(QUIZ_FILE, history)
 
 
 def learned_pool(progress):
@@ -381,17 +406,18 @@ class Handler(BaseHTTPRequestHandler):
                 f"Body must include correct (int) and total (int, must be {QUIZ_SIZE})"
             )
 
-        history = load_quiz_history()
-        history.append(
-            {
-                "completedAt": datetime.now().isoformat(timespec="seconds"),
-                "date": today_str(),
-                "correct": correct,
-                "total": total,
-                "percent": round(100 * correct / total),
-            }
-        )
-        save_quiz_history(history)
+        with _DATA_LOCK:
+            history = load_quiz_history()
+            history.append(
+                {
+                    "completedAt": datetime.now().isoformat(timespec="seconds"),
+                    "date": today_str(),
+                    "correct": correct,
+                    "total": total,
+                    "percent": round(100 * correct / total),
+                }
+            )
+            save_quiz_history(history)
         self._send_json({"ok": True, **quiz_status()})
 
     def _direction_from_query(self, query):
@@ -496,62 +522,63 @@ class Handler(BaseHTTPRequestHandler):
         if not any(c["id"] == card_id for c in cat.get("cards", [])):
             return self._send_error_json("Unknown card", status=404)
 
-        progress = load_progress()
-        progress.setdefault(category_id, {})
-        progress[category_id].setdefault(direction, {})
-        entry = normalize_entry(progress[category_id][direction].get(card_id))
-        progress[category_id][direction][card_id] = entry
-        retention = entry["retention"]
+        with _DATA_LOCK:
+            progress = load_progress()
+            progress.setdefault(category_id, {})
+            progress[category_id].setdefault(direction, {})
+            entry = normalize_entry(progress[category_id][direction].get(card_id))
+            progress[category_id][direction][card_id] = entry
+            retention = entry["retention"]
 
-        today = today_str()
-        was_mastered = entry["mastered"]
-        was_retained = retention["retained"]
-        was_due = is_due_for_review(entry)
+            today = today_str()
+            was_mastered = entry["mastered"]
+            was_retained = retention["retained"]
+            was_due = is_due_for_review(entry)
 
-        entry["timesSeen"] += 1
-        if correct:
-            entry["timesCorrect"] += 1
-            entry["correctStreak"] += 1
-        else:
-            entry["correctStreak"] = 0
-        entry["mastered"] = entry["correctStreak"] >= MASTERY_STREAK
+            entry["timesSeen"] += 1
+            if correct:
+                entry["timesCorrect"] += 1
+                entry["correctStreak"] += 1
+            else:
+                entry["correctStreak"] = 0
+            entry["mastered"] = entry["correctStreak"] >= MASTERY_STREAK
 
-        newly_mastered = (not was_mastered) and entry["mastered"]
+            newly_mastered = (not was_mastered) and entry["mastered"]
 
-        if newly_mastered:
-            retention["stage"] = 0
-            retention["firstMasteredDate"] = today
-            retention["nextReviewDue"] = add_days(today, REVIEW_INTERVALS[0])
-            retention["retained"] = False
-        elif was_mastered and entry["mastered"]:
-            # Still mastered - this answer only affects the spaced-review
-            # schedule if it was actually a scheduled, due check-in.
-            if was_due:
-                if correct:
-                    stage = retention["stage"] + 1
-                    if stage >= len(REVIEW_INTERVALS):
-                        retention["retained"] = True
-                        retention["nextReviewDue"] = None
-                        retention["stage"] = stage
+            if newly_mastered:
+                retention["stage"] = 0
+                retention["firstMasteredDate"] = today
+                retention["nextReviewDue"] = add_days(today, REVIEW_INTERVALS[0])
+                retention["retained"] = False
+            elif was_mastered and entry["mastered"]:
+                # Still mastered - this answer only affects the spaced-review
+                # schedule if it was actually a scheduled, due check-in.
+                if was_due:
+                    if correct:
+                        stage = retention["stage"] + 1
+                        if stage >= len(REVIEW_INTERVALS):
+                            retention["retained"] = True
+                            retention["nextReviewDue"] = None
+                            retention["stage"] = stage
+                        else:
+                            retention["stage"] = stage
+                            retention["nextReviewDue"] = add_days(today, REVIEW_INTERVALS[stage])
                     else:
-                        retention["stage"] = stage
-                        retention["nextReviewDue"] = add_days(today, REVIEW_INTERVALS[stage])
-                else:
-                    retention["stage"] = 0
-                    retention["nextReviewDue"] = add_days(today, REVIEW_INTERVALS[0])
-                    retention["retained"] = False
-            # else: extra practice on a not-yet-due card - no SRS effect.
-        elif was_mastered and not entry["mastered"]:
-            # A miss just knocked the card out of "Learned" entirely;
-            # the spaced-review clock resets too.
-            retention["stage"] = 0
-            retention["firstMasteredDate"] = None
-            retention["nextReviewDue"] = None
-            retention["retained"] = False
+                        retention["stage"] = 0
+                        retention["nextReviewDue"] = add_days(today, REVIEW_INTERVALS[0])
+                        retention["retained"] = False
+                # else: extra practice on a not-yet-due card - no SRS effect.
+            elif was_mastered and not entry["mastered"]:
+                # A miss just knocked the card out of "Learned" entirely;
+                # the spaced-review clock resets too.
+                retention["stage"] = 0
+                retention["firstMasteredDate"] = None
+                retention["nextReviewDue"] = None
+                retention["retained"] = False
 
-        newly_retained = (not was_retained) and retention["retained"]
+            newly_retained = (not was_retained) and retention["retained"]
 
-        save_progress(progress)
+            save_progress(progress)
         self._send_json(
             {
                 "ok": True,
