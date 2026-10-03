@@ -24,12 +24,16 @@ deck of QUIZ_SIZE words drawn from everything that's currently Learned or
 Retained. Quiz answers are never sent to the server one at a time - only a
 finished quiz's score is recorded (in its own file, quiz_history.json) - so
 a quiz can never change any card's progress, for better or worse.
+
+Once a day the server also snapshots both data files into data/backups/,
+keeping the newest five of each (see "Daily backups" below).
 """
 import json
 import os
 import random
 import re
 import threading
+import time
 import uuid
 from datetime import date, datetime, timedelta
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -210,6 +214,131 @@ def is_due_for_review(entry):
         return False
     due = entry.get("retention", {}).get("nextReviewDue")
     return bool(due) and due <= today_str()
+
+
+# --- Daily backups ----------------------------------------------------------
+#
+# Progress is the one thing here that can't be regenerated, so once per
+# calendar day the server copies progress.json and quiz_history.json into
+# data/backups/ (named progress-YYYY-MM-DD.json) and keeps only the newest
+# BACKUP_KEEP of each, deleting older ones. Data only changes while the
+# server is running, so doing this from inside the server - rather than from
+# a separate scheduler - can't miss a day because the Mac was asleep.
+#
+# Two safety rules stop a bad file from ever displacing good backups:
+#   - a data file that isn't valid JSON is never backed up, and
+#   - neither is one that has lost most of its entries compared with the
+#     latest backup (progress only ever grows, so that means data loss).
+# In both cases nothing is pruned and a warning is logged.
+
+BACKUP_DIR = os.path.join(DATA_DIR, "backups")
+BACKUP_KEEP = 5
+BACKUP_CHECK_SECONDS = 15 * 60
+BACKUP_SHRINK_LIMIT = 0.5
+_BACKUP_SOURCES = (("progress", PROGRESS_FILE), ("quiz_history", QUIZ_FILE))
+
+
+def _snapshot_size(data):
+    """How much a data file holds: answered cards for progress, scores for
+    quiz history. Used only to spot a file that has suddenly lost data."""
+    if isinstance(data, dict):
+        return sum(
+            len(entries)
+            for modes in data.values()
+            if isinstance(modes, dict)
+            for entries in modes.values()
+            if isinstance(entries, dict)
+        )
+    if isinstance(data, list):
+        return len(data)
+    return 0
+
+
+def _list_backups(stem):
+    """[(date, path), ...] for one data file's backups, newest first. Only
+    files matching the exact naming pattern are ever considered, so nothing
+    else dropped into the folder can be pruned."""
+    pattern = re.compile(rf"^{re.escape(stem)}-(\d{{4}}-\d{{2}}-\d{{2}})\.json$")
+    found = []
+    if os.path.isdir(BACKUP_DIR):
+        for name in os.listdir(BACKUP_DIR):
+            match = pattern.match(name)
+            if match:
+                found.append((match.group(1), os.path.join(BACKUP_DIR, name)))
+    return sorted(found, reverse=True)
+
+
+def _backup_one(stem, source, today):
+    """Back up one data file if today's backup doesn't exist yet. Returns a
+    log line, or None if there was nothing to do."""
+    if not os.path.exists(source):
+        return None
+    existing = _list_backups(stem)
+    if existing and existing[0][0] == today:
+        return None  # already backed up today
+
+    with _DATA_LOCK:  # a consistent snapshot, never one caught mid-answer
+        try:
+            with open(source, "r", encoding="utf-8") as f:
+                snapshot = json.load(f)
+        except (json.JSONDecodeError, OSError) as e:
+            return (
+                f"WARNING: not backing up {os.path.basename(source)} - it is "
+                f"unreadable ({e}). Existing backups kept."
+            )
+
+    if existing:
+        try:
+            with open(existing[0][1], "r", encoding="utf-8") as f:
+                previous = _snapshot_size(json.load(f))
+        except (json.JSONDecodeError, OSError):
+            previous = 0
+        current = _snapshot_size(snapshot)
+        if previous and current < previous * BACKUP_SHRINK_LIMIT:
+            return (
+                f"WARNING: not backing up {os.path.basename(source)} - it holds "
+                f"{current} entries but the latest backup holds {previous}; "
+                f"possible data loss. Existing backups kept."
+            )
+
+    os.makedirs(BACKUP_DIR, exist_ok=True)
+    dest = os.path.join(BACKUP_DIR, f"{stem}-{today}.json")
+    _write_json_atomic(dest, snapshot)
+    for _, old in _list_backups(stem)[BACKUP_KEEP:]:
+        os.remove(old)
+    kept = len(_list_backups(stem))
+    return f"Backed up {os.path.basename(source)} -> backups/{os.path.basename(dest)} ({kept} kept)"
+
+
+def run_daily_backup():
+    """Back up each data file if today's backup is missing. Never raises
+    (a backup problem must not take the server down); returns log lines."""
+    today = today_str()
+    lines = []
+    for stem, source in _BACKUP_SOURCES:
+        try:
+            line = _backup_one(stem, source, today)
+        except Exception as e:
+            line = f"WARNING: backup of {stem} failed: {e}"
+        if line:
+            lines.append(line)
+    return lines
+
+
+def _backup_loop():
+    while True:
+        try:
+            for line in run_daily_backup():
+                print(line, flush=True)
+        except Exception as e:
+            print(f"WARNING: backup check failed: {e}", flush=True)
+        time.sleep(BACKUP_CHECK_SECONDS)
+
+
+def start_backup_thread():
+    """Check at startup and then every 15 minutes, so a server left running
+    across midnight still takes the new day's backup."""
+    threading.Thread(target=_backup_loop, name="daily-backup", daemon=True).start()
 
 
 # --- Mastery Quiz -----------------------------------------------------------
@@ -634,6 +763,9 @@ def main():
     # of which requires opening anything to the public internet. See the
     # project README for why this is safe.
     server = ThreadingHTTPServer(("0.0.0.0", port), Handler)
+    # First thing, so nothing below (e.g. the slow-ish Tailscale lookup) can
+    # delay today's backup.
+    start_backup_thread()
     print(f"Finish Finnish running at http://localhost:{port}")
     ts_ip = tailscale_ip()
     if ts_ip:

@@ -88,6 +88,34 @@ Progress is stored locally in `data/progress.json`, and completed quiz scores
 in `data/quiz_history.json` (neither is committed to this repo — it's your
 personal learning data, not part of the app).
 
+### Backups
+
+Once a day (checked at startup and every 15 minutes after, so a server left
+running across midnight still takes the new day's backup) the server copies
+both files into `data/backups/` as `progress-YYYY-MM-DD.json` and
+`quiz_history-YYYY-MM-DD.json`, and keeps only the newest 5 of each — older
+ones are deleted. Backups are gitignored, like the data itself. Each one is a
+validated snapshot, so it's always a readable file.
+
+Two rules keep a bad file from pushing good backups out of the five:
+
+- A data file that isn't valid JSON is **not** backed up.
+- A file that has lost more than half the entries of the latest backup is
+  **not** backed up either (progress only ever grows, so a big drop means data
+  loss). Restoring an older backup is fine — it's nowhere near that drop.
+
+In both cases nothing is deleted, and a `WARNING: not backing up …` line is
+written to the server log (`~/Library/Logs/finish-finnish/server.log` if you
+use the launchd agent). If you ever deliberately start over from scratch,
+clear `data/backups/` so the old snapshots don't trip that second rule.
+
+To restore, copy the backup you want over the live file — ideally while
+you're not mid-session, since a restore overwrites whatever's there:
+
+```bash
+cp data/backups/progress-2026-10-03.json data/progress.json
+```
+
 To try things out without touching your real data, run a scratch copy on
 another port against a throwaway data folder:
 

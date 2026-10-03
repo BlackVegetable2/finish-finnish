@@ -5,3 +5,4 @@ __pycache__/
 # Personal learning progress - not part of the app itself.
 data/progress.json
 data/quiz_history.json
+data/backups/
