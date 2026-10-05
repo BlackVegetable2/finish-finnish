@@ -551,10 +551,8 @@
   function renderDashboardGroup(group, rows) {
     const sum = (pick) => rows.reduce((total, r) => total + pick(r), 0);
     const totalCards = sum((r) => r.total || 0);
-    const noun = group === DEFAULT_GROUP ? "words" : "cards";
 
     const cards = [
-      { value: totalCards, label: `Total ${noun}` },
       { value: `${sum((r) => (r.fiEn ? r.fiEn.mastered : 0))}/${totalCards}`, label: "Learned · FI→EN" },
       { value: `${sum((r) => (r.fiEn ? r.fiEn.retained : 0))}/${totalCards}`, label: "Retained · FI→EN" },
       { value: `${sum((r) => (r.enFi ? r.enFi.mastered : 0))}/${totalCards}`, label: "Learned · EN→FI" },
