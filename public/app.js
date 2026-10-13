@@ -77,6 +77,9 @@
   let quizMode = "mastery"; // which kind of quiz quizDeck belongs to
   let quizIndex = 0;
   let quizCorrect = 0;
+  // One {category, id, direction, correct} per question answered so far,
+  // sent with the finished score so each card's misses can be tracked.
+  let quizAnswers = [];
   let quizFlipped = false;
 
   async function fetchJSON(url, options) {
@@ -791,6 +794,7 @@
       quizDeck = data.deck;
       quizIndex = 0;
       quizCorrect = 0;
+      quizAnswers = [];
       quizIntro.classList.add("hidden");
       quizResult.classList.add("hidden");
       quizCardArea.classList.remove("hidden");
@@ -843,6 +847,8 @@
 
   function answerQuiz(correct) {
     if (!quizInProgress() || !quizFlipped) return;
+    const q = quizDeck[quizIndex];
+    quizAnswers.push({ category: q.category, id: q.id, direction: q.direction, correct });
     if (correct) quizCorrect += 1;
     quizIndex += 1;
     if (quizIndex >= quizDeck.length) {
@@ -855,6 +861,8 @@
   async function finishQuiz() {
     const total = quizDeck.length;
     const correct = quizCorrect;
+    const answers = quizAnswers;
+    quizAnswers = [];
     quizDeck = []; // no longer in progress; also blocks any stray extra answers
 
     quizCardArea.classList.add("hidden");
@@ -868,7 +876,7 @@
       await fetchJSON("/api/quiz/complete", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ mode: quizMode, correct, total }),
+        body: JSON.stringify({ mode: quizMode, correct, total, answers }),
       });
       quizSavedNote.textContent =
         "Saved to your quiz history. No word's progress was changed.";

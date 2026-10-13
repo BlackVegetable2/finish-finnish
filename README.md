@@ -102,13 +102,22 @@ Progress is stored locally in `data/progress.json`, and completed quiz scores
 in `data/quiz_history.json` (neither is committed to this repo — it's your
 personal learning data, not part of the app).
 
+Every finished quiz also records, per card, whether it was got or missed in
+`data/quiz_cards.json` — `{category: {direction: {card id: {asked, missed,
+lastAsked, lastMissed, recent}}}}`, where `recent` is the card's last 10 quiz
+results (oldest first, `true` = got it). It's a record only: nothing in the app
+reads it yet. It's there so a future "rescue" quiz can resurface cards you
+keep missing, and it starts from the first quiz taken after this was added —
+earlier quizzes only saved their scores. Like the other data files, it never
+affects progress.
+
 ### Backups
 
 Once a day (checked at startup and every 15 minutes after, so a server left
 running across midnight still takes the new day's backup) the server copies
-both files into `data/backups/` as `progress-YYYY-MM-DD.json` and
-`quiz_history-YYYY-MM-DD.json`, and keeps only the newest 5 of each — older
-ones are deleted. Backups are gitignored, like the data itself. Each one is a
+all three data files into `data/backups/` as `progress-YYYY-MM-DD.json`,
+`quiz_history-YYYY-MM-DD.json` and `quiz_cards-YYYY-MM-DD.json`, and keeps only
+the newest 5 of each — older ones are deleted. Backups are gitignored, like the data itself. Each one is a
 validated snapshot, so it's always a readable file.
 
 Two rules keep a bad file from pushing good backups out of the five:

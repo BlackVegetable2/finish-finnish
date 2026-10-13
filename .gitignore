@@ -6,3 +6,4 @@ __pycache__/
 data/progress.json
 data/quiz_history.json
 data/backups/
+data/quiz_cards.json

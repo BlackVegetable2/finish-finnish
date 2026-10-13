@@ -50,6 +50,13 @@ DATA_DIR = os.environ.get("FINNISH_DATA_DIR") or os.path.join(ROOT, "data")
 PUBLIC_DIR = os.path.join(ROOT, "public")
 PROGRESS_FILE = os.path.join(DATA_DIR, "progress.json")
 QUIZ_FILE = os.path.join(DATA_DIR, "quiz_history.json")
+# Per-card quiz results (how often each card was asked / missed in a quiz).
+# Kept apart from progress.json on purpose: quizzes never change progress, so
+# this is only a record - the groundwork for a future "rescue" quiz that
+# resurfaces cards you keep missing.
+QUIZ_CARDS_FILE = os.path.join(DATA_DIR, "quiz_cards.json")
+# How many of a card's most recent quiz results are remembered.
+QUIZ_RECENT_KEEP = 10
 
 # How many words a Mastery Quiz deck holds. The quiz is only available once
 # at least this many distinct words are Learned (or Retained).
@@ -255,7 +262,11 @@ BACKUP_DIR = os.path.join(DATA_DIR, "backups")
 BACKUP_KEEP = 5
 BACKUP_CHECK_SECONDS = 15 * 60
 BACKUP_SHRINK_LIMIT = 0.5
-_BACKUP_SOURCES = (("progress", PROGRESS_FILE), ("quiz_history", QUIZ_FILE))
+_BACKUP_SOURCES = (
+    ("progress", PROGRESS_FILE),
+    ("quiz_history", QUIZ_FILE),
+    ("quiz_cards", QUIZ_CARDS_FILE),
+)
 
 
 def _snapshot_size(data):
@@ -378,6 +389,75 @@ def load_quiz_history():
 
 def save_quiz_history(history):
     _write_json_atomic(QUIZ_FILE, history)
+
+
+def load_quiz_cards():
+    """Per-card quiz stats as {category: {direction: {card_id: stats}}}, the
+    same shape as progress. Missing/corrupt file -> empty."""
+    if not os.path.exists(QUIZ_CARDS_FILE):
+        return {}
+    try:
+        with open(QUIZ_CARDS_FILE, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        return data if isinstance(data, dict) else {}
+    except (json.JSONDecodeError, OSError):
+        return {}
+
+
+def validate_quiz_answers(answers, total):
+    """Check the per-card results a client sends with a finished quiz: one
+    entry per question, each naming a real card, a real direction and a
+    boolean result, with no card repeated. Returns an error string, or None."""
+    if not isinstance(answers, list) or len(answers) != total:
+        return f"answers must be a list of {total} results"
+    cards_by_category = {}
+    seen = set()
+    for a in answers:
+        if not isinstance(a, dict):
+            return "each answer must be an object"
+        cat, direction, card_id, correct = (
+            a.get("category"),
+            a.get("direction"),
+            a.get("id"),
+            a.get("correct"),
+        )
+        if not (isinstance(cat, str) and isinstance(card_id, str)):
+            return "each answer needs a category and id"
+        if direction not in DIRECTIONS or not isinstance(correct, bool):
+            return "each answer needs a direction and a true/false correct"
+        if cat not in cards_by_category:
+            category = load_category(cat)
+            cards_by_category[cat] = (
+                {c["id"] for c in category.get("cards", [])} if category else set()
+            )
+        if card_id not in cards_by_category[cat]:
+            return f"unknown card {cat}/{card_id}"
+        key = (cat, direction, card_id)
+        if key in seen:
+            return "a card can only appear once per quiz"
+        seen.add(key)
+    return None
+
+
+def record_quiz_answers(answers):
+    """Fold one finished quiz's per-card results into quiz_cards.json. Call
+    with _DATA_LOCK held. Never touches progress.json."""
+    stats = load_quiz_cards()
+    now = datetime.now().isoformat(timespec="seconds")
+    for a in answers:
+        entry = (
+            stats.setdefault(a["category"], {})
+            .setdefault(a["direction"], {})
+            .setdefault(a["id"], {"asked": 0, "missed": 0, "recent": []})
+        )
+        entry["asked"] += 1
+        entry["lastAsked"] = now
+        if not a["correct"]:
+            entry["missed"] += 1
+            entry["lastMissed"] = now
+        # Oldest first; True = got it. Capped so it can't grow forever.
+        entry["recent"] = (entry["recent"] + [a["correct"]])[-QUIZ_RECENT_KEEP:]
+    _write_json_atomic(QUIZ_CARDS_FILE, stats)
 
 
 def learned_pool(progress, conjugations=False):
@@ -690,8 +770,19 @@ class Handler(BaseHTTPRequestHandler):
                 "Body must include mode, correct (int) and total (int; "
                 f"{QUIZ_SIZE} for mastery/conjugation, {LOOKALIKE_MIN_WORDS}-{QUIZ_SIZE} for lookalike)"
             )
+        # Per-card results are optional (older pages don't send them), but
+        # when present they must be consistent with the score.
+        answers = payload.get("answers")
+        if answers is not None:
+            problem = validate_quiz_answers(answers, total)
+            if problem is None and sum(1 for a in answers if a["correct"]) != correct:
+                problem = "answers don't add up to the score"
+            if problem:
+                return self._send_error_json(problem)
 
         with _DATA_LOCK:
+            if answers is not None:
+                record_quiz_answers(answers)
             history = load_quiz_history()
             history.append(
                 {
