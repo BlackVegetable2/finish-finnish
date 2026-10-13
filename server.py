@@ -25,7 +25,8 @@ Retained. Quiz answers are never sent to the server one at a time - only a
 finished quiz's score is recorded (in its own file, quiz_history.json) - so
 a quiz can never change any card's progress, for better or worse. A second
 mode, the "look-alike" quiz, deals Learned words that are spelled alike
-back to back (see lookalike_groups); scores are kept per mode.
+back to back (see lookalike_groups), and a "conjugation" mode quizzes the
+Learned conjugation cards; scores are kept per mode.
 
 Once a day the server also snapshots both data files into data/backups/,
 keeping the newest five of each (see "Daily backups" below).
@@ -55,10 +56,11 @@ QUIZ_FILE = os.path.join(DATA_DIR, "quiz_history.json")
 QUIZ_SIZE = 40
 
 # Quiz modes. "mastery" is the 40-random-words check-up; "lookalike" drills
-# words with similar spellings back to back. Each keeps its own score history
+# words with similar spellings back to back; "conjugation" is the same random
+# check-up over the Learned conjugation cards (which the others leave out). Each keeps its own score history
 # (entries in quiz_history.json carry a "mode"; older entries have none and
 # are mastery quizzes).
-QUIZ_MODES = ("mastery", "lookalike")
+QUIZ_MODES = ("mastery", "lookalike", "conjugation")
 DEFAULT_QUIZ_MODE = "mastery"
 
 # A look-alike deck is made only of words that resemble another learned word,
@@ -72,6 +74,7 @@ LOOKALIKE_GROUP_MAX = 6
 # Sets are grouped in the category picker and on the dashboard by an optional
 # "group" field in their JSON file; sets without one are plain vocabulary.
 DEFAULT_GROUP = "Vocabulary"
+CONJUGATION_GROUP = "Conjugations"
 
 # A card counts as "mastered" (Learned) once it's been answered correctly
 # this many times in a row. Getting it wrong resets the streak to 0.
@@ -377,16 +380,21 @@ def save_quiz_history(history):
     _write_json_atomic(QUIZ_FILE, history)
 
 
-def learned_pool(progress):
+def learned_pool(progress, conjugations=False):
     """Every distinct word that's Learned (or Retained) in at least one
     direction, as (category_id, category_name, card, [directions]).
-    Retained words are always Learned too, so 'mastered' covers both."""
+    Retained words are always Learned too, so 'mastered' covers both.
+    The conjugation sets are left out unless conjugations=True, in which
+    case they're the only ones included."""
     pool = []
     for cid in list_category_ids():
         cat = load_category(cid)
         if not cat:
             continue
-        if cat.get("quiz") is False:
+        if conjugations:
+            if cat.get("group") != CONJUGATION_GROUP:
+                continue
+        elif cat.get("quiz") is False:
             # e.g. the conjugation sets: lots of easy, pattern-based cards
             # that would crowd out real vocabulary and inflate scores.
             continue
@@ -413,10 +421,11 @@ def _deck_item(entry):
     }
 
 
-def build_quiz_deck(progress):
-    """QUIZ_SIZE distinct random words, each quizzed in a direction it's
-    already Learned in. None if there aren't enough Learned words yet."""
-    pool = learned_pool(progress)
+def build_quiz_deck(progress, conjugations=False):
+    """QUIZ_SIZE distinct random words (or conjugation cards, with
+    conjugations=True), each quizzed in a direction it's already Learned in.
+    None if there aren't enough Learned yet."""
+    pool = learned_pool(progress, conjugations)
     if len(pool) < QUIZ_SIZE:
         return None
     return [_deck_item(e) for e in random.sample(pool, QUIZ_SIZE)]
@@ -511,6 +520,8 @@ def quiz_status():
     recent, days_since_last = _recent_and_days(_mode_history(history, "mastery"))
     lookalike_words = sum(len(g) for g in lookalike_groups(pool))
     la_recent, la_days = _recent_and_days(_mode_history(history, "lookalike"))
+    conj_cards = len(learned_pool(progress, conjugations=True))
+    conj_recent, conj_days = _recent_and_days(_mode_history(history, "conjugation"))
     return {
         "required": QUIZ_SIZE,
         "learnedWords": learned_words,
@@ -523,6 +534,13 @@ def quiz_status():
             "eligible": lookalike_words >= LOOKALIKE_MIN_WORDS,
             "recent": la_recent,
             "daysSinceLast": la_days,
+        },
+        "conjugation": {
+            "required": QUIZ_SIZE,
+            "words": conj_cards,
+            "eligible": conj_cards >= QUIZ_SIZE,
+            "recent": conj_recent,
+            "daysSinceLast": conj_days,
         },
     }
 
@@ -624,7 +642,13 @@ class Handler(BaseHTTPRequestHandler):
             return self._send_error_json(f"mode must be one of {', '.join(QUIZ_MODES)}")
 
         progress = load_progress()
-        if mode == "lookalike":
+        if mode == "conjugation":
+            deck = build_quiz_deck(progress, conjugations=True)
+            locked = (
+                f"The conjugation quiz unlocks once at least {QUIZ_SIZE} "
+                "conjugation cards are Learned."
+            )
+        elif mode == "lookalike":
             deck = build_lookalike_deck(progress)
             locked = (
                 f"The look-alike quiz unlocks once at least {LOOKALIKE_MIN_WORDS} "
@@ -658,13 +682,13 @@ class Handler(BaseHTTPRequestHandler):
             # The deck is however many look-alike words there were, up to
             # QUIZ_SIZE (never fewer than the unlock minimum).
             size_ok = ints and LOOKALIKE_MIN_WORDS <= total <= QUIZ_SIZE
-        else:
+        else:  # mastery and conjugation decks are always QUIZ_SIZE
             size_ok = ints and total == QUIZ_SIZE
         valid = mode in QUIZ_MODES and size_ok and 0 <= correct <= total
         if not valid:
             return self._send_error_json(
                 "Body must include mode, correct (int) and total (int; "
-                f"{QUIZ_SIZE} for mastery, {LOOKALIKE_MIN_WORDS}-{QUIZ_SIZE} for lookalike)"
+                f"{QUIZ_SIZE} for mastery/conjugation, {LOOKALIKE_MIN_WORDS}-{QUIZ_SIZE} for lookalike)"
             )
 
         with _DATA_LOCK:

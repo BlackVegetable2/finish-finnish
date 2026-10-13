@@ -48,8 +48,13 @@ Then open <http://localhost:8420>.
   them apart straight away. It holds up to 40 words — fewer while you have few
   look-alikes — and unlocks at 10. Like the Mastery Quiz it never changes any
   progress, and it keeps its own last-5 scores and days-since on the Dashboard.
-  Quiz history entries carry a `mode` (`mastery` or `lookalike`); older entries
-  without one count as mastery.
+- **Conjugation Quiz** — the same 40-random-cards check-up, but drawn only from
+  the Learned cards in the Conjugations group (which the other quizzes leave
+  out). It unlocks at 40 Learned conjugation cards, never changes progress, and
+  keeps its own last-5 scores and days-since on the Dashboard.
+
+  Quiz history entries carry a `mode` (`mastery`, `lookalike` or
+  `conjugation`); older entries without one count as mastery.
 
 ## Adding your own word sets
 

@@ -40,6 +40,8 @@
   const quizStartBtn = document.getElementById("quiz-start-btn");
   const quizLookalikeBtn = document.getElementById("quiz-lookalike-btn");
   const quizLookalikeLastLine = document.getElementById("quiz-lookalike-last-line");
+  const quizConjugationBtn = document.getElementById("quiz-conjugation-btn");
+  const quizConjugationLastLine = document.getElementById("quiz-conjugation-last-line");
   const quizCardArea = document.getElementById("quiz-card-area");
   const quizProgress = document.getElementById("quiz-progress");
   const quizDirectionLabel = document.getElementById("quiz-direction-label");
@@ -655,7 +657,10 @@
       quizStatus = null;
     }
     const anyEligible = !!(
-      quizStatus && (quizStatus.eligible || (quizStatus.lookalike && quizStatus.lookalike.eligible))
+      quizStatus &&
+      (quizStatus.eligible ||
+        (quizStatus.lookalike && quizStatus.lookalike.eligible) ||
+        (quizStatus.conjugation && quizStatus.conjugation.eligible))
     );
     tabQuiz.classList.toggle("hidden", !anyEligible);
     if (!anyEligible && !quizView.classList.contains("hidden")) {
@@ -698,6 +703,20 @@
       quizLookalikeLastLine.textContent =
         `Last look-alike quiz: ${look.recent[0].percent}% (${daysAgoText(look.daysSinceLast)}).`;
     }
+
+    const conj = quizStatus.conjugation;
+    quizConjugationBtn.disabled = !(conj && conj.eligible);
+    if (!conj) {
+      quizConjugationLastLine.textContent = "";
+    } else if (!conj.eligible) {
+      quizConjugationLastLine.textContent =
+        `Unlocks at ${conj.required} Learned conjugation cards (you have ${conj.words}).`;
+    } else if (!conj.recent[0]) {
+      quizConjugationLastLine.textContent = "You haven't taken a conjugation quiz yet.";
+    } else {
+      quizConjugationLastLine.textContent =
+        `Last conjugation quiz: ${conj.recent[0].percent}% (${daysAgoText(conj.daysSinceLast)}).`;
+    }
   }
 
   // One dashboard card for a quiz mode: days since its last completed quiz
@@ -738,6 +757,9 @@
     if (quizStatus && quizStatus.lookalike && quizStatus.lookalike.eligible) {
       cards.push(quizTrackerCard("Look-alike Quiz", "look-alike quiz", quizStatus.lookalike));
     }
+    if (quizStatus && quizStatus.conjugation && quizStatus.conjugation.eligible) {
+      cards.push(quizTrackerCard("Conjugation Quiz", "conjugation quiz", quizStatus.conjugation));
+    }
     quizTrackerEl.innerHTML = cards.join("");
     quizTrackerEl
       .querySelectorAll(".quiz-tracker-btn")
@@ -757,6 +779,7 @@
   async function startQuiz(mode) {
     quizStartBtn.disabled = true;
     quizLookalikeBtn.disabled = true;
+    quizConjugationBtn.disabled = true;
     quizAgainBtn.disabled = true;
     try {
       const data = await fetchJSON("/api/quiz/start", {
@@ -906,6 +929,7 @@
 
   quizStartBtn.addEventListener("click", () => startQuiz("mastery"));
   quizLookalikeBtn.addEventListener("click", () => startQuiz("lookalike"));
+  quizConjugationBtn.addEventListener("click", () => startQuiz("conjugation"));
   quizAgainBtn.addEventListener("click", () => startQuiz(quizMode));
   quizToDashboardBtn.addEventListener("click", () => showView("dashboard"));
   quizCardEl.addEventListener("click", flipQuizCard);
