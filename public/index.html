@@ -100,18 +100,32 @@
 
     <section id="quiz-view" class="hidden">
       <div id="quiz-intro">
-        <h2>Mastery Quiz</h2>
-        <p>
-          40 random words from everything you've <strong>Learned or Retained</strong>, across
-          every set. You'll see each in a direction you've already learned it, then mark whether
-          you knew it.
-        </p>
-        <p class="quiz-note">
-          It's just a check-up: your score is recorded here, but nothing you answer changes
-          any word's progress — a miss costs you nothing. Conjugation drills aren't included.
-        </p>
-        <p id="quiz-last-line" class="quiz-last-line"></p>
-        <button id="quiz-start-btn" class="btn btn-quiz" type="button">Start quiz</button>
+        <div class="quiz-mode">
+          <h2>Mastery Quiz</h2>
+          <p>
+            40 random words from everything you've <strong>Learned or Retained</strong>, across
+            every set. You'll see each in a direction you've already learned it, then mark whether
+            you knew it.
+          </p>
+          <p class="quiz-note">
+            It's just a check-up: your score is recorded here, but nothing you answer changes
+            any word's progress — a miss costs you nothing. Conjugation drills aren't included.
+          </p>
+          <p id="quiz-last-line" class="quiz-last-line"></p>
+          <button id="quiz-start-btn" class="btn btn-quiz" type="button">Start quiz</button>
+        </div>
+
+        <div class="quiz-mode">
+          <h2>Look-alike Quiz</h2>
+          <p>
+            Learned words that are <strong>spelled almost alike</strong> — <em>ottaa</em> and
+            <em>ostaa</em>, <em>veli</em> and <em>vesi</em> — dealt back to back, so you have to
+            tell the tricky ones apart. Up to 40 words, fewer when there aren't that many
+            look-alikes yet.
+          </p>
+          <p id="quiz-lookalike-last-line" class="quiz-last-line"></p>
+          <button id="quiz-lookalike-btn" class="btn btn-quiz" type="button">Start look-alike quiz</button>
+        </div>
       </div>
 
       <div id="quiz-card-area" class="hidden">

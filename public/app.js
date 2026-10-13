@@ -38,6 +38,8 @@
   const quizIntro = document.getElementById("quiz-intro");
   const quizLastLine = document.getElementById("quiz-last-line");
   const quizStartBtn = document.getElementById("quiz-start-btn");
+  const quizLookalikeBtn = document.getElementById("quiz-lookalike-btn");
+  const quizLookalikeLastLine = document.getElementById("quiz-lookalike-last-line");
   const quizCardArea = document.getElementById("quiz-card-area");
   const quizProgress = document.getElementById("quiz-progress");
   const quizDirectionLabel = document.getElementById("quiz-direction-label");
@@ -70,6 +72,7 @@
   // progress; quizStatus is the latest /api/quiz/status (null if unavailable).
   let quizStatus = null;
   let quizDeck = [];
+  let quizMode = "mastery"; // which kind of quiz quizDeck belongs to
   let quizIndex = 0;
   let quizCorrect = 0;
   let quizFlipped = false;
@@ -651,9 +654,11 @@
     } catch (err) {
       quizStatus = null;
     }
-    const eligible = !!(quizStatus && quizStatus.eligible);
-    tabQuiz.classList.toggle("hidden", !eligible);
-    if (!eligible && !quizView.classList.contains("hidden")) {
+    const anyEligible = !!(
+      quizStatus && (quizStatus.eligible || (quizStatus.lookalike && quizStatus.lookalike.eligible))
+    );
+    tabQuiz.classList.toggle("hidden", !anyEligible);
+    if (!anyEligible && !quizView.classList.contains("hidden")) {
       quizDeck = [];
       showView("study");
     }
@@ -661,30 +666,49 @@
     updateQuizLastLine();
   }
 
-  function updateQuizLastLine() {
-    if (!quizStatus || !quizStatus.eligible) return;
-    const last = quizStatus.recent[0];
-    if (!last) {
-      quizLastLine.textContent = "You haven't taken a quiz yet.";
-      return;
-    }
-    const since = quizStatus.daysSinceLast;
-    const when = since === 0 ? "today" : `${since} day${since === 1 ? "" : "s"} ago`;
-    quizLastLine.textContent = `Last quiz: ${last.percent}% (${when}).`;
+  function daysAgoText(since) {
+    return since === 0 ? "today" : `${since} day${since === 1 ? "" : "s"} ago`;
   }
 
-  function renderQuizTracker() {
-    if (!quizStatus || !quizStatus.eligible) {
-      quizTrackerEl.innerHTML = "";
-      return;
+  function updateQuizLastLine() {
+    if (!quizStatus) return;
+    const mastery = quizStatus;
+    const look = quizStatus.lookalike;
+
+    quizStartBtn.disabled = !mastery.eligible;
+    if (!mastery.eligible) {
+      quizLastLine.textContent =
+        `Unlocks at ${mastery.required} Learned words (you have ${mastery.learnedWords}).`;
+    } else if (!mastery.recent[0]) {
+      quizLastLine.textContent = "You haven't taken a quiz yet.";
+    } else {
+      quizLastLine.textContent =
+        `Last quiz: ${mastery.recent[0].percent}% (${daysAgoText(mastery.daysSinceLast)}).`;
     }
-    const since = quizStatus.daysSinceLast;
+
+    quizLookalikeBtn.disabled = !(look && look.eligible);
+    if (!look) {
+      quizLookalikeLastLine.textContent = "";
+    } else if (!look.eligible) {
+      quizLookalikeLastLine.textContent =
+        `Unlocks at ${look.required} look-alike words (you have ${look.words}).`;
+    } else if (!look.recent[0]) {
+      quizLookalikeLastLine.textContent = "You haven't taken a look-alike quiz yet.";
+    } else {
+      quizLookalikeLastLine.textContent =
+        `Last look-alike quiz: ${look.recent[0].percent}% (${daysAgoText(look.daysSinceLast)}).`;
+    }
+  }
+
+  // One dashboard card for a quiz mode: days since its last completed quiz
+  // plus its last 5 scores.
+  function quizTrackerCard(title, noun, s) {
     const sinceHtml =
-      since === null
-        ? "No quiz completed yet"
-        : `Days since last quiz: <strong>${since}</strong>`;
-    const scoresHtml = quizStatus.recent.length
-      ? `<ul class="quiz-tracker-scores">${quizStatus.recent
+      s.daysSinceLast === null
+        ? `No ${noun} completed yet`
+        : `Days since last ${noun}: <strong>${s.daysSinceLast}</strong>`;
+    const scoresHtml = s.recent.length
+      ? `<ul class="quiz-tracker-scores">${s.recent
           .map(
             (r) => `
             <li>
@@ -694,18 +718,30 @@
             </li>`
           )
           .join("")}</ul>`
-      : '<p class="quiz-tracker-empty">Your last 5 quiz scores will show up here.</p>';
-
-    quizTrackerEl.innerHTML = `
+      : `<p class="quiz-tracker-empty">Your last 5 ${noun} scores will show up here.</p>`;
+    return `
       <div class="quiz-tracker-card">
         <div class="quiz-tracker-head">
-          <span class="quiz-tracker-title">Mastery Quiz</span>
+          <span class="quiz-tracker-title">${title}</span>
           <span class="quiz-tracker-since">${sinceHtml}</span>
         </div>
         ${scoresHtml}
         <button class="quiz-tracker-btn" type="button">Take the quiz</button>
       </div>`;
-    quizTrackerEl.querySelector(".quiz-tracker-btn").addEventListener("click", () => showView("quiz"));
+  }
+
+  function renderQuizTracker() {
+    const cards = [];
+    if (quizStatus && quizStatus.eligible) {
+      cards.push(quizTrackerCard("Mastery Quiz", "quiz", quizStatus));
+    }
+    if (quizStatus && quizStatus.lookalike && quizStatus.lookalike.eligible) {
+      cards.push(quizTrackerCard("Look-alike Quiz", "look-alike quiz", quizStatus.lookalike));
+    }
+    quizTrackerEl.innerHTML = cards.join("");
+    quizTrackerEl
+      .querySelectorAll(".quiz-tracker-btn")
+      .forEach((btn) => btn.addEventListener("click", () => showView("quiz")));
   }
 
   // Always opens on the intro: leaving the Quiz tab abandons a quiz that's
@@ -718,11 +754,17 @@
     quizCardArea.classList.add("hidden");
   }
 
-  async function startQuiz() {
+  async function startQuiz(mode) {
     quizStartBtn.disabled = true;
+    quizLookalikeBtn.disabled = true;
     quizAgainBtn.disabled = true;
     try {
-      const data = await fetchJSON("/api/quiz/start", { method: "POST" });
+      const data = await fetchJSON("/api/quiz/start", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ mode }),
+      });
+      quizMode = mode;
       quizDeck = data.deck;
       quizIndex = 0;
       quizCorrect = 0;
@@ -734,8 +776,8 @@
       alert("Couldn't start the quiz: " + err.message);
       refreshQuizStatus();
     } finally {
-      quizStartBtn.disabled = false;
       quizAgainBtn.disabled = false;
+      updateQuizLastLine(); // re-enables each start button only if it's unlocked
     }
   }
 
@@ -803,7 +845,7 @@
       await fetchJSON("/api/quiz/complete", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ correct, total }),
+        body: JSON.stringify({ mode: quizMode, correct, total }),
       });
       quizSavedNote.textContent =
         "Saved to your quiz history. No word's progress was changed.";
@@ -862,8 +904,9 @@
   tabDashboard.addEventListener("click", () => showView("dashboard"));
   tabQuiz.addEventListener("click", () => showView("quiz"));
 
-  quizStartBtn.addEventListener("click", startQuiz);
-  quizAgainBtn.addEventListener("click", startQuiz);
+  quizStartBtn.addEventListener("click", () => startQuiz("mastery"));
+  quizLookalikeBtn.addEventListener("click", () => startQuiz("lookalike"));
+  quizAgainBtn.addEventListener("click", () => startQuiz(quizMode));
   quizToDashboardBtn.addEventListener("click", () => showView("dashboard"));
   quizCardEl.addEventListener("click", flipQuizCard);
   quizBtnRight.addEventListener("click", () => answerQuiz(true));

@@ -23,7 +23,9 @@ There is also a separate, purely informational "Mastery Quiz": a random
 deck of QUIZ_SIZE words drawn from everything that's currently Learned or
 Retained. Quiz answers are never sent to the server one at a time - only a
 finished quiz's score is recorded (in its own file, quiz_history.json) - so
-a quiz can never change any card's progress, for better or worse.
+a quiz can never change any card's progress, for better or worse. A second
+mode, the "look-alike" quiz, deals Learned words that are spelled alike
+back to back (see lookalike_groups); scores are kept per mode.
 
 Once a day the server also snapshots both data files into data/backups/,
 keeping the newest five of each (see "Daily backups" below).
@@ -51,6 +53,21 @@ QUIZ_FILE = os.path.join(DATA_DIR, "quiz_history.json")
 # How many words a Mastery Quiz deck holds. The quiz is only available once
 # at least this many distinct words are Learned (or Retained).
 QUIZ_SIZE = 40
+
+# Quiz modes. "mastery" is the 40-random-words check-up; "lookalike" drills
+# words with similar spellings back to back. Each keeps its own score history
+# (entries in quiz_history.json carry a "mode"; older entries have none and
+# are mastery quizzes).
+QUIZ_MODES = ("mastery", "lookalike")
+DEFAULT_QUIZ_MODE = "mastery"
+
+# A look-alike deck is made only of words that resemble another learned word,
+# so it's smaller than QUIZ_SIZE until enough of those pile up. It unlocks at
+# this many such words; the deck holds at most QUIZ_SIZE.
+LOOKALIKE_MIN_WORDS = 10
+# Groups of confusable words are capped at this many, so one big family of
+# similar verbs doesn't swallow the whole deck.
+LOOKALIKE_GROUP_MAX = 6
 
 # Sets are grouped in the category picker and on the dashboard by an optional
 # "group" field in their JSON file; sets without one are plain vocabulary.
@@ -384,40 +401,129 @@ def learned_pool(progress):
     return pool
 
 
+def _deck_item(entry):
+    cid, cat_name, card, directions = entry
+    return {
+        "category": cid,
+        "categoryName": cat_name,
+        "id": card["id"],
+        "fi": card["fi"],
+        "en": card["en"],
+        "direction": random.choice(directions),
+    }
+
+
 def build_quiz_deck(progress):
     """QUIZ_SIZE distinct random words, each quizzed in a direction it's
     already Learned in. None if there aren't enough Learned words yet."""
     pool = learned_pool(progress)
     if len(pool) < QUIZ_SIZE:
         return None
-    deck = []
-    for cid, cat_name, card, directions in random.sample(pool, QUIZ_SIZE):
-        deck.append(
-            {
-                "category": cid,
-                "categoryName": cat_name,
-                "id": card["id"],
-                "fi": card["fi"],
-                "en": card["en"],
-                "direction": random.choice(directions),
-            }
-        )
-    return deck
+    return [_deck_item(e) for e in random.sample(pool, QUIZ_SIZE)]
 
 
-def quiz_status():
-    history = load_quiz_history()
-    learned_words = len(learned_pool(load_progress()))
+def _edit_distance(a, b):
+    prev = list(range(len(b) + 1))
+    for i, ca in enumerate(a, 1):
+        cur = [i]
+        for j, cb in enumerate(b, 1):
+            cur.append(min(prev[j] + 1, cur[-1] + 1, prev[j - 1] + (ca != cb)))
+        prev = cur
+    return prev[-1]
+
+
+def _look_alike(a, b):
+    """True when two Finnish words are spelled alike enough to be mixed up:
+    one letter apart, or two apart once both are longer than five letters."""
+    a, b = a.lower(), b.lower()
+    limit = 1 if min(len(a), len(b)) <= 5 else 2
+    return abs(len(a) - len(b)) <= limit and _edit_distance(a, b) <= limit
+
+
+def lookalike_groups(pool):
+    """Groups of 2+ Learned words that resemble each other, from a
+    learned_pool(). Single words only (phrases aren't compared). Each group is
+    ordered so neighbours are the most alike, and groups are capped at
+    LOOKALIKE_GROUP_MAX by slicing that order."""
+    words = [e for e in pool if " " not in e[2]["fi"].strip()]
+    near = {i: [] for i in range(len(words))}
+    for i in range(len(words)):
+        for j in range(i + 1, len(words)):
+            if _look_alike(words[i][2]["fi"], words[j][2]["fi"]):
+                near[i].append(j)
+                near[j].append(i)
+
+    groups, seen = [], set()
+    for start in range(len(words)):
+        if start in seen or not near[start]:
+            continue
+        order, stack = [], [start]
+        while stack:  # depth-first, so each word follows one it resembles
+            node = stack.pop()
+            if node in seen:
+                continue
+            seen.add(node)
+            order.append(node)
+            stack.extend(sorted((n for n in near[node] if n not in seen), reverse=True))
+        for k in range(0, len(order), LOOKALIKE_GROUP_MAX):
+            chunk = order[k : k + LOOKALIKE_GROUP_MAX]
+            if len(chunk) >= 2:
+                groups.append([words[i] for i in chunk])
+    return groups
+
+
+def build_lookalike_deck(progress):
+    """Up to QUIZ_SIZE look-alike words, with each group of confusable words
+    kept together so you have to tell them apart back to back. None if fewer
+    than LOOKALIKE_MIN_WORDS such words are Learned."""
+    groups = lookalike_groups(learned_pool(progress))
+    if sum(len(g) for g in groups) < LOOKALIKE_MIN_WORDS:
+        return None
+    random.shuffle(groups)
+    chosen = []
+    for group in groups:
+        room = QUIZ_SIZE - len(chosen)
+        if room < 2:
+            break
+        # Only a group's leading words if it doesn't fit whole; its order
+        # keeps those the most alike.
+        chosen.extend(group[:room] if len(group) > room else group)
+    return [_deck_item(e) for e in chosen]
+
+
+def _mode_history(history, mode):
+    return [h for h in history if h.get("mode", DEFAULT_QUIZ_MODE) == mode]
+
+
+def _recent_and_days(history):
     days_since_last = None
     if history:
         last_date = date.fromisoformat(history[-1]["date"])
         days_since_last = (date.today() - last_date).days
+    return list(reversed(history[-5:])), days_since_last  # newest first
+
+
+def quiz_status():
+    history = load_quiz_history()
+    progress = load_progress()
+    pool = learned_pool(progress)
+    learned_words = len(pool)
+    recent, days_since_last = _recent_and_days(_mode_history(history, "mastery"))
+    lookalike_words = sum(len(g) for g in lookalike_groups(pool))
+    la_recent, la_days = _recent_and_days(_mode_history(history, "lookalike"))
     return {
         "required": QUIZ_SIZE,
         "learnedWords": learned_words,
         "eligible": learned_words >= QUIZ_SIZE,
-        "recent": list(reversed(history[-5:])),  # newest first
+        "recent": recent,
         "daysSinceLast": days_since_last,
+        "lookalike": {
+            "required": LOOKALIKE_MIN_WORDS,
+            "words": lookalike_words,
+            "eligible": lookalike_words >= LOOKALIKE_MIN_WORDS,
+            "recent": la_recent,
+            "daysSinceLast": la_days,
+        },
     }
 
 
@@ -503,36 +609,62 @@ class Handler(BaseHTTPRequestHandler):
 
         self._send_error_json("Not found", status=404)
 
-    def handle_post_quiz_start(self):
-        deck = build_quiz_deck(load_progress())
-        if deck is None:
-            return self._send_error_json(
-                f"The quiz unlocks once at least {QUIZ_SIZE} words are Learned.",
-                status=409,
-            )
-        self._send_json({"size": QUIZ_SIZE, "deck": deck})
-
-    def handle_post_quiz_complete(self):
+    def _read_json_body(self):
         length = int(self.headers.get("Content-Length", 0) or 0)
         raw = self.rfile.read(length) if length else b""
+        return json.loads(raw or b"{}")
+
+    def handle_post_quiz_start(self):
         try:
-            payload = json.loads(raw or b"{}")
+            payload = self._read_json_body()
         except json.JSONDecodeError:
             return self._send_error_json("Invalid JSON body")
+        mode = payload.get("mode", DEFAULT_QUIZ_MODE) if isinstance(payload, dict) else None
+        if mode not in QUIZ_MODES:
+            return self._send_error_json(f"mode must be one of {', '.join(QUIZ_MODES)}")
 
+        progress = load_progress()
+        if mode == "lookalike":
+            deck = build_lookalike_deck(progress)
+            locked = (
+                f"The look-alike quiz unlocks once at least {LOOKALIKE_MIN_WORDS} "
+                "similar-looking words are Learned."
+            )
+        else:
+            deck = build_quiz_deck(progress)
+            locked = f"The quiz unlocks once at least {QUIZ_SIZE} words are Learned."
+        if deck is None:
+            return self._send_error_json(locked, status=409)
+        self._send_json({"mode": mode, "size": len(deck), "deck": deck})
+
+    def handle_post_quiz_complete(self):
+        try:
+            payload = self._read_json_body()
+        except json.JSONDecodeError:
+            return self._send_error_json("Invalid JSON body")
+        if not isinstance(payload, dict):
+            return self._send_error_json("Invalid JSON body")
+
+        mode = payload.get("mode", DEFAULT_QUIZ_MODE)
         correct = payload.get("correct")
         total = payload.get("total")
-        valid = (
+        ints = (
             isinstance(correct, int)
             and isinstance(total, int)
             and not isinstance(correct, bool)
             and not isinstance(total, bool)
-            and total == QUIZ_SIZE
-            and 0 <= correct <= total
         )
+        if mode == "lookalike":
+            # The deck is however many look-alike words there were, up to
+            # QUIZ_SIZE (never fewer than the unlock minimum).
+            size_ok = ints and LOOKALIKE_MIN_WORDS <= total <= QUIZ_SIZE
+        else:
+            size_ok = ints and total == QUIZ_SIZE
+        valid = mode in QUIZ_MODES and size_ok and 0 <= correct <= total
         if not valid:
             return self._send_error_json(
-                f"Body must include correct (int) and total (int, must be {QUIZ_SIZE})"
+                "Body must include mode, correct (int) and total (int; "
+                f"{QUIZ_SIZE} for mastery, {LOOKALIKE_MIN_WORDS}-{QUIZ_SIZE} for lookalike)"
             )
 
         with _DATA_LOCK:
@@ -541,6 +673,7 @@ class Handler(BaseHTTPRequestHandler):
                 {
                     "completedAt": datetime.now().isoformat(timespec="seconds"),
                     "date": today_str(),
+                    "mode": mode,
                     "correct": correct,
                     "total": total,
                     "percent": round(100 * correct / total),

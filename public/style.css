@@ -577,6 +577,17 @@ kbd {
   color: var(--blue);
 }
 
+.quiz-mode + .quiz-mode {
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.quiz-mode h2 {
+  margin: 0 0 8px;
+  color: var(--blue);
+}
+
 .quiz-note {
   font-size: 0.8rem;
   color: var(--gray);
@@ -640,6 +651,10 @@ kbd {
 
 #quiz-tracker {
   margin-bottom: 24px;
+}
+
+.quiz-tracker-card + .quiz-tracker-card {
+  margin-top: 14px;
 }
 
 .quiz-tracker-card {

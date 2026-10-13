@@ -41,6 +41,15 @@ Then open <http://localhost:8420>.
   anything. The Dashboard tracks your last 5 scores and the days since your
   last *completed* quiz. Words are shown without their set name, and leaving
   the Quiz tab partway abandons the quiz without recording anything.
+- **Look-alike Quiz** — a second quiz mode for words that are easy to mix up
+  (*ottaa* / *ostaa*, *veli* / *vesi*, *Tanska* / *Ranska*). It looks at your
+  Learned single words and groups the ones spelled alike (one letter apart, or
+  two for longer words), then deals each group back to back so you have to tell
+  them apart straight away. It holds up to 40 words — fewer while you have few
+  look-alikes — and unlocks at 10. Like the Mastery Quiz it never changes any
+  progress, and it keeps its own last-5 scores and days-since on the Dashboard.
+  Quiz history entries carry a `mode` (`mastery` or `lookalike`); older entries
+  without one count as mastery.
 
 ## Adding your own word sets
 
