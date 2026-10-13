@@ -1,0 +1,125 @@
+{
+  "name": "Body Parts",
+  "cards": [
+    {
+      "id": "bp01",
+      "fi": "pää",
+      "en": "head",
+      "hint": "\"pah\" — Pa's head, hat and all"
+    },
+    {
+      "id": "bp02",
+      "fi": "käsi",
+      "en": "hand / arm",
+      "hint": "\"kah-see\" — Cassie waves her hand"
+    },
+    {
+      "id": "bp03",
+      "fi": "jalka",
+      "en": "leg / foot",
+      "hint": "\"yal-kah\" — y'all walk-a on your legs"
+    },
+    {
+      "id": "bp04",
+      "fi": "silmä",
+      "en": "eye",
+      "hint": "\"sil-mah\" — silly Ma winking her eye"
+    },
+    {
+      "id": "bp05",
+      "fi": "korva",
+      "en": "ear",
+      "hint": "\"kor-vah\" — corn has ears (kor-n)"
+    },
+    {
+      "id": "bp06",
+      "fi": "nenä",
+      "en": "nose",
+      "hint": "\"neh-nah\" — Nana's big nose"
+    },
+    {
+      "id": "bp07",
+      "fi": "suu",
+      "en": "mouth",
+      "hint": "\"soo\" — Sue has a big mouth"
+    },
+    {
+      "id": "bp08",
+      "fi": "hammas",
+      "en": "tooth",
+      "hint": "\"ham-mahs\" — you bite ham with your tooth"
+    },
+    {
+      "id": "bp09",
+      "fi": "hiukset",
+      "en": "hair",
+      "hint": "\"hee-ook-set\" — hair hooked and set"
+    },
+    {
+      "id": "bp10",
+      "fi": "kasvot",
+      "en": "face",
+      "hint": "\"kahs-vote\" — a candidate's face on the vote poster"
+    },
+    {
+      "id": "bp11",
+      "fi": "kaula",
+      "en": "neck",
+      "hint": "\"cow-la\" — a cowl around your neck"
+    },
+    {
+      "id": "bp12",
+      "fi": "olkapää",
+      "en": "shoulder",
+      "hint": "\"ol-ka-pah\" — an old cap perched on your shoulder"
+    },
+    {
+      "id": "bp13",
+      "fi": "selkä",
+      "en": "back",
+      "hint": "\"sel-kah\" — a seller carries it all on his back"
+    },
+    {
+      "id": "bp14",
+      "fi": "vatsa",
+      "en": "stomach / belly",
+      "hint": "\"vat-sah\" — a vat of soup in your belly"
+    },
+    {
+      "id": "bp15",
+      "fi": "sormi",
+      "en": "finger",
+      "hint": "\"sor-mee\" — a sore-me finger"
+    },
+    {
+      "id": "bp16",
+      "fi": "polvi",
+      "en": "knee",
+      "hint": "\"pol-vee\" — a pulley bends your knee"
+    },
+    {
+      "id": "bp17",
+      "fi": "sydän",
+      "en": "heart",
+      "hint": "\"sü-dun\" — a sudden heartbeat"
+    },
+    {
+      "id": "bp18",
+      "fi": "iho",
+      "en": "skin",
+      "hint": "\"ee-ho\" — \"Eek, oh!\" — goosebumps on your skin"
+    },
+    {
+      "id": "bp19",
+      "fi": "luu",
+      "en": "bone",
+      "hint": "\"loo\" — a dog buries a bone in the loo"
+    },
+    {
+      "id": "bp20",
+      "fi": "varvas",
+      "en": "toe",
+      "hint": "\"var-vahs\" — the far-vass end of your foot"
+    }
+  ]
+}
