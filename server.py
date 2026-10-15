@@ -511,12 +511,16 @@ def build_quiz_deck(progress, conjugations=False):
     return [_deck_item(e) for e in random.sample(pool, QUIZ_SIZE)]
 
 
-def _edit_distance(a, b):
+def _edit_distance(a, b, limit):
+    """Levenshtein distance, giving up early (returning limit + 1) once it
+    can't come in at or under `limit` - all we ever need to know."""
     prev = list(range(len(b) + 1))
     for i, ca in enumerate(a, 1):
         cur = [i]
         for j, cb in enumerate(b, 1):
             cur.append(min(prev[j] + 1, cur[-1] + 1, prev[j - 1] + (ca != cb)))
+        if min(cur) > limit:
+            return limit + 1
         prev = cur
     return prev[-1]
 
@@ -526,7 +530,7 @@ def _look_alike(a, b):
     one letter apart, or two apart once both are longer than five letters."""
     a, b = a.lower(), b.lower()
     limit = 1 if min(len(a), len(b)) <= 5 else 2
-    return abs(len(a) - len(b)) <= limit and _edit_distance(a, b) <= limit
+    return abs(len(a) - len(b)) <= limit and _edit_distance(a, b, limit) <= limit
 
 
 def lookalike_groups(pool):
