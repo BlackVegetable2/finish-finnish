@@ -36,6 +36,7 @@ import os
 import random
 import re
 import threading
+from functools import lru_cache
 import time
 import uuid
 from datetime import date, datetime, timedelta
@@ -525,6 +526,7 @@ def _edit_distance(a, b, limit):
     return prev[-1]
 
 
+@lru_cache(maxsize=200_000)  # same word pairs recur on every status check
 def _look_alike(a, b):
     """True when two Finnish words are spelled alike enough to be mixed up:
     one letter apart, or two apart once both are longer than five letters."""
