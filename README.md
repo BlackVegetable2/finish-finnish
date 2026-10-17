@@ -64,6 +64,9 @@ Then open <http://localhost:8420>.
   scores. It opens with a short note asking whoever reads it to keep to simple
   present-tense Finnish with your known words, so you can paste it into a chat
   for conversation practice. It is read-only and generated fresh each time.
+  **Currently switched off**: the button is hidden and the server returns 404 for
+  `/api/export` until `EXPORT_ENABLED` is set to `True` in `server.py` (and
+  `hidden` removed from `#export-section` in `public/index.html`).
 
 ## Adding your own word sets
 

@@ -633,6 +633,12 @@ def quiz_status():
 
 # --- Progress export ---------------------------------------------------------
 #
+# Switched off for now: with EXPORT_ENABLED = False the /api/export route
+# answers 404 like any unknown path, and the Dashboard button is hidden (see
+# #export-section in public/index.html). The code is kept so it can be turned
+# back on by flipping the flag and un-hiding the button.
+EXPORT_ENABLED = False
+#
 # A plain-text (Markdown) snapshot of what's been learned, with the actual
 # words - progress.json alone only holds card ids - so it can be downloaded
 # and handed to a tutor or an AI chat for conversation practice. Read-only:
@@ -832,7 +838,7 @@ class Handler(BaseHTTPRequestHandler):
         if path == "/api/quiz/status":
             return self._send_json(quiz_status())
 
-        if path == "/api/export":
+        if path == "/api/export" and EXPORT_ENABLED:
             return self._send_download(
                 build_export_markdown(), f"finnish-progress-{today_str()}.md"
             )

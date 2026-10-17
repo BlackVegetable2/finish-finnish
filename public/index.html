@@ -96,7 +96,9 @@
       <div id="due-summary"></div>
       <div id="quiz-tracker"></div>
       <div id="dashboard-groups"></div>
-      <div id="export-section">
+      <!-- Disabled for now (server also refuses /api/export): remove "hidden"
+           and set EXPORT_ENABLED in server.py to bring it back. -->
+      <div id="export-section" class="hidden">
         <a id="export-link" class="quiz-tracker-btn" href="/api/export" download>Download progress summary</a>
         <p class="quiz-note">
           A text file listing the words you've learned, handy for sharing with a tutor or an
