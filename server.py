@@ -631,6 +631,137 @@ def quiz_status():
     }
 
 
+# --- Progress export ---------------------------------------------------------
+#
+# A plain-text (Markdown) snapshot of what's been learned, with the actual
+# words - progress.json alone only holds card ids - so it can be downloaded
+# and handed to a tutor or an AI chat for conversation practice. Read-only:
+# it never changes any data.
+
+
+def _fmt_words(cards):
+    return "; ".join(f"{c['fi']} = {c['en']}" for c in cards)
+
+
+def build_export_markdown():
+    progress = load_progress()
+    cats = []
+    for cid in list_category_ids():
+        cat = load_category(cid)
+        if cat:
+            cats.append((cid, cat))
+
+    def state(cid, card):
+        """(learned FI->EN, learned EN->FI, retained FI->EN, seen anywhere)."""
+        fi_en = card_progress_entry(progress, cid, "fi-en", card["id"])
+        en_fi = card_progress_entry(progress, cid, "en-fi", card["id"])
+        return (
+            bool(fi_en.get("mastered")),
+            bool(en_fi.get("mastered")),
+            bool(fi_en.get("retention", {}).get("retained")),
+            bool(fi_en.get("timesSeen") or en_fi.get("timesSeen")),
+        )
+
+    vocab_lines, practicing_lines = [], []
+    n_learned = n_understand = n_produce = n_retained = 0
+    for cid, cat in cats:
+        if cat.get("group") == CONJUGATION_GROUP:
+            continue
+        both, understand_only, produce_only, practicing = [], [], [], []
+        for card in cat.get("cards", []):
+            fi_en, en_fi, retained, seen = state(cid, card)
+            n_understand += fi_en
+            n_produce += en_fi
+            n_retained += retained
+            if fi_en and en_fi:
+                both.append(card)
+            elif fi_en:
+                understand_only.append(card)
+            elif en_fi:
+                produce_only.append(card)
+            elif seen:
+                practicing.append(card)
+            n_learned += fi_en or en_fi
+        name = cat.get("name", cid)
+        parts = []
+        if both:
+            parts.append(f"- Know both ways: {_fmt_words(both)}")
+        if understand_only:
+            parts.append(f"- Understand only (Finnish to English): {_fmt_words(understand_only)}")
+        if produce_only:
+            parts.append(f"- Can produce only (English to Finnish): {_fmt_words(produce_only)}")
+        if parts:
+            vocab_lines.append(f"### {name}\n\n" + "\n".join(parts) + "\n")
+        if practicing:
+            practicing_lines.append(f"- {name}: {_fmt_words(practicing)}")
+
+    conj_lines = []
+    for cid, cat in cats:
+        if cat.get("group") != CONJUGATION_GROUP:
+            continue
+        cards = cat.get("cards", [])
+        fi_en = sum(state(cid, c)[0] for c in cards)
+        en_fi = sum(state(cid, c)[1] for c in cards)
+        if fi_en or en_fi:
+            conj_lines.append(
+                f"- {cat.get('name', cid)}: {fi_en}/{len(cards)} forms understood, "
+                f"{en_fi}/{len(cards)} can produce"
+            )
+
+    missed = []
+    stats = load_quiz_cards()
+    for cid, cat in cats:
+        for card in cat.get("cards", []):
+            for direction in DIRECTIONS:
+                entry = stats.get(cid, {}).get(direction, {}).get(card["id"])
+                if entry and entry.get("missed", 0) >= 2:
+                    missed.append((entry["missed"], card))
+                    break
+    missed.sort(key=lambda m: -m[0])
+
+    status = quiz_status()
+    quiz_lines = []
+    for label, st in (
+        ("Mastery quiz", status),
+        ("Look-alike quiz", status["lookalike"]),
+        ("Conjugation quiz", status["conjugation"]),
+    ):
+        if st["recent"]:
+            scores = ", ".join(f"{r['percent']}%" for r in st["recent"])
+            quiz_lines.append(f"- {label} (newest first): {scores}")
+
+    out = [
+        f"# My Finnish progress - {today_str()}",
+        "",
+        "I'm an adult learning Finnish with a flashcard app. This is a snapshot of "
+        "what I've learned so far. If you're helping me practise, please:",
+        "- Talk to me in simple Finnish, using mainly the words listed below, and "
+        "mark any new word with its English meaning.",
+        "- Keep to the present tense (that is all I've studied).",
+        "- Correct my mistakes briefly, and ask me questions so I have to answer.",
+        "- Words I only \"understand\" I can read but may not be able to say yet.",
+        "",
+        "## Snapshot",
+        f"- Vocabulary words learned: {n_learned} "
+        f"(understand {n_understand}, can produce {n_produce}, solidly retained over time: {n_retained})",
+    ]
+    out.append(
+        "- \"Learned\" = answered correctly 3 times in a row; \"retained\" = also "
+        "recalled on spaced re-checks over about two weeks."
+    )
+    out += ["", "## Vocabulary I know", ""] + (vocab_lines or ["(none yet)"])
+    if practicing_lines:
+        out += ["", "## Words I'm still learning (seen, not yet learned)", ""] + practicing_lines
+    if missed:
+        out += ["", "## Words I keep missing in quizzes", "", _fmt_words([c for _, c in missed[:30]])]
+    out += ["", "## Present-tense conjugation practice", ""] + (conj_lines or ["(none yet)"])
+    if conj_lines:
+        out.append("(8 forms per verb: I, you, he/she, we written, we spoken, y'all, they written, they spoken.)")
+    if quiz_lines:
+        out += ["", "## Recent quiz scores", ""] + quiz_lines
+    return "\n".join(out) + "\n"
+
+
 class Handler(BaseHTTPRequestHandler):
     server_version = "FinishFinnish/0.2"
 
@@ -642,6 +773,15 @@ class Handler(BaseHTTPRequestHandler):
         body = json.dumps(obj, ensure_ascii=False).encode("utf-8")
         self.send_response(status)
         self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
+    def _send_download(self, text, filename, content_type="text/markdown"):
+        body = text.encode("utf-8")
+        self.send_response(200)
+        self.send_header("Content-Type", f"{content_type}; charset=utf-8")
+        self.send_header("Content-Disposition", f'attachment; filename="{filename}"')
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
         self.wfile.write(body)
@@ -691,6 +831,11 @@ class Handler(BaseHTTPRequestHandler):
 
         if path == "/api/quiz/status":
             return self._send_json(quiz_status())
+
+        if path == "/api/export":
+            return self._send_download(
+                build_export_markdown(), f"finnish-progress-{today_str()}.md"
+            )
 
         m = re.match(r"^/api/category/([a-zA-Z0-9_-]+)$", path)
         if m:

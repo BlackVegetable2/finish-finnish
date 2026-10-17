@@ -56,6 +56,15 @@ Then open <http://localhost:8420>.
   Quiz history entries carry a `mode` (`mastery`, `lookalike` or
   `conjugation`); older entries without one count as mastery.
 
+- **Progress summary export** — a **Download progress summary** button at the
+  bottom of the Dashboard (also `GET /api/export`) saves a Markdown file with
+  the actual words you've learned, grouped by set and split into know-both-ways
+  / understand-only / produce-only, plus words still in progress, words you
+  keep missing in quizzes, conjugation progress per set, and your recent quiz
+  scores. It opens with a short note asking whoever reads it to keep to simple
+  present-tense Finnish with your known words, so you can paste it into a chat
+  for conversation practice. It is read-only and generated fresh each time.
+
 ## Adding your own word sets
 
 Drop a new JSON file in `cards/`, e.g. `cards/animals.json`:

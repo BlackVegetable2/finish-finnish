@@ -756,3 +756,14 @@ kbd {
   color: var(--gray);
   padding: 24px;
 }
+
+/* Dashboard: progress summary download */
+
+#export-section {
+  margin: 8px 0 32px;
+}
+
+#export-link {
+  display: inline-block;
+  text-decoration: none;
+}
