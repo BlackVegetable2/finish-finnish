@@ -1,0 +1,125 @@
+{
+  "name": "Household Items",
+  "cards": [
+    {
+      "id": "hh01",
+      "fi": "ovi",
+      "en": "door",
+      "hint": "\"oh-vee\" — \"Oh, we're locked out!\" — stuck at the door"
+    },
+    {
+      "id": "hh02",
+      "fi": "ikkuna",
+      "en": "window",
+      "hint": "\"ik-ku-nah\" — an icky, dirty window"
+    },
+    {
+      "id": "hh03",
+      "fi": "sänky",
+      "en": "bed",
+      "hint": "\"san-kü\" — you sink-y into the bed"
+    },
+    {
+      "id": "hh04",
+      "fi": "pöytä",
+      "en": "table",
+      "hint": "\"pöö-tä\" — \"put-a\" your plate on the table"
+    },
+    {
+      "id": "hh05",
+      "fi": "tuoli",
+      "en": "chair",
+      "hint": "\"too-oh-lee\" — \"two Olys\" sitting on one chair"
+    },
+    {
+      "id": "hh06",
+      "fi": "sohva",
+      "en": "sofa",
+      "hint": "\"soh-vah\" — so-fa, nearly the same word"
+    },
+    {
+      "id": "hh07",
+      "fi": "kaappi",
+      "en": "cupboard / closet",
+      "hint": "\"kahp-pee\" — a cupboard with a cap on top"
+    },
+    {
+      "id": "hh08",
+      "fi": "peili",
+      "en": "mirror",
+      "hint": "\"pay-lee\" — you pay Lee to hold the mirror"
+    },
+    {
+      "id": "hh09",
+      "fi": "matto",
+      "en": "rug / carpet",
+      "hint": "\"mat-toh\" — a mat on the floor"
+    },
+    {
+      "id": "hh10",
+      "fi": "lamppu",
+      "en": "lamp",
+      "hint": "\"lahm-poo\" — lamp with an \"oo\" on the end"
+    },
+    {
+      "id": "hh11",
+      "fi": "avain",
+      "en": "key",
+      "hint": "\"ah-vine\" — a vine wrapped around a key"
+    },
+    {
+      "id": "hh12",
+      "fi": "tyyny",
+      "en": "pillow",
+      "hint": "\"tü-nü\" — humming tunes into your pillow"
+    },
+    {
+      "id": "hh13",
+      "fi": "peitto",
+      "en": "blanket",
+      "hint": "\"pay-toh\" — a blanket \"pays\" for your toes' warmth"
+    },
+    {
+      "id": "hh14",
+      "fi": "jääkaappi",
+      "en": "refrigerator",
+      "hint": "\"yaa-kaap-pee\" — jää (ice) + kaappi (cupboard) = an ice cupboard"
+    },
+    {
+      "id": "hh15",
+      "fi": "uuni",
+      "en": "oven",
+      "hint": "\"oo-nee\" — \"oo, my knee!\" — it's hot like an oven"
+    },
+    {
+      "id": "hh16",
+      "fi": "mikroaaltouuni",
+      "en": "microwave",
+      "hint": "\"micro\" + aalto (wave) + uuni (oven) — a micro-wave oven spelled out"
+    },
+    {
+      "id": "hh17",
+      "fi": "pesukone",
+      "en": "washing machine",
+      "hint": "pesu (washing) + kone (machine)"
+    },
+    {
+      "id": "hh18",
+      "fi": "tietokone",
+      "en": "computer",
+      "hint": "tieto (knowledge) + kone (machine) — a knowledge machine"
+    },
+    {
+      "id": "hh19",
+      "fi": "puhelin",
+      "en": "phone",
+      "hint": "\"poo-heh-lin\" — Pooh held a phone"
+    },
+    {
+      "id": "hh20",
+      "fi": "televisio",
+      "en": "television",
+      "hint": "\"te-le-vi-si-o\" — television, barely changed"
+    }
+  ]
+}
