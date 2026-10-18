@@ -23,6 +23,11 @@
   const tabDashboard = document.getElementById("tab-dashboard");
   const studyView = document.getElementById("study-view");
   const dashboardView = document.getElementById("dashboard-view");
+  const advancedView = document.getElementById("advanced-view");
+  const completedView = document.getElementById("completed-view");
+  const completedList = document.getElementById("completed-list");
+  const completedNote = document.getElementById("completed-note");
+  const completedSentinel = document.getElementById("completed-sentinel");
   const dashboardGroups = document.getElementById("dashboard-groups");
   const wordHintBtn = document.getElementById("word-hint-btn");
   const wordHintPanel = document.getElementById("word-hint-panel");
@@ -68,6 +73,10 @@
   let currentCard = null;
   let isFlipped = false;
   let forceReviewAll = false;
+  // A finished set opened from Advanced navigation: kept in the Study menu
+  // (for that direction) so it can be studied, until the page reloads.
+  let openedCompleted = null; // { id, mode }
+  let pendingCategoryId = null; // set to pick a specific set on the next loadCategories
   let toastTimer = null;
 
   // Mastery Quiz state. quizDeck is non-empty only while a quiz is in
@@ -131,8 +140,13 @@
 
   async function loadCategories() {
     const data = await fetchJSON(`/api/categories?mode=${currentMode}`);
-    const categories = data.categories.filter((c) => !isCompleted(c));
-    const prevSelection = categorySelect.value;
+    const categories = data.categories.filter(
+      (c) =>
+        !isCompleted(c) ||
+        (openedCompleted && openedCompleted.id === c.id && openedCompleted.mode === currentMode)
+    );
+    const prevSelection = pendingCategoryId || categorySelect.value;
+    pendingCategoryId = null;
     categorySelect.innerHTML = "";
     for (const group of orderedGroups(categories)) {
       const optgroup = document.createElement("optgroup");
@@ -574,6 +588,98 @@
     await loadCategories();
   }
 
+  // --- Advanced navigation: study from completed sets ---
+
+  const MODE_LABELS = { "fi-en": "Finnish → English", "en-fi": "English → Finnish" };
+  const COMPLETED_BATCH = 25;
+  let completedRows = [];
+  let completedShown = 0;
+  let completedObserver = null;
+
+  // Every set that's finished (all Learned and Retained) in at least one
+  // direction, with the direction(s) it's finished in.
+  async function openCompletedView() {
+    completedList.innerHTML = "";
+    completedNote.textContent = "Loading…";
+    completedRows = [];
+    completedShown = 0;
+    try {
+      const [fiEn, enFi] = await Promise.all([
+        fetchJSON("/api/categories?mode=fi-en"),
+        fetchJSON("/api/categories?mode=en-fi"),
+      ]);
+      const done = { "fi-en": new Set(), "en-fi": new Set() };
+      for (const c of fiEn.categories) if (isCompleted(c)) done["fi-en"].add(c.id);
+      for (const c of enFi.categories) if (isCompleted(c)) done["en-fi"].add(c.id);
+      completedRows = fiEn.categories
+        .filter((c) => done["fi-en"].has(c.id) || done["en-fi"].has(c.id))
+        .map((c) => ({
+          id: c.id,
+          name: c.name,
+          group: c.group || DEFAULT_GROUP,
+          modes: ["fi-en", "en-fi"].filter((m) => done[m].has(c.id)),
+        }));
+    } catch (err) {
+      completedNote.textContent = "Couldn't load the sets: " + err.message;
+      return;
+    }
+    completedNote.textContent = completedRows.length
+      ? `${completedRows.length} completed set${completedRows.length === 1 ? "" : "s"}. ` +
+        "Choose a direction to practise it again. A correct answer won't change anything, " +
+        "but a miss knocks that word back out of Learned, as it would anywhere."
+      : "No completed sets yet. A set shows up here once every card in it is Learned and Retained in a direction.";
+    renderMoreCompleted();
+  }
+
+  // Rows are added a batch at a time as you scroll, so the list stays cheap
+  // however many sets there are.
+  function renderMoreCompleted() {
+    const next = completedRows.slice(completedShown, completedShown + COMPLETED_BATCH);
+    for (const row of next) {
+      const el = document.createElement("div");
+      el.className = "completed-row";
+      el.innerHTML = `
+        <span class="completed-row-name"></span>
+        <span class="completed-row-group"></span>
+        <div class="completed-row-actions"></div>`;
+      el.querySelector(".completed-row-name").textContent = row.name;
+      el.querySelector(".completed-row-group").textContent = row.group;
+      const actions = el.querySelector(".completed-row-actions");
+      for (const mode of row.modes) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.textContent = MODE_LABELS[mode];
+        btn.addEventListener("click", () => studyCompleted(row.id, mode));
+        actions.appendChild(btn);
+      }
+      completedList.appendChild(el);
+    }
+    completedShown += next.length;
+
+    if (completedObserver) completedObserver.disconnect();
+    if (completedShown < completedRows.length && "IntersectionObserver" in window) {
+      completedObserver = new IntersectionObserver((entries) => {
+        if (entries.some((e) => e.isIntersecting)) renderMoreCompleted();
+      });
+      completedObserver.observe(completedSentinel);
+    } else if (completedShown < completedRows.length) {
+      renderMoreCompleted(); // no observer support: just show the rest
+    }
+  }
+
+  async function studyCompleted(categoryId, mode) {
+    openedCompleted = { id: categoryId, mode };
+    pendingCategoryId = categoryId;
+    currentMode = mode;
+    modeSelect.value = mode;
+    showView("study");
+    await loadCategories();
+    // Everything in it is already retained, so go straight to practising all.
+    forceReviewAll = true;
+    reviewAllToggle.checked = true;
+    startRound();
+  }
+
   // One dashboard section per group (Vocabulary, Conjugations, ...), each
   // with its own totals and table - so easy pattern drills never dilute the
   // vocabulary numbers, and vice versa.
@@ -933,10 +1039,18 @@
 
     studyView.classList.toggle("hidden", view !== "study");
     dashboardView.classList.toggle("hidden", view !== "dashboard");
+    advancedView.classList.toggle("hidden", view !== "advanced");
+    completedView.classList.toggle("hidden", view !== "completed");
     quizView.classList.toggle("hidden", view !== "quiz");
     tabStudy.classList.toggle("active", view === "study");
-    tabDashboard.classList.toggle("active", view === "dashboard");
+    // The Advanced navigation pages hang off the Dashboard.
+    tabDashboard.classList.toggle(
+      "active",
+      view === "dashboard" || view === "advanced" || view === "completed"
+    );
     tabQuiz.classList.toggle("active", view === "quiz");
+
+    if (view === "advanced" || view === "completed") window.scrollTo({ top: 0 });
 
     if (view === "dashboard") {
       refreshQuizStatus();
@@ -944,6 +1058,8 @@
         console.error(err);
         dashboardGroups.innerHTML = `<p class="dash-loading" style="color:red;">Failed to load: ${err.message}</p>`;
       });
+    } else if (view === "completed") {
+      openCompletedView();
     } else if (view === "quiz" && !quizInProgress()) {
       // (Re-tapping the Quiz tab mid-quiz is a no-op rather than a reset.)
       openQuizView();
@@ -955,6 +1071,11 @@
   tabStudy.addEventListener("click", () => showView("study"));
   tabDashboard.addEventListener("click", () => showView("dashboard"));
   tabQuiz.addEventListener("click", () => showView("quiz"));
+
+  document.getElementById("advanced-nav-btn").addEventListener("click", () => showView("advanced"));
+  document.getElementById("advanced-back-btn").addEventListener("click", () => showView("dashboard"));
+  document.getElementById("advanced-completed-btn").addEventListener("click", () => showView("completed"));
+  document.getElementById("completed-back-btn").addEventListener("click", () => showView("advanced"));
 
   quizStartBtn.addEventListener("click", () => startQuiz("mastery"));
   quizLookalikeBtn.addEventListener("click", () => startQuiz("lookalike"));

@@ -33,6 +33,13 @@ Then open <http://localhost:8420>.
   the list only shows what still needs work. It's per direction (a set can be
   done Finnish → English and still listed English → Finnish), and the Dashboard
   still shows every set.
+- **Advanced navigation** — a button at the bottom of the Dashboard opens a page of
+  extra buttons (with a Back button). For now it has one: **Study from completed
+  sets**, a scrollable list of every set that's fully Learned and Retained in
+  at least one direction. Pick a direction and it opens in Study with "include
+  already-learned words" on. That's ordinary practice, so a miss still knocks a
+  word out of Learned, as it does anywhere; the set stays in the Study menu
+  until the page is reloaded.
 - **Word-trick hints** — every card has an optional mnemonic connecting the
   sound of the Finnish word to its English meaning (e.g. *antaa* ("to give")
   ↔ "ants are giving").
