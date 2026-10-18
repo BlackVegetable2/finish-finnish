@@ -121,14 +121,23 @@
     return seen.sort((a, b) => (a === DEFAULT_GROUP ? -1 : b === DEFAULT_GROUP ? 1 : 0));
   }
 
+  // A set that's finished for this direction - every card Learned and
+  // Retained - has nothing left to study, so it's left out of the menu.
+  // (Sets stay on the Dashboard. One you just finished stays in the menu until
+  // the page or direction reloads, so it doesn't vanish mid-session.)
+  function isCompleted(cat) {
+    return cat.total > 0 && cat.mastered >= cat.total && cat.retained >= cat.total;
+  }
+
   async function loadCategories() {
     const data = await fetchJSON(`/api/categories?mode=${currentMode}`);
+    const categories = data.categories.filter((c) => !isCompleted(c));
     const prevSelection = categorySelect.value;
     categorySelect.innerHTML = "";
-    for (const group of orderedGroups(data.categories)) {
+    for (const group of orderedGroups(categories)) {
       const optgroup = document.createElement("optgroup");
       optgroup.label = group;
-      for (const cat of data.categories.filter((c) => (c.group || DEFAULT_GROUP) === group)) {
+      for (const cat of categories.filter((c) => (c.group || DEFAULT_GROUP) === group)) {
         const opt = document.createElement("option");
         opt.value = cat.id;
         opt.textContent = categoryOptionLabel(cat);
@@ -136,11 +145,23 @@
       }
       categorySelect.appendChild(optgroup);
     }
-    if (data.categories.length === 0) return;
+    if (categories.length === 0) {
+      // Everything is done in this direction.
+      currentCard = null;
+      currentCategoryId = null;
+      categoryStats.textContent = "";
+      cardArea.classList.add("hidden");
+      roundComplete.classList.add("hidden");
+      reviewStatus.classList.add("hidden");
+      document.querySelector("#empty-state p").textContent =
+        "🎉 Every set is fully learned and retained in this direction!";
+      emptyState.classList.remove("hidden");
+      return;
+    }
 
-    const toSelect = data.categories.find((c) => c.id === prevSelection)
+    const toSelect = categories.find((c) => c.id === prevSelection)
       ? prevSelection
-      : data.categories[0].id;
+      : categories[0].id;
     currentCategoryId = toSelect;
     categorySelect.value = toSelect;
     await loadCategory(currentCategoryId);

@@ -28,6 +28,11 @@ Then open <http://localhost:8420>.
   - **Retained** — correct recall on spaced check-ins (roughly 2, 4, then 8
     days out) spanning about two weeks after being Learned. This is a
     lightweight spaced-repetition schedule, in the spirit of Anki/SRS.
+- **Finished sets leave the menu** — in the category picker, a set whose every
+  card is both Learned and Retained *in the current direction* is hidden, so
+  the list only shows what still needs work. It's per direction (a set can be
+  done Finnish → English and still listed English → Finnish), and the Dashboard
+  still shows every set.
 - **Word-trick hints** — every card has an optional mnemonic connecting the
   sound of the Finnish word to its English meaning (e.g. *antaa* ("to give")
   ↔ "ants are giving").
