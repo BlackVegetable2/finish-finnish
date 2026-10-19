@@ -208,6 +208,17 @@ cp launchd/com.devinekins.finish-finnish.plist ~/Library/LaunchAgents/
 launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.devinekins.finish-finnish.plist
 ```
 
+The agent runs the server under `caffeinate -s`, so the Mac won't sleep while it's
+plugged in (on battery it can still sleep, and a closed lid always does) - a
+sleeping Mac is unreachable from your phone. If you installed the agent before
+this was added, copy the plist again and reload it:
+
+```bash
+launchctl bootout gui/$(id -u)/com.devinekins.finish-finnish
+cp launchd/com.devinekins.finish-finnish.plist ~/Library/LaunchAgents/
+launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.devinekins.finish-finnish.plist
+```
+
 Logs land in `~/Library/Logs/finish-finnish/`. This starts the server at
 *login*, not at raw power-on before anyone logs in — a true boot-time
 LaunchDaemon needs `sudo` and isn't set up here.

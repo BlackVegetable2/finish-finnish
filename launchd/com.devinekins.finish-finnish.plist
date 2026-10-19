@@ -6,7 +6,11 @@
     <string>com.devinekins.finish-finnish</string>
 
     <key>ProgramArguments</key>
+    <!-- caffeinate -s keeps the Mac from sleeping while it is on AC power, so the
+         server stays reachable from your phone. (A closed lid still sleeps.) -->
     <array>
+        <string>/usr/bin/caffeinate</string>
+        <string>-s</string>
         <string>/usr/bin/python3</string>
         <string>-u</string>
         <string>/Users/devinekins/Code/finish-finnish/server.py</string>
