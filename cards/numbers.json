@@ -1,0 +1,125 @@
+{
+  "name": "Numbers 0 & 4-22",
+  "cards": [
+    {
+      "id": "nm01",
+      "fi": "nolla",
+      "en": "zero (0)",
+      "hint": "\"nol-lah\" — sounds like \"null\": nothing at all"
+    },
+    {
+      "id": "nm02",
+      "fi": "neljä",
+      "en": "four (4)",
+      "hint": "\"nel-yah\" — four nails: \"nail-ya\""
+    },
+    {
+      "id": "nm03",
+      "fi": "viisi",
+      "en": "five (5)",
+      "hint": "\"vee-si\" — starts with V, like the Roman numeral V = 5"
+    },
+    {
+      "id": "nm04",
+      "fi": "kuusi",
+      "en": "six (6)",
+      "hint": "\"koo-si\" — six cousins (cou-sin)"
+    },
+    {
+      "id": "nm05",
+      "fi": "seitsemän",
+      "en": "seven (7)",
+      "hint": "\"sayt-seh-mahn\" — seven men sat down"
+    },
+    {
+      "id": "nm06",
+      "fi": "kahdeksan",
+      "en": "eight (8)",
+      "hint": "\"kah-dek-san\" — starts like kaksi (2): two short of ten"
+    },
+    {
+      "id": "nm07",
+      "fi": "yhdeksän",
+      "en": "nine (9)",
+      "hint": "\"ü-dek-san\" — starts like yksi (1): one short of ten"
+    },
+    {
+      "id": "nm08",
+      "fi": "kymmenen",
+      "en": "ten (10)",
+      "hint": "\"küm-meh-nen\" — ten kimonos"
+    },
+    {
+      "id": "nm09",
+      "fi": "yksitoista",
+      "en": "eleven (11)",
+      "hint": "yksi (one) + toista = one-teen"
+    },
+    {
+      "id": "nm10",
+      "fi": "kaksitoista",
+      "en": "twelve (12)",
+      "hint": "kaksi (two) + toista = two-teen"
+    },
+    {
+      "id": "nm11",
+      "fi": "kolmetoista",
+      "en": "thirteen (13)",
+      "hint": "kolme (three) + toista = three-teen"
+    },
+    {
+      "id": "nm12",
+      "fi": "neljätoista",
+      "en": "fourteen (14)",
+      "hint": "neljä (four) + toista = four-teen"
+    },
+    {
+      "id": "nm13",
+      "fi": "viisitoista",
+      "en": "fifteen (15)",
+      "hint": "viisi (five) + toista = five-teen"
+    },
+    {
+      "id": "nm14",
+      "fi": "kuusitoista",
+      "en": "sixteen (16)",
+      "hint": "kuusi (six) + toista = six-teen"
+    },
+    {
+      "id": "nm15",
+      "fi": "seitsemäntoista",
+      "en": "seventeen (17)",
+      "hint": "seitsemän (seven) + toista = seven-teen"
+    },
+    {
+      "id": "nm16",
+      "fi": "kahdeksantoista",
+      "en": "eighteen (18)",
+      "hint": "kahdeksan (eight) + toista = eight-teen"
+    },
+    {
+      "id": "nm17",
+      "fi": "yhdeksäntoista",
+      "en": "nineteen (19)",
+      "hint": "yhdeksän (nine) + toista = nine-teen"
+    },
+    {
+      "id": "nm18",
+      "fi": "kaksikymmentä",
+      "en": "twenty (20)",
+      "hint": "kaksi (two) + kymmentä (tens) = two tens"
+    },
+    {
+      "id": "nm19",
+      "fi": "kaksikymmentäyksi",
+      "en": "twenty-one (21)",
+      "hint": "kaksikymmentä (20) + yksi (one)"
+    },
+    {
+      "id": "nm20",
+      "fi": "kaksikymmentäkaksi",
+      "en": "twenty-two (22)",
+      "hint": "kaksikymmentä (20) + kaksi (two)"
+    }
+  ]
+}
