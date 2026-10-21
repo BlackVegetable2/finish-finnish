@@ -1,0 +1,125 @@
+{
+  "name": "Directions & Places",
+  "cards": [
+    {
+      "id": "dr01",
+      "fi": "pohjoinen",
+      "en": "north",
+      "hint": "\"poh-yoy-nen\" — \"Poh! Oy!\" shouted at the North Pole"
+    },
+    {
+      "id": "dr02",
+      "fi": "etelä",
+      "en": "south",
+      "hint": "\"eh-teh-lah\" — \"eat Ella\" — Ella eats down in the south"
+    },
+    {
+      "id": "dr03",
+      "fi": "itä",
+      "en": "east",
+      "hint": "\"ee-tah\" — \"eat-a\" breakfast as the sun rises in the east"
+    },
+    {
+      "id": "dr04",
+      "fi": "länsi",
+      "en": "west",
+      "hint": "\"lahn-see\" — a lance aimed at the setting sun in the west"
+    },
+    {
+      "id": "dr05",
+      "fi": "vasen",
+      "en": "left",
+      "hint": "\"vah-sen\" — a vase on your left"
+    },
+    {
+      "id": "dr06",
+      "fi": "oikea",
+      "en": "right",
+      "hint": "\"oy-keh-ah\" — \"Oy, correct!\" — the right (correct) side"
+    },
+    {
+      "id": "dr07",
+      "fi": "suoraan",
+      "en": "straight ahead",
+      "hint": "\"soo-oh-rahn\" — he ran straight ahead until he was sore"
+    },
+    {
+      "id": "dr08",
+      "fi": "eteenpäin",
+      "en": "forward",
+      "hint": "eteen (in front) + päin (toward) = toward the front"
+    },
+    {
+      "id": "dr09",
+      "fi": "takana",
+      "en": "behind",
+      "hint": "\"tah-kah-nah\" — a tack stuck in your back, behind you"
+    },
+    {
+      "id": "dr10",
+      "fi": "edessä",
+      "en": "in front (of)",
+      "hint": "\"eh-des-sah\" — Eddie stands in front"
+    },
+    {
+      "id": "dr11",
+      "fi": "ylös",
+      "en": "up",
+      "hint": "\"ü-lurs\" — you lurch up"
+    },
+    {
+      "id": "dr12",
+      "fi": "alas",
+      "en": "down",
+      "hint": "\"ah-lahs\" — \"Alas!\" — I fell down"
+    },
+    {
+      "id": "dr13",
+      "fi": "sisällä",
+      "en": "inside",
+      "hint": "\"si-säl-lä\" — sis (sister) stays inside"
+    },
+    {
+      "id": "dr14",
+      "fi": "ulkona",
+      "en": "outside",
+      "hint": "\"ool-ko-nah\" — an owl outside at night"
+    },
+    {
+      "id": "dr15",
+      "fi": "lähellä",
+      "en": "near / close",
+      "hint": "\"lah-hel-lah\" — \"La, hello!\" to someone standing near"
+    },
+    {
+      "id": "dr16",
+      "fi": "kaukana",
+      "en": "far away",
+      "hint": "\"kow-kah-nah\" — a cow can't reach, it's far away"
+    },
+    {
+      "id": "dr17",
+      "fi": "vieressä",
+      "en": "next to / beside",
+      "hint": "\"vee-er-es-sah\" — veer next to the road"
+    },
+    {
+      "id": "dr18",
+      "fi": "keskellä",
+      "en": "in the middle",
+      "hint": "\"kes-kel-lah\" — a kettle in the middle of the table"
+    },
+    {
+      "id": "dr19",
+      "fi": "täällä",
+      "en": "here",
+      "hint": "\"tä-äl-lä\" — \"ta-da, all here!\""
+    },
+    {
+      "id": "dr20",
+      "fi": "siellä",
+      "en": "there",
+      "hint": "\"see-el-lah\" — see Ella over there"
+    }
+  ]
+}
