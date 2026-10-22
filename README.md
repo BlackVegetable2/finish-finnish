@@ -108,7 +108,9 @@ Two optional top-level fields control how a set is treated:
 Finnish word endings: the case endings, plural, possessive and
 question/emphasis suffixes, and comparison. Each card is the ending on the Finnish
 side and its name and use on the English side (e.g. `-n` = genitive: possession),
-with an example in the hint.
+with an example in the hint. The ultra-rare comitative (`-ine-`) and instructive
+(`-in` on plural nouns) endings were deliberately left out (ids `ed13` and `ed14`
+are unused, so they can be added back without disturbing anyone's progress).
 
 ### Conjugation sets
 
