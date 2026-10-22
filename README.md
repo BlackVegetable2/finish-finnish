@@ -104,6 +104,12 @@ Two optional top-level fields control how a set is treated:
   table). Sets without a `group` are listed as "Vocabulary".
 - `"quiz": false` — keeps the set out of the Mastery Quiz's word pool.
 
+`cards/word_endings.json` (group `Grammar`, excluded from the quizzes) drills
+Finnish word endings: the case endings, plural, possessive and
+question/emphasis suffixes, and comparison. Each card is the ending on the Finnish
+side and its name and use on the English side (e.g. `-n` = genitive: possession),
+with an example in the hint.
+
 ### Conjugation sets
 
 `cards/conjugations_i1.json` … `iv4` drill the present tense of the 80 verbs

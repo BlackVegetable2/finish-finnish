@@ -1,0 +1,187 @@
+{
+  "name": "Word Endings",
+  "group": "Grammar",
+  "quiz": false,
+  "cards": [
+    {
+      "id": "ed01",
+      "fi": "(no ending)",
+      "en": "nominative: the subject; the basic dictionary form",
+      "hint": "talo = the house (as the subject: Talo on iso = The house is big)"
+    },
+    {
+      "id": "ed02",
+      "fi": "-n",
+      "en": "genitive: possession (\"of\", 's); also the object of a verb (accusative)",
+      "hint": "talo → talon = the house's / of the house. Mikon auto = Mikko's car. Näen talon = I see the house"
+    },
+    {
+      "id": "ed03",
+      "fi": "-a / -ä (also -ta / -tä)",
+      "en": "partitive: \"some\" / part of something; used after numbers and in negatives",
+      "hint": "Juon kahvia = I drink (some) coffee. kaksi kahvia = two coffees. Ei ole kahvia = there is no coffee"
+    },
+    {
+      "id": "ed04",
+      "fi": "-ssa / -ssä",
+      "en": "inessive: in, inside",
+      "hint": "talossa = in the house. Trick: the double s is for \"inSide\""
+    },
+    {
+      "id": "ed05",
+      "fi": "-sta / -stä",
+      "en": "elative: out of, from (inside)",
+      "hint": "talosta = out of the house. Trick: -sta = \"start out\" from inside"
+    },
+    {
+      "id": "ed06",
+      "fi": "-Vn / -hVn / -seen",
+      "en": "illative: into, to (going inside)",
+      "hint": "talo → taloon = into the house (the last vowel doubles + n). Trick: ends in n like \"in(to)\""
+    },
+    {
+      "id": "ed07",
+      "fi": "-lla / -llä",
+      "en": "adessive: on, at; also \"have\" (minulla on)",
+      "hint": "pöydällä = on the table. Minulla on kirja = I have a book (literally, \"at me is a book\")"
+    },
+    {
+      "id": "ed08",
+      "fi": "-lta / -ltä",
+      "en": "ablative: from (a surface or a person)",
+      "hint": "pöydältä = from the table. Sain kirjeen Mikolta = I got a letter from Mikko"
+    },
+    {
+      "id": "ed09",
+      "fi": "-lle",
+      "en": "allative: onto, to, for (a person)",
+      "hint": "pöydälle = onto the table. Annan sen Mikolle = I give it to Mikko"
+    },
+    {
+      "id": "ed10",
+      "fi": "-na / -nä",
+      "en": "essive: as (a role); on (a day)",
+      "hint": "opettajana = as a teacher. maanantaina = on Monday"
+    },
+    {
+      "id": "ed11",
+      "fi": "-ksi",
+      "en": "translative: becoming / turning into",
+      "hint": "Hän opiskelee opettajaksi = he/she is studying to become a teacher. Trick: -ksi = \"ex-\", changing into something"
+    },
+    {
+      "id": "ed12",
+      "fi": "-tta / -ttä",
+      "en": "abessive: without",
+      "hint": "rahatta = without money. In everyday speech people use ilman + partitive instead: ilman maitoa = without milk"
+    },
+    {
+      "id": "ed13",
+      "fi": "-ine- + possessive ending",
+      "en": "comitative: together with (rare)",
+      "hint": "lapsineen = with his/her children. Set phrase more than everyday speech"
+    },
+    {
+      "id": "ed14",
+      "fi": "-in (on a plural noun)",
+      "en": "instructive: by means of, in the manner of (rare)",
+      "hint": "omin silmin = with my own eyes. Mostly in set phrases"
+    },
+    {
+      "id": "ed15",
+      "fi": "-t",
+      "en": "nominative plural: more than one",
+      "hint": "talo → talot = the houses"
+    },
+    {
+      "id": "ed16",
+      "fi": "-i- (plural, before a case ending)",
+      "en": "plural stem: more than one in the other cases",
+      "hint": "taloissa = in the houses (talo + i + ssa)"
+    },
+    {
+      "id": "ed17",
+      "fi": "-en / -jen / -ten",
+      "en": "genitive plural: of the (many)",
+      "hint": "talojen = of the houses"
+    },
+    {
+      "id": "ed18",
+      "fi": "-ja / -jä (also -ia / -iä)",
+      "en": "partitive plural: some (many)",
+      "hint": "taloja = (some) houses. Haluan omenoita = I want (some) apples"
+    },
+    {
+      "id": "ed19",
+      "fi": "-ni",
+      "en": "my (possessive ending)",
+      "hint": "kirja → kirjani = my book"
+    },
+    {
+      "id": "ed20",
+      "fi": "-si",
+      "en": "your (one person; possessive ending)",
+      "hint": "kirjasi = your book"
+    },
+    {
+      "id": "ed21",
+      "fi": "-nsa / -nsä (or -Vn)",
+      "en": "his / her / their (possessive ending)",
+      "hint": "kirjansa = his/her/their book"
+    },
+    {
+      "id": "ed22",
+      "fi": "-mme",
+      "en": "our (possessive ending)",
+      "hint": "kirjamme = our book"
+    },
+    {
+      "id": "ed23",
+      "fi": "-nne",
+      "en": "your, y'all's (possessive ending)",
+      "hint": "kirjanne = y'all's book"
+    },
+    {
+      "id": "ed24",
+      "fi": "-ko / -kö",
+      "en": "turns a statement into a yes/no question",
+      "hint": "Onko kahvia? = Is there coffee? (on + ko). Tuletko? = Are you coming?"
+    },
+    {
+      "id": "ed25",
+      "fi": "-kin",
+      "en": "also, too",
+      "hint": "Minäkin tulen = I'm coming too"
+    },
+    {
+      "id": "ed26",
+      "fi": "-kaan / -kään",
+      "en": "not even; either (with a negative)",
+      "hint": "Minäkään en tiedä = I don't know either"
+    },
+    {
+      "id": "ed27",
+      "fi": "-han / -hän",
+      "en": "\"you know\", \"after all\" (soft emphasis)",
+      "hint": "Sehän on selvää = well, that's obvious"
+    },
+    {
+      "id": "ed28",
+      "fi": "-pa / -pä",
+      "en": "emphatic: \"how...!\", \"indeed!\"",
+      "hint": "Onpa kaunis päivä! = What a beautiful day!"
+    },
+    {
+      "id": "ed29",
+      "fi": "-mpi",
+      "en": "comparative: more / -er",
+      "hint": "iso → isompi = bigger"
+    },
+    {
+      "id": "ed30",
+      "fi": "-in (on an adjective)",
+      "en": "superlative: most / -est",
+      "hint": "iso → isoin = biggest"
+    }
+  ]
+}
