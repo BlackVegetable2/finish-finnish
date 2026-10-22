@@ -1,0 +1,125 @@
+{
+  "name": "Time & Calendar",
+  "cards": [
+    {
+      "id": "tm01",
+      "fi": "tammikuu",
+      "en": "January",
+      "hint": "\"tahm-mee-koo\" — Tammy is cool in cold January"
+    },
+    {
+      "id": "tm02",
+      "fi": "helmikuu",
+      "en": "February",
+      "hint": "\"hel-mee-koo\" — a helmet for February's ice"
+    },
+    {
+      "id": "tm03",
+      "fi": "maaliskuu",
+      "en": "March",
+      "hint": "\"maa-lis-koo\" — maalis sounds like March"
+    },
+    {
+      "id": "tm04",
+      "fi": "huhtikuu",
+      "en": "April",
+      "hint": "\"hooh-tee-koo\" — \"huh, tea?\" — April showers, hot tea"
+    },
+    {
+      "id": "tm05",
+      "fi": "toukokuu",
+      "en": "May",
+      "hint": "\"toh-koh-koo\" — sprouts poking up in May, \"toe-ko\""
+    },
+    {
+      "id": "tm06",
+      "fi": "kesäkuu",
+      "en": "June",
+      "hint": "\"keh-sä-koo\" — kesä means summer, so June starts it"
+    },
+    {
+      "id": "tm07",
+      "fi": "heinäkuu",
+      "en": "July",
+      "hint": "\"hay-nä-koo\" — heinä is hay, cut in July"
+    },
+    {
+      "id": "tm08",
+      "fi": "elokuu",
+      "en": "August",
+      "hint": "\"eh-loh-koo\" — \"hello\" to the August harvest"
+    },
+    {
+      "id": "tm09",
+      "fi": "syyskuu",
+      "en": "September",
+      "hint": "\"süüs-koo\" — syys means autumn: \"see\" the leaves fall"
+    },
+    {
+      "id": "tm10",
+      "fi": "lokakuu",
+      "en": "October",
+      "hint": "\"loh-kah-koo\" — loka is mud, and October is muddy"
+    },
+    {
+      "id": "tm11",
+      "fi": "marraskuu",
+      "en": "November",
+      "hint": "\"mar-ras-koo\" — marrow-chilling November"
+    },
+    {
+      "id": "tm12",
+      "fi": "joulukuu",
+      "en": "December",
+      "hint": "\"yoh-loo-koo\" — joulu (Christmas) sounds like Yule"
+    },
+    {
+      "id": "tm13",
+      "fi": "huomenna",
+      "en": "tomorrow",
+      "hint": "\"hoo-oh-men-nah\" — \"who'll mend it?\" — tomorrow"
+    },
+    {
+      "id": "tm14",
+      "fi": "eilen",
+      "en": "yesterday",
+      "hint": "\"ay-len\" — \"ail-en\": I was ailing yesterday"
+    },
+    {
+      "id": "tm15",
+      "fi": "ylihuomenna",
+      "en": "the day after tomorrow",
+      "hint": "yli (over) + huomenna (tomorrow) = over-tomorrow"
+    },
+    {
+      "id": "tm16",
+      "fi": "viikko",
+      "en": "week",
+      "hint": "\"vee-kko\" — \"week-o\""
+    },
+    {
+      "id": "tm17",
+      "fi": "vuosi",
+      "en": "year",
+      "hint": "\"voo-oh-see\" — \"woo, see you next year!\""
+    },
+    {
+      "id": "tm18",
+      "fi": "iltapäivä",
+      "en": "afternoon",
+      "hint": "ilta (evening) + päivä (day) = evening-day"
+    },
+    {
+      "id": "tm19",
+      "fi": "yö",
+      "en": "night",
+      "hint": "\"ü-ur\" — \"your\" night, a night owl"
+    },
+    {
+      "id": "tm20",
+      "fi": "ilta",
+      "en": "evening",
+      "hint": "\"il-tah\" — ill and tired by evening"
+    }
+  ]
+}
