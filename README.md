@@ -40,6 +40,11 @@ Then open <http://localhost:8420>.
   already-learned words" on. That's ordinary practice, so a miss still knocks a
   word out of Learned, as it does anywhere; the set stays in the Study menu
   until the page is reloaded.
+  The page's second button, **Grammar endings reference**, is a plain
+  scrollable guide to Finnish word endings (vowel harmony, the cases, plural,
+  possessive endings, -ko/-kin/-han and friends, comparison, the rare cases, and
+  the pronouns in each case). It's the static page `public/reference/endings.html`
+  — edit it freely; it isn't tied to any cards.
 - **Word-trick hints** — every card has an optional mnemonic connecting the
   sound of the Finnish word to its English meaning (e.g. *antaa* ("to give")
   ↔ "ants are giving").

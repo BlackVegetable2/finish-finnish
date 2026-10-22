@@ -25,6 +25,8 @@
   const dashboardView = document.getElementById("dashboard-view");
   const advancedView = document.getElementById("advanced-view");
   const completedView = document.getElementById("completed-view");
+  const referenceView = document.getElementById("reference-view");
+  const referenceContent = document.getElementById("reference-content");
   const completedList = document.getElementById("completed-list");
   const completedNote = document.getElementById("completed-note");
   const completedSentinel = document.getElementById("completed-sentinel");
@@ -667,6 +669,21 @@
     }
   }
 
+  // The grammar reference is a plain HTML page (public/reference/endings.html)
+  // loaded the first time it's opened.
+  let referenceLoaded = false;
+  async function loadReference() {
+    if (referenceLoaded) return;
+    try {
+      const res = await fetch("/reference/endings.html");
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      referenceContent.innerHTML = await res.text();
+      referenceLoaded = true;
+    } catch (err) {
+      referenceContent.textContent = "Couldn't load the reference: " + err.message;
+    }
+  }
+
   async function studyCompleted(categoryId, mode) {
     openedCompleted = { id: categoryId, mode };
     pendingCategoryId = categoryId;
@@ -1041,16 +1058,19 @@
     dashboardView.classList.toggle("hidden", view !== "dashboard");
     advancedView.classList.toggle("hidden", view !== "advanced");
     completedView.classList.toggle("hidden", view !== "completed");
+    referenceView.classList.toggle("hidden", view !== "reference");
     quizView.classList.toggle("hidden", view !== "quiz");
     tabStudy.classList.toggle("active", view === "study");
     // The Advanced navigation pages hang off the Dashboard.
     tabDashboard.classList.toggle(
       "active",
-      view === "dashboard" || view === "advanced" || view === "completed"
+      view === "dashboard" || view === "advanced" || view === "completed" || view === "reference"
     );
     tabQuiz.classList.toggle("active", view === "quiz");
 
-    if (view === "advanced" || view === "completed") window.scrollTo({ top: 0 });
+    if (view === "advanced" || view === "completed" || view === "reference") {
+      window.scrollTo({ top: 0 });
+    }
 
     if (view === "dashboard") {
       refreshQuizStatus();
@@ -1060,6 +1080,8 @@
       });
     } else if (view === "completed") {
       openCompletedView();
+    } else if (view === "reference") {
+      loadReference();
     } else if (view === "quiz" && !quizInProgress()) {
       // (Re-tapping the Quiz tab mid-quiz is a no-op rather than a reset.)
       openQuizView();
@@ -1076,6 +1098,8 @@
   document.getElementById("advanced-back-btn").addEventListener("click", () => showView("dashboard"));
   document.getElementById("advanced-completed-btn").addEventListener("click", () => showView("completed"));
   document.getElementById("completed-back-btn").addEventListener("click", () => showView("advanced"));
+  document.getElementById("advanced-reference-btn").addEventListener("click", () => showView("reference"));
+  document.getElementById("reference-back-btn").addEventListener("click", () => showView("advanced"));
 
   quizStartBtn.addEventListener("click", () => startQuiz("mastery"));
   quizLookalikeBtn.addEventListener("click", () => startQuiz("lookalike"));

@@ -803,6 +803,8 @@ kbd {
 }
 
 .menu-back-btn {
+  flex-shrink: 0;
+  white-space: nowrap;
   padding: 8px 14px;
   border-radius: 8px;
   border: 1px solid var(--blue);
@@ -878,4 +880,100 @@ kbd {
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
+}
+
+/* Grammar endings reference */
+
+.reference {
+  width: 100%;
+  min-width: 0;
+  line-height: 1.55;
+  padding-bottom: 48px;
+}
+
+.reference h3 {
+  margin: 28px 0 8px;
+  color: var(--blue);
+  scroll-margin-top: 70px;
+}
+
+.reference h4 {
+  margin: 18px 0 4px;
+  color: var(--blue);
+  font-size: 1rem;
+}
+
+.reference p,
+.reference ul {
+  margin: 8px 0;
+}
+
+.reference ul {
+  padding-left: 22px;
+}
+
+.reference li {
+  margin-bottom: 4px;
+}
+
+.ref-intro {
+  color: var(--gray);
+}
+
+.ref-toc {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 12px 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  font-size: 0.88rem;
+  line-height: 1.9;
+}
+
+.ref-toc a {
+  color: var(--blue);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.ref-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  font-size: 0.92rem;
+}
+
+.ref-table th,
+.ref-table td {
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.ref-table thead th {
+  background: rgba(0, 47, 108, 0.08);
+  color: var(--blue);
+}
+
+.ref-table tbody th {
+  color: var(--blue);
+  white-space: nowrap;
+}
+
+.ref-table-wide {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* These pages are flex items of <main>; without an explicit width they size
+   to their widest content and push past the screen on phones. */
+#advanced-view,
+#completed-view,
+#reference-view {
+  width: 100%;
+  min-width: 0;
 }
