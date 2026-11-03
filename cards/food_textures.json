@@ -1,0 +1,125 @@
+{
+  "name": "Food Textures",
+  "cards": [
+    {
+      "id": "tx01",
+      "fi": "rapea",
+      "en": "crunchy / crisp",
+      "hint": "\"rah-peh-ah\" — a crunchy rap beat"
+    },
+    {
+      "id": "tx02",
+      "fi": "pehmeä",
+      "en": "soft",
+      "hint": "\"peh-meh-ah\" — \"pay me\" for a soft pillow"
+    },
+    {
+      "id": "tx03",
+      "fi": "kova",
+      "en": "hard",
+      "hint": "\"koh-vah\" — a hard rock cove"
+    },
+    {
+      "id": "tx04",
+      "fi": "sileä",
+      "en": "smooth",
+      "hint": "\"see-leh-ah\" — the sea lays smooth and calm"
+    },
+    {
+      "id": "tx05",
+      "fi": "karkea",
+      "en": "rough / coarse",
+      "hint": "\"kar-keh-ah\" — a car key with rough teeth"
+    },
+    {
+      "id": "tx06",
+      "fi": "kermainen",
+      "en": "creamy",
+      "hint": "kerma (cream) + -inen = creamy"
+    },
+    {
+      "id": "tx07",
+      "fi": "mehukas",
+      "en": "juicy",
+      "hint": "mehu (juice) + -kas = full of juice"
+    },
+    {
+      "id": "tx08",
+      "fi": "tahmea",
+      "en": "sticky",
+      "hint": "\"tah-meh-ah\" — Tammy's sticky hands"
+    },
+    {
+      "id": "tx09",
+      "fi": "sitkeä",
+      "en": "chewy / tough",
+      "hint": "\"sit-keh-ah\" — stuck to your seat, tough to peel off"
+    },
+    {
+      "id": "tx10",
+      "fi": "murea",
+      "en": "tender / crumbly",
+      "hint": "\"moo-reh-ah\" — a moo-rare, tender steak"
+    },
+    {
+      "id": "tx11",
+      "fi": "liukas",
+      "en": "slippery",
+      "hint": "\"lee-oo-kahs\" — you leak oil and slip"
+    },
+    {
+      "id": "tx12",
+      "fi": "rasvainen",
+      "en": "greasy / fatty",
+      "hint": "rasva (fat) + -inen = fatty"
+    },
+    {
+      "id": "tx13",
+      "fi": "kuiva",
+      "en": "dry",
+      "hint": "\"koo-ee-vah\" — sounds like cuvée, a dry wine"
+    },
+    {
+      "id": "tx14",
+      "fi": "märkä",
+      "en": "wet",
+      "hint": "\"mar-kah\" — a wet mark left on the paper"
+    },
+    {
+      "id": "tx15",
+      "fi": "paksu",
+      "en": "thick",
+      "hint": "\"pahk-soo\" — a thick pack"
+    },
+    {
+      "id": "tx16",
+      "fi": "ohut",
+      "en": "thin",
+      "hint": "\"oh-hoot\" — a thin owl hoot"
+    },
+    {
+      "id": "tx17",
+      "fi": "vetinen",
+      "en": "watery / runny",
+      "hint": "vesi (water) → vetinen = watery"
+    },
+    {
+      "id": "tx18",
+      "fi": "kuohkea",
+      "en": "light and fluffy (baked goods)",
+      "hint": "\"koo-oh-keh-ah\" — a light, fluffy cookie"
+    },
+    {
+      "id": "tx19",
+      "fi": "kiinteä",
+      "en": "firm",
+      "hint": "\"keen-teh-ah\" — keenly firm"
+    },
+    {
+      "id": "tx20",
+      "fi": "jauhoinen",
+      "en": "mealy / floury",
+      "hint": "jauho (flour) + -inen = floury"
+    }
+  ]
+}
