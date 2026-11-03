@@ -1,0 +1,125 @@
+{
+  "name": "Word Parts",
+  "cards": [
+    {
+      "id": "cp01",
+      "fi": "yhteinen",
+      "en": "shared / common",
+      "hint": "The yhteis- in yhteiskuntaoppi (social studies); also yhteen- in yhteenlasku (addition)"
+    },
+    {
+      "id": "cp02",
+      "fi": "kunta",
+      "en": "municipality / community",
+      "hint": "The middle of yhteiskuntaoppi: yhteis (shared) + kunta (community) = society"
+    },
+    {
+      "id": "cp03",
+      "fi": "oppi",
+      "en": "teaching / study / doctrine",
+      "hint": "The end of yhteiskuntaoppi; the same family as oppia (to learn)"
+    },
+    {
+      "id": "cp04",
+      "fi": "tieto",
+      "en": "knowledge / information",
+      "hint": "In maantieto (geography), terveystieto (health education), taloustieto (economics), tietotekniikka (IT), tietokone (computer)"
+    },
+    {
+      "id": "cp05",
+      "fi": "kone",
+      "en": "machine",
+      "hint": "In pesukone (washing machine) and tietokone (computer)"
+    },
+    {
+      "id": "cp06",
+      "fi": "kieli",
+      "en": "language / tongue",
+      "hint": "In äidinkieli (native language) and ruotsin kieli (Swedish, the subject)"
+    },
+    {
+      "id": "cp07",
+      "fi": "maa",
+      "en": "land / country / earth",
+      "hint": "In maantieto (geography: \"land knowledge\") and Alankomaat (the Netherlands: \"low lands\")"
+    },
+    {
+      "id": "cp08",
+      "fi": "työ",
+      "en": "work / job",
+      "hint": "In käsityö (handicrafts: \"hand work\"); the same family as työskennellä (to work)"
+    },
+    {
+      "id": "cp09",
+      "fi": "kuu",
+      "en": "moon / month",
+      "hint": "The ending of every month: tammikuu, helmikuu, maaliskuu, huhtikuu…"
+    },
+    {
+      "id": "cp10",
+      "fi": "päivä",
+      "en": "day",
+      "hint": "In iltapäivä (afternoon: \"evening-day\") and hyvää päivää (good day)"
+    },
+    {
+      "id": "cp11",
+      "fi": "kuva",
+      "en": "picture / image",
+      "hint": "In kuvataide (art, the school subject: \"picture art\")"
+    },
+    {
+      "id": "cp12",
+      "fi": "mies",
+      "en": "man",
+      "hint": "In aviomies (husband: \"marriage-man\")"
+    },
+    {
+      "id": "cp13",
+      "fi": "terveys",
+      "en": "health",
+      "hint": "In terveystieto (health education)"
+    },
+    {
+      "id": "cp14",
+      "fi": "talous",
+      "en": "economy / household",
+      "hint": "In taloustieto (economics); related to talo (house)"
+    },
+    {
+      "id": "cp15",
+      "fi": "tekniikka",
+      "en": "technology / technique",
+      "hint": "In tietotekniikka (information technology: \"knowledge technology\")"
+    },
+    {
+      "id": "cp16",
+      "fi": "vaalea",
+      "en": "light / pale",
+      "hint": "In vaaleanpunainen (pink), vaaleansininen (light blue), vaaleanvihreä (light green); it appears as vaalean-"
+    },
+    {
+      "id": "cp17",
+      "fi": "tumma",
+      "en": "dark",
+      "hint": "In tummansininen (dark blue) and tummanvihreä (dark green); it appears as tumman-"
+    },
+    {
+      "id": "cp18",
+      "fi": "jää",
+      "en": "ice",
+      "hint": "In jääkaappi (refrigerator: \"ice cupboard\") and jäätelö (ice cream)"
+    },
+    {
+      "id": "cp19",
+      "fi": "aalto",
+      "en": "wave",
+      "hint": "In mikroaaltouuni (microwave: \"micro-wave oven\")"
+    },
+    {
+      "id": "cp20",
+      "fi": "väri",
+      "en": "color",
+      "hint": "In korallinvärinen (coral-colored) and pastellinvärinen (pastel-colored)"
+    }
+  ]
+}
