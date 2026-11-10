@@ -1,0 +1,125 @@
+{
+  "name": "Question Words",
+  "cards": [
+    {
+      "id": "qw01",
+      "fi": "mikä",
+      "en": "what / which",
+      "hint": "\"mick-ah\" — \"Mick, uh... what?\""
+    },
+    {
+      "id": "qw02",
+      "fi": "mitä",
+      "en": "what (as the object)",
+      "hint": "\"mit-ah\" — a baseball mitt: what's that?"
+    },
+    {
+      "id": "qw03",
+      "fi": "kuka",
+      "en": "who",
+      "hint": "\"koo-kah\" — a cuckoo asks \"who? who?\""
+    },
+    {
+      "id": "qw04",
+      "fi": "ketä",
+      "en": "whom (as the object)",
+      "hint": "\"keh-tah\" — \"catch-a\": whom did you catch?"
+    },
+    {
+      "id": "qw05",
+      "fi": "kenen",
+      "en": "whose",
+      "hint": "\"keh-nen\" — \"Ken's...?\" Whose? Ken's!"
+    },
+    {
+      "id": "qw06",
+      "fi": "kenelle",
+      "en": "to whom / for whom",
+      "hint": "\"keh-neh-leh\" — give it to Ken-Nelly... to whom?"
+    },
+    {
+      "id": "qw07",
+      "fi": "missä",
+      "en": "where (at)",
+      "hint": "\"mis-sä\" — \"Miss, where?\""
+    },
+    {
+      "id": "qw08",
+      "fi": "mistä",
+      "en": "where from / about what",
+      "hint": "\"mis-tä\" — \"Mister, where from?\""
+    },
+    {
+      "id": "qw09",
+      "fi": "mihin",
+      "en": "where to",
+      "hint": "\"mee-hin\" — give me a hint: where to?"
+    },
+    {
+      "id": "qw10",
+      "fi": "milloin",
+      "en": "when",
+      "hint": "\"mil-loy-n\" — when does the mill open?"
+    },
+    {
+      "id": "qw11",
+      "fi": "miksi",
+      "en": "why",
+      "hint": "\"mik-si\" — why mix it?"
+    },
+    {
+      "id": "qw12",
+      "fi": "miten",
+      "en": "how (in what way)",
+      "hint": "\"mee-ten\" — how do I meet ten people?"
+    },
+    {
+      "id": "qw13",
+      "fi": "kuinka",
+      "en": "how (+ adjective)",
+      "hint": "\"koo-in-kah\" — how tall is the queen? (kuinka pitkä)"
+    },
+    {
+      "id": "qw14",
+      "fi": "kumpi",
+      "en": "which (of two)",
+      "hint": "\"koom-pee\" — compare two: which one?"
+    },
+    {
+      "id": "qw15",
+      "fi": "minkä",
+      "en": "which / what (genitive form)",
+      "hint": "\"min-kah\" — which mink? (minkä värinen = what color)"
+    },
+    {
+      "id": "qw16",
+      "fi": "millainen",
+      "en": "what kind of",
+      "hint": "\"mil-lie-nen\" — what kind of line is at the mill?"
+    },
+    {
+      "id": "qw17",
+      "fi": "montako",
+      "en": "how many",
+      "hint": "monta (many) + -ko (the question ending)"
+    },
+    {
+      "id": "qw18",
+      "fi": "paljonko",
+      "en": "how much",
+      "hint": "paljon (a lot) + -ko (the question ending)"
+    },
+    {
+      "id": "qw19",
+      "fi": "millä",
+      "en": "with what / by what",
+      "hint": "\"mil-lä\" — with what do you grind at the mill?"
+    },
+    {
+      "id": "qw20",
+      "fi": "miltä",
+      "en": "how (does it look / feel)",
+      "hint": "\"mil-tä\" — how does Milt look? (Miltä näyttää?)"
+    }
+  ]
+}
